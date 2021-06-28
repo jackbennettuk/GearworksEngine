@@ -1,0 +1,40 @@
+#pragma once
+
+#include <depGL/Glad/glad.h>
+#include <depGL/glm/glm.hpp>
+
+#include <iostream>
+
+class Shader {
+private:
+	unsigned int programID = 0;
+
+	/// <summary>
+	/// Takes a file path of a shader and returns the source code of the shader from that file as a string.
+	/// </summary>
+	/// <param name="path">The path to the source code of the shader</param>
+	static std::string ParseShader(const std::string &path);
+
+	/// <summary>
+	/// Compiles a shader with OpenGL error handling.
+	/// </summary>
+	/// <param name="type">The type of shader, given as an OpenGL macro</param>
+	/// <param name="source">The source code of the shader as a string - NOT the file path of the shader!</param>
+	static unsigned int CompileShader(unsigned int type, const std::string &source);
+public:
+	/// <summary>
+	/// Constructor that creates, parses, compiles, and links a given shader.
+	/// A new shader program is also created if needed.
+	/// </summary>
+	/// <param name="_path">The path to the source file for the shader</param>
+	/// <param name="_type">The type of shader, given as an OpenGL macro</param>
+	/// <param name="_program">A handle to the program the shader should be linked to</param>
+	Shader(const std::string &_path, unsigned int _type, unsigned int _program);
+
+	/// <summary>
+	/// Changes a uniform vec3 in a given program.
+	/// </summary>
+	static inline void ModifyUniformv3(const unsigned int *program, const char *uniformName, glm::vec3 val) {
+		glUniform3f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b);
+	}
+};
