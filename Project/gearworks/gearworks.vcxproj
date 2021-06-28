@@ -171,8 +171,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\gwengine.h" />
+    <ClInclude Include="src\include\gwrendering.h" />
     <ClInclude Include="src\include\gwutility.h" />
     <ClInclude Include="src\lib\engine\Engine.h" />
+    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vbo.hpp" />
     <ClInclude Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.h" />
     <ClInclude Include="src\lib\utility\Utility.h" />
   </ItemGroup>

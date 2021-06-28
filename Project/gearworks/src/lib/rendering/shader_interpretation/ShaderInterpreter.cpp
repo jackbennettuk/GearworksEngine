@@ -13,7 +13,6 @@ Shader::Shader(const std::string &_path, unsigned int _type, unsigned int _progr
 
 	// Link the program
 	glLinkProgram(programID);
-	glDetachShader(programID, shaderID);
 
 	// Validate the program
 	glValidateProgram(programID);

@@ -27,9 +27,12 @@ With this formatting system, a new version log should look like this in the Mark
 If there are versions of the same type made in the same day, change `experimental version '13'` to `experimental versions '13' - '16'`. However, if the versions are of different types, e.g. release and development, log them seperately. However, any versions of any type that are created on different days should be logged seperately.
 
 ## Version logs
-### 27/06/2021 - versions `d0.1` - `d0.2`:
+### 27/06/2021 - versions `d1.0` - `d1.1`:
 - \[++] Started development
 - \[+] Implemented shader parsing and compilation.
+### 27/06/2021 - versions `d1.2`:
+- \[++] Added VertexBufferObject handling
+- \[+] Refactored by adding some more comments and summary tags
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
