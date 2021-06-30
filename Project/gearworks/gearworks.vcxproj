@@ -74,25 +74,25 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)bin\build\$(Configuration)\output\</OutDir>
     <IntDir>$(ProjectDir)bin\build\$(Configuration)\intermediate\</IntDir>
-    <TargetName>GearworksCompiledExecutable</TargetName>
+    <TargetName>GearworksExecutable</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\build\$(Configuration)\output\</OutDir>
     <IntDir>$(ProjectDir)bin\build\$(Configuration)\intermediate\</IntDir>
-    <TargetName>GearworksCompiledExecutable</TargetName>
+    <TargetName>GearworksExecutable</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)bin\build\$(Configuration)\output\</OutDir>
     <IntDir>$(ProjectDir)bin\build\$(Configuration)\intermediate\</IntDir>
-    <TargetName>GearworksCompiledExecutable</TargetName>
+    <TargetName>GearworksExecutable</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)bin\build\$(Configuration)\output\</OutDir>
     <IntDir>$(ProjectDir)bin\build\$(Configuration)\intermediate\</IntDir>
-    <TargetName>GearworksCompiledExecutable</TargetName>
+    <TargetName>GearworksExecutable</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -166,6 +166,8 @@
     <ClCompile Include="bin\dependencies\depInclude\depGL\Glad\glad.c" />
     <ClCompile Include="src\lib\engine\Engine.cpp" />
     <ClCompile Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.cpp" />
+    <ClCompile Include="src\lib\rendering\shapes\Rectangle.cpp" />
+    <ClCompile Include="src\lib\rendering\shapes\Triangle.cpp" />
     <ClCompile Include="src\lib\utility\Utility.cpp" />
     <ClCompile Include="src\process\win32_application.cpp" />
   </ItemGroup>
@@ -178,6 +180,8 @@
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vao.hpp" />
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vbo.hpp" />
     <ClInclude Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.h" />
+    <ClInclude Include="src\lib\rendering\shapes\Rectangle.h" />
+    <ClInclude Include="src\lib\rendering\shapes\Triangle.h" />
     <ClInclude Include="src\lib\utility\Utility.h" />
   </ItemGroup>
   <ItemGroup>

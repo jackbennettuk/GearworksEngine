@@ -15,8 +15,9 @@ public:
 	inline VertexArrayObject() {
 		// Generate the vertex array
 		GL_CALL(glGenVertexArrays(1, &rendererID));
-		// Bind it by default
-		GL_CALL(glBindVertexArray(rendererID));
+		
+		// Unbind the vertex array by default
+		Unbind();
 	}
 	inline ~VertexArrayObject() {
 		// Delete the vertex array with rendererID

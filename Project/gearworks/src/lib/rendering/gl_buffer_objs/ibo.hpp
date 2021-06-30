@@ -18,11 +18,14 @@ public:
 	inline IndexBufferObject(unsigned int count, unsigned int data[]) {
 		// Initialize rendererID as a newly-generated index buffer object
 		GL_CALL(glGenBuffers(1, &rendererID));
-		// Bind rendererID to the GL_ELEMENT_ARRAY_BUFFER constant
-		GL_CALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, rendererID));
+		// Bind the IBO
+		Bind();
 
 		// Set the data of the IBO based on count and data
 		GL_CALL(glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(float), data, GL_STATIC_DRAW));
+
+		// Then unbind the IBO so it can be tracked easier
+		Unbind();
 	}
 	inline ~IndexBufferObject() {
 		// Delete the buffer with rendererID

@@ -15,14 +15,17 @@
 // The type of release for the program version
 #define __PROG_CONFIG__ "development"
 // The major version number of the program
-#define __PROG_VERSION_MAJOR__ "1"
+#define __PROG_VERSION_MAJOR__ "d1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "3.1"
+#define __PROG_VERSION_MINOR__ "4"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
 // The main shader program in use for the Gearworks Engine
 unsigned int mainShaderProgram;
+
+// The main engine instance
+Engine engine(&mainShaderProgram);
 
 /// <summary>
 /// <para>Initializes all required shaders for the program.</para>
@@ -37,30 +40,37 @@ void InitializeShaders() {
 	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
 	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
 	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
+
+	// Initially unbind the current shader program so any previous ones are cleared
+	glUseProgram(0);
 }
 
 /// <summary>
 /// <para>The main function of the program.</para>
 /// </summary>
 int main() {
+	// Colour variables
+	util::ColourRGBA255 bgCol = util::ColourRGBA255(38, 38, 38, 255);
+
 	// Create the window title with version, e.g. "Gearworks Rendering Engine - release version 3.2"
 	std::string winTitle = "Gearworks Rendering Engine - ";
 	winTitle += __PROG_CONFIG__; winTitle += " version "; winTitle += __PROG_VERSION_MAJOR__; winTitle += "."; winTitle += __PROG_VERSION_MINOR__;
+	winTitle += " - running on OpenGL 3.3";
 
 	// Set the GLFW error callback before initialization so that it can give any errors when initializing as well as during runtime
 	glfwSetErrorCallback(util::glfwErrorCallback);
 
 	// Initialize GLFW
-	std::cout << "[GW] Initializing GLFW... ";
+	std::cout << "[GW] Initializing: Loading GLFW... ";
 	CONASSERT(glfwInit());
 
 	// Set window hints
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// OpenGL version = 3.3.x
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// OpenGL version = 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);						// ...
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
 
 	// Create the window
-	std::cout << "[GW] Creating the window... ";
+	std::cout << "[GW] Initializing: Creating the window... ";
 	mainWindow = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, winTitle.c_str(), NULL, NULL);
 	CONASSERT(mainWindow);
 
@@ -71,57 +81,56 @@ int main() {
 	glfwSwapInterval(1);
 
 	// Initialize Glad
-	std::cout << "[GW] Loading Glad... ";
+	std::cout << "[GW] Initializing: Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-
-	float vertices[6] = {
-		0.0f, 0.5f,
-		-0.5f, -0.5f,
-		0.5f, -0.5f
-	};
-
-	unsigned int indices[3] = {
-		0, 1, 2
-	};
 
 	// Initialize the shaders
 	InitializeShaders();
 
-	// Initially unbind the current shader program so any previous ones are cleared
-	glUseProgram(0);
-
-	// Create a VAO and initially unbind it
+	// Create the main VAO
 	VertexArrayObject vao;
-	// Create a VBO and initially unbind it
-	VertexBufferObject vbo(6, vertices);
-	// Create an IBO and initially unbind it
-	IndexBufferObject ibo(3, indices);
 
+	// Bind it so that any shapes can be initialized next
+	vao.Bind();
+	// Initialize the engine now so any shapes in it can be initialized after the vao has been bound
+	engine.Initialize();
+	// Then unbind it so it can be bound every frame when rendering instead of just at initialization
 	vao.Unbind();
-	vbo.Unbind();
-	ibo.Unbind();
 
-	// Colours
-	util::ColourRGBA255 bgCol = util::ColourRGBA255(38, 38, 38, 255);
+	// Print the version of OpenGL
+	std::cout << std::endl << "[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << std::endl;
+
+	// Print a welcome message
+	std::cout << std::endl << "   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
+		" | | |_ |/ _ \\/ _` | '_\\ \\ /\\ / / _ \\| '__| |/ / __|\n | |__| |  __/ (_| | |  \\ V  V / (_) | |  |   <\\__ \\\n  \\_____|\\___|\\__,_|_|   \\_/\\_/ \\___/|_|  |_|\\_\\___/" << std::endl;
+	std::cout << "\nBy Jack Bennett" << std::endl;
 
 	// Main program loop
 	while (!glfwWindowShouldClose(mainWindow)) {
+		// Change the background colour to a dark gray
 		GL_CALL(glClearColor(bgCol.r, bgCol.g, bgCol.b, bgCol.a));
 		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+
+		// Update the engine instance
+		engine.Update();
 
 		// Bind the shader program
 		GL_CALL(glUseProgram(mainShaderProgram));
 		// Bind the vertex array
 		vao.Bind();
-		// Bind the index buffer
-		ibo.Bind();
 
-		GL_CALL(glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr));
+		// Render the engine instance
+		engine.Render();
 
 		// Swap buffers and poll window events
 		glfwSwapBuffers(mainWindow);
 		glfwPollEvents();
 	}
+
+	// Unbind the VAO
+	vao.Unbind();
+	// Clean the main instance of Engine.cpp
+	engine.Clean();
 
 	// Terminate GLFW
 	glfwTerminate();

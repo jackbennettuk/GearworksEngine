@@ -1,5 +1,7 @@
 #pragma once
 
+#include "gwutility.h"
+
 #include <depGL/Glad/glad.h>
 
 class VertexBufferObject {
@@ -16,8 +18,8 @@ public:
 	inline VertexBufferObject(unsigned int count, float data[]) {
 		// Initialize rendererID as a newly-generated buffer object
 		GL_CALL(glGenBuffers(1, &rendererID));
-		// Bind rendererID to the GL_ARRAY_BUFFER constant
-		GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, rendererID));
+		// Bind the buffer so that the following functions work
+		Bind();
 
 		// Set the data of the VBO based on count and data
 		GL_CALL(glBufferData(GL_ARRAY_BUFFER, count * sizeof(float), data, GL_STATIC_DRAW));
@@ -27,8 +29,8 @@ public:
 		// Specify how to read the position attribute (read it as positions in 2D space)
 		GL_CALL(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0));
 
-		// 
-		GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, rendererID));
+		// Initially unbind the buffer so that it is bound through the VAO at render-time
+		Unbind();
 	}
 	inline ~VertexBufferObject() {
 		// Delete the buffer with rendererID

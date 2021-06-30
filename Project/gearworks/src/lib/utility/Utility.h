@@ -57,6 +57,11 @@ public:
 	static void glfwErrorCallback(int error, const char *description);
 
 	/// <summary>
+	/// <para>Gets the current bound VAO</para>
+	/// </summary>
+	static int GetCurrentBoundVAO();
+
+	/// <summary>
 	/// Struct to convert from RGBA-255 to RGBA-float (0-1)
 	/// </summary>
 	struct ColourRGBA255 {
