@@ -30,7 +30,7 @@ If there are versions of the same type made in the same day, change `experimenta
 ### 27/06/2021 - versions `d1.0` - `d1.1`:
 - \[++] Started development
 - \[+] Implemented shader parsing and compilation.
-### 27/06/2021 - versions `d1.2`:
+### 28/06/2021 - versions `d1.2`:
 - \[++] Added VertexBufferObject handling
 - \[+] Refactored by adding some more comments and summary tags
 ### 27/06/2021 - versions `d1.3`:
