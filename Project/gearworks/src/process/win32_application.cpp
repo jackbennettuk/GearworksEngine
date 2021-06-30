@@ -1,12 +1,11 @@
 #include "gwengine.h"
 #include "gwutility.h"
+#include "gwrendering.h"
 
 #include <depGL/Glad/glad.h>
 #include <depGL/GLFW3/glfw3.h>
 
 #include <iostream>
-
-#include "gwrendering.h"
 
 // The width of the window
 #define WIN_WIDTH 720
@@ -18,7 +17,7 @@
 // The major version number of the program
 #define __PROG_VERSION_MAJOR__ "1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "2"
+#define __PROG_VERSION_MINOR__ "3.1"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
@@ -41,7 +40,7 @@ void InitializeShaders() {
 }
 
 /// <summary>
-/// The main function of the program.
+/// <para>The main function of the program.</para>
 /// </summary>
 int main() {
 	// Create the window title with version, e.g. "Gearworks Rendering Engine - release version 3.2"
@@ -75,13 +74,50 @@ int main() {
 	std::cout << "[GW] Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
+	float vertices[6] = {
+		0.0f, 0.5f,
+		-0.5f, -0.5f,
+		0.5f, -0.5f
+	};
+
+	unsigned int indices[3] = {
+		0, 1, 2
+	};
+
 	// Initialize the shaders
 	InitializeShaders();
+
 	// Initially unbind the current shader program so any previous ones are cleared
 	glUseProgram(0);
 
+	// Create a VAO and initially unbind it
+	VertexArrayObject vao;
+	// Create a VBO and initially unbind it
+	VertexBufferObject vbo(6, vertices);
+	// Create an IBO and initially unbind it
+	IndexBufferObject ibo(3, indices);
+
+	vao.Unbind();
+	vbo.Unbind();
+	ibo.Unbind();
+
+	// Colours
+	util::ColourRGBA255 bgCol = util::ColourRGBA255(38, 38, 38, 255);
+
 	// Main program loop
 	while (!glfwWindowShouldClose(mainWindow)) {
+		GL_CALL(glClearColor(bgCol.r, bgCol.g, bgCol.b, bgCol.a));
+		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+
+		// Bind the shader program
+		GL_CALL(glUseProgram(mainShaderProgram));
+		// Bind the vertex array
+		vao.Bind();
+		// Bind the index buffer
+		ibo.Bind();
+
+		GL_CALL(glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr));
+
 		// Swap buffers and poll window events
 		glfwSwapBuffers(mainWindow);
 		glfwPollEvents();

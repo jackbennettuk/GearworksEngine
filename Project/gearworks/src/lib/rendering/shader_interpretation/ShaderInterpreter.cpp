@@ -9,16 +9,16 @@ Shader::Shader(const std::string &_path, unsigned int _type, unsigned int _progr
 	: programID(_program) {
 	// Compile the given source and attach the new shader to the program
 	unsigned int shaderID = CompileShader(_type, ParseShader(_path));
-	glAttachShader(programID, shaderID);
+	GL_CALL(glAttachShader(programID, shaderID));
 
 	// Link the program
-	glLinkProgram(programID);
+	GL_CALL(glLinkProgram(programID));
 
 	// Validate the program
-	glValidateProgram(programID);
+	GL_CALL(glValidateProgram(programID));
 
 	// Delete shaderID
-	glDeleteShader(shaderID);
+	GL_CALL(glDeleteShader(shaderID));
 }
 
 std::string Shader::ParseShader(const std::string &path) {
@@ -44,33 +44,33 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string &source)
 	// Convert the source to a const char *
 	const char *srcChar = source.c_str();
 	// Set the shader's source to the given source
-	glShaderSource(id, 1, &srcChar, nullptr);
+	GL_CALL(glShaderSource(id, 1, &srcChar, nullptr));
 
 	// Compile the shader
-	glCompileShader(id);
+	GL_CALL(glCompileShader(id));
 
 	// Get the compile status for compilation
 	int status;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &status);
+	GL_CALL(GL_CALL(glGetShaderiv(id, GL_COMPILE_STATUS, &status)));
 
 	// If there is an error...
 	if (status == GL_FALSE) {
 		// Get the length of the error message
 		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+		GL_CALL(GL_CALL(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length)));
 
 		// Allocate the error message pointer variable
 		char *errorMessage = (char *)_malloca(length * sizeof(char));
 
 		// Set the error message
-		glGetShaderInfoLog(id, length, &length, errorMessage);
+		GL_CALL(GL_CALL(glGetShaderInfoLog(id, length, &length, errorMessage)));
 
 		// Log the error message to console
 		std::cout << "[OpenGL] Shader compilation error ecnountered: failed to compile shader of type " << type << "!" << std::endl;
 		std::cout << errorMessage << std::endl;
 
 		// Delete the shader
-		glDeleteShader(id);
+		GL_CALL(glDeleteShader(id));
 		return 0;
 	}
 

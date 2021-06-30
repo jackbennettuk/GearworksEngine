@@ -53,6 +53,12 @@
     <ClInclude Include="src\include\gwrendering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\lib\rendering\gl_buffer_objs\ibo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vao.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\.vert" />

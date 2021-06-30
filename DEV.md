@@ -33,6 +33,13 @@ If there are versions of the same type made in the same day, change `experimenta
 ### 27/06/2021 - versions `d1.2`:
 - \[++] Added VertexBufferObject handling
 - \[+] Refactored by adding some more comments and summary tags
+### 27/06/2021 - versions `d1.3`:
+- \[++] Added IndexBufferObject handling
+- \[+] Implemented a GL_CALL function that checks OpenGL functions for errors
+- \[+] Added some bad VAO code
+- \[!] Fixed an uncaught OpenGl error in the fragment shader source code
+### 27/06/2021 - versions `d1.3.1`:
+- \[!] Fixed buggy VAO code
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
