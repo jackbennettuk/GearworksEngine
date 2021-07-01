@@ -6,6 +6,8 @@
 #include <depGL/GLFW3/glfw3.h>
 
 #include <iostream>
+#undef APIENTRY
+#include <Windows.h>
 
 // The width of the window
 #define WIN_WIDTH 720
@@ -53,9 +55,11 @@ int main() {
 	util::ColourRGBA255 bgCol = util::ColourRGBA255(38, 38, 38, 255);
 
 	// Create the window title with version, e.g. "Gearworks Rendering Engine - release version 3.2"
-	std::string winTitle = "Gearworks Rendering Engine - ";
+	std::string winTitle = "Gearworks Rendering Engine (OpenGL) - ";
 	winTitle += __PROG_CONFIG__; winTitle += " version "; winTitle += __PROG_VERSION_MAJOR__; winTitle += "."; winTitle += __PROG_VERSION_MINOR__;
-	winTitle += " - running on OpenGL 3.3";
+
+	// Set the console window's title. In future release builds, this console window will be optional but available for debugging.
+	SetConsoleTitle(L"Gearworks Engine Debug Prompt");
 
 	// Set the GLFW error callback before initialization so that it can give any errors when initializing as well as during runtime
 	glfwSetErrorCallback(util::glfwErrorCallback);

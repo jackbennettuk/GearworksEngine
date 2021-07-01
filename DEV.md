@@ -42,6 +42,8 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[++] Implemented rectangles in the Rectangle.cpp/.h files and struct
 - \[+] Abstracted triangle programming into the Triangle.cpp/.h files and struct
 - \[!] Fixed buggy VAO code
+### 01/07/2021 - version `d1.4.1`:
+- \[+] Changed the console title due to the planned inclusion of a debug prompt in the first release
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
