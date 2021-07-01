@@ -8,6 +8,7 @@
 #include <iostream>
 #undef APIENTRY
 #include <Windows.h>
+#include <time.h>
 
 // The width of the window
 #define WIN_WIDTH 720
@@ -19,7 +20,7 @@
 // The major version number of the program
 #define __PROG_VERSION_MAJOR__ "d1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "4"
+#define __PROG_VERSION_MINOR__ "4.1"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
@@ -35,17 +36,7 @@ Engine engine(&mainShaderProgram);
 /// <para>  - Vertex</para>
 ///	<para>  - Fragment</para>
 /// </summary>
-void InitializeShaders() {
-	// Create the main shader program
-	mainShaderProgram = glCreateProgram();
-
-	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
-	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
-	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
-
-	// Initially unbind the current shader program so any previous ones are cleared
-	glUseProgram(0);
-}
+void InitializeShaders();
 
 /// <summary>
 /// <para>The main function of the program.</para>
@@ -100,7 +91,7 @@ int main() {
 	engine.Initialize();
 	// Then unbind it so it can be bound every frame when rendering instead of just at initialization
 	vao.Unbind();
-
+	
 	// Print the version of OpenGL
 	std::cout << std::endl << "[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << std::endl;
 
@@ -126,8 +117,10 @@ int main() {
 		// Render the engine instance
 		engine.Render();
 
-		// Swap buffers and poll window events
+		// Swap buffers
 		glfwSwapBuffers(mainWindow);
+
+		// Poll window events
 		glfwPollEvents();
 	}
 
@@ -141,4 +134,17 @@ int main() {
 
 	// End the application successfully
 	return 0;
+}
+
+// InitializeShaders() implementation
+void InitializeShaders() {
+	// Create the main shader program
+	mainShaderProgram = glCreateProgram();
+
+	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
+	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
+	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
+
+	// Initially unbind the current shader program so any previous ones are cleared
+	glUseProgram(0);
 }
