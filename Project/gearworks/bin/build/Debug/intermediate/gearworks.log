@@ -1,2 +1,4 @@
-﻿  win32_application.cpp
+﻿  Utility.cpp
+  win32_application.cpp
+  Generating Code...
   gearworks.vcxproj -> C:\Users\Jack Bennett\Documents\GitHub\GearworksEngine\Project\gearworks\bin\build\Debug\output\GearworksExecutable.exe

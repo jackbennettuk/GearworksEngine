@@ -6,9 +6,9 @@ Rectangle::Rectangle(glm::vec2 position, glm::vec2 scale) {
 
 	// Convert the vertices vectors to a standard float array so that the vbo constructor can use them
 	vertFloats[0] = position.r; vertFloats[1] = position.g;
-	vertFloats[2] = position.r; vertFloats[3] = position.g - scale.g;
-	vertFloats[4] = position.r + scale.r; vertFloats[5] = position.g - scale.g;
-	vertFloats[6] = position.r + scale.r; vertFloats[7] = position.g;
+	vertFloats[2] = position.r + scale.r; vertFloats[3] = position.g;
+	vertFloats[4] = position.r + scale.r; vertFloats[5] = position.g + scale.g;
+	vertFloats[6] = position.r; vertFloats[7] = position.g + scale.g;
 
 	// Clear out any old vbos and ibos
 	GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, 0));
@@ -34,6 +34,6 @@ void Rectangle::Render() {
 	// Bind the IBO
 	ibo->Bind();
 
-	// Draw the triangle
+	// Draw the rectangle
 	GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 }

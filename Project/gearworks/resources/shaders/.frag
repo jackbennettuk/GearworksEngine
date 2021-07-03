@@ -7,5 +7,5 @@ uniform vec3 u_Colour;
 
 void main() {
 	// TODO: use u_Colour here instead of a hard-coded red colour
-	l_Colour = vec4(1.0, 0.0, 0.0, 1.0);
+	l_Colour = vec4(0.3, 0.3, 1.0, 1.0);
 }

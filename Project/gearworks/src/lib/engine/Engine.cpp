@@ -14,7 +14,7 @@ Engine::~Engine() {}
 // Initialization logic here
 void Engine::Initialize() {
 	// Rectangle
-	rect = new Rectangle(glm::vec2(-0.5, 0.5), glm::vec2(1, 1));
+	rect = new Rectangle(glm::vec2(0, 0), glm::vec2(200, 200));
 }
 
 // Updating variables etc

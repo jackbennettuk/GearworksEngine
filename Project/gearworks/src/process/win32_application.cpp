@@ -4,6 +4,7 @@
 
 #include <depGL/Glad/glad.h>
 #include <depGL/GLFW3/glfw3.h>
+#include <depGL/glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 #undef APIENTRY
@@ -20,7 +21,7 @@
 // The major version number of the program
 #define __PROG_VERSION_MAJOR__ "d1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "4.1"
+#define __PROG_VERSION_MINOR__ "5.1"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
@@ -91,14 +92,17 @@ int main() {
 	engine.Initialize();
 	// Then unbind it so it can be bound every frame when rendering instead of just at initialization
 	vao.Unbind();
-	
+
+	// Initialize the coordinate system
+	util::coord::InitWorldCoordSystem(&mainShaderProgram, 500.0f);
+
 	// Print the version of OpenGL
-	std::cout << std::endl << "[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << std::endl;
+	std::cout << std::endl << "[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << "\n\n----------";
 
 	// Print a welcome message
 	std::cout << std::endl << "   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
 		" | | |_ |/ _ \\/ _` | '_\\ \\ /\\ / / _ \\| '__| |/ / __|\n | |__| |  __/ (_| | |  \\ V  V / (_) | |  |   <\\__ \\\n  \\_____|\\___|\\__,_|_|   \\_/\\_/ \\___/|_|  |_|\\_\\___/" << std::endl;
-	std::cout << "\nBy Jack Bennett" << std::endl;
+	std::cout << "\nBy Jack Bennett\n----------" << std::endl;
 
 	// Main program loop
 	while (!glfwWindowShouldClose(mainWindow)) {
@@ -145,6 +149,5 @@ void InitializeShaders() {
 	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
 	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
 
-	// Initially unbind the current shader program so any previous ones are cleared
-	glUseProgram(0);
+	GL_CALL(glUseProgram(mainShaderProgram));
 }

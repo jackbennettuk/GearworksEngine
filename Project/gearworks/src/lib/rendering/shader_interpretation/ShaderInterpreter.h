@@ -1,5 +1,7 @@
 #pragma once
 
+#include "gwutility.h"
+
 #include <depGL/Glad/glad.h>
 #include <depGL/glm/glm.hpp>
 
@@ -35,6 +37,12 @@ public:
 	/// <para>Changes a uniform vec3 in a given program.</para>
 	/// </summary>
 	static inline void ModifyUniformv3(const unsigned int *program, const char *uniformName, glm::vec3 val) {
-		glUniform3f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b);
+		GL_CALL(glUniform3f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b));
+	}
+	/// <summary>
+	/// <para>Changes a uniform mat4 in a given program.</para>
+	/// </summary>
+	static inline void ModifyUniformmat4(const unsigned int *program, const char *uniformName, glm::mat4 val) {
+		GL_CALL(glUniformMatrix4fv(glGetUniformLocation(*program, uniformName), 1, GL_FALSE, &val[0][0]));
 	}
 };

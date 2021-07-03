@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#pragma region Macros
 /// <summary>
 /// <para>Checks to see if a given function, variable, or other object exists.</para>
 /// <para>If it does not, debug-break the program.</para>
@@ -46,6 +47,7 @@ static void glLogCall(const char *fun, const char *path, int line) {
 		std::cout << "[OpenGL] Error " << error << " found in file " << path << " at line " << line << "!" << std::endl;
 	}
 }
+#pragma endregion
 
 class util {
 public:
@@ -61,8 +63,17 @@ public:
 	/// </summary>
 	static int GetCurrentBoundVAO();
 
+	struct coord {
+		/// <summary>
+		/// <para>Initializes the global coordinate system.</para>
+		/// <para></para>
+		/// </summary>
+		/// <param name="program"></param>
+		static void InitWorldCoordSystem(unsigned int *program, float maxVal);
+	};
+
 	/// <summary>
-	/// Struct to convert from RGBA-255 to RGBA-float (0-1)
+	/// <para>Struct to convert from RGBA-255 to RGBA-float (0-1)</para>
 	/// </summary>
 	struct ColourRGBA255 {
 		float r, g, b, a;
