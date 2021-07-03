@@ -21,6 +21,6 @@ When committing to this project, do the following:
 - In the commit description, summarize the additions clearly with correct grammar and spelling because hey, this is my repo, so I get to be pedantic!
 - Make sure to include any additions to the [`DEV.md`](DEV.md) file.
 
-Whenever you update the `__PROG_VERSION_MAJOR__` or `__PROG_VERSION_MINOR__` macros, commit your changes. On the flip side: whenever you commit you changes, update the `__PROG_VERSION_MAJOR__` or `__PROG_VERSION_MINOR__` macros.
+Whenever you update the `__PROG_VERSION_MAJOR__` or `__PROG_VERSION_MINOR__` macros, commit your changes. On the flip side: whenever you commit your changes, update the `__PROG_VERSION_MAJOR__` or `__PROG_VERSION_MINOR__` macros.
 
-When committing a .md file, do whatever, unless it's a complete overhaul, in which case you should say something like `A complete overhaul of [this file`. Really, just leave it as the default `Update _____.md`.
+When committing a .md file, do whatever, unless it's a complete overhaul, in which case you should say something like `A complete overhaul of [this file]`. Really, just leave it as the default `Update _____.md`.
