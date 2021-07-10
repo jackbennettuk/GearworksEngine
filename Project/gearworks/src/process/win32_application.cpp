@@ -21,18 +21,15 @@
 // The major version number of the program
 #define __PROG_VERSION_MAJOR__ "d1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "6"
+#define __PROG_VERSION_MINOR__ "6.1"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
 // The main shader program in use for the Gearworks Engine
 unsigned int mainShaderProgram;
 
-// The main VAO
-VertexArrayObject mainVAO;
-
 // The main engine instance
-Engine engine(&mainShaderProgram, &mainVAO);
+Engine engine(&mainShaderProgram);
 
 /// <summary>
 /// <para>The main function of the program.</para>
@@ -97,9 +94,6 @@ int main() {
 	GL_CALL(glEnable(GL_BLEND));
 	GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
-	// Initialize the main VAO
-	mainVAO.Initialize();
-
 	// Initialize the engine now so any shapes in it can be initialized after the vao has been bound
 	engine.Initialize();
 
@@ -120,8 +114,6 @@ int main() {
 
 		// Bind the shader program
 		GL_CALL(glUseProgram(mainShaderProgram));
-		// Bind the vertex array
-		mainVAO.Bind();
 
 		// Render the engine instance
 		engine.Render();
@@ -133,13 +125,10 @@ int main() {
 		glfwPollEvents();
 	}
 
-	// Unbind the VAO
-	mainVAO.Unbind();
-	// Unbind shader program
-	GL_CALL(glUseProgram(0));
-
 	// Clean the main instance of Engine.cpp
 	engine.Clean();
+	// Unbind shader program
+	GL_CALL(glUseProgram(0));
 
 	// Terminate GLFW
 	glfwTerminate();

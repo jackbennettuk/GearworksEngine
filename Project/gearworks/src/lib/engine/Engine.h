@@ -5,9 +5,8 @@
 class Engine {
 private:
 	unsigned int *mainShaderProgram;
-	VertexArrayObject *vao;
 public:
-	Engine(unsigned int *_mainShaderProgram, VertexArrayObject *_vao);
+	Engine(unsigned int *_mainShaderProgram);
 	~Engine();
 
 	/// <summary>

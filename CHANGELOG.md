@@ -56,6 +56,9 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] When shapes are created, their origin is now in the center rather than the bottom-left.
 - \[+] Refactored VAO system again, essentially reverting version d1.5.1.1 `¯\_(ツ)_/¯`
 - \[+] Renamed `DEV.md` to `CHANGELOG.md`
+### 10/07/2021 - version `d1.6.1`:
+- \[+] Applied all changed to the rectangle (from `d1.6`) to the triangle struct. [Note: textures cannot be applied to triangles as of this version!]
+- \[+] Refactored VAO system AGAIN.
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
