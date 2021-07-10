@@ -10,7 +10,7 @@ _A little ASCII art always helps_
   \_____|\___|\__,_|_|    \_/\_/ \___/|_|  |_|\_\___/
 ```
 
-## Development log
+## Change log
 You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
 
 I also have a ClickUp list dedicated to the Gearworks Engine project; this is not public at the moment although I plan to release it at some point in the future.
