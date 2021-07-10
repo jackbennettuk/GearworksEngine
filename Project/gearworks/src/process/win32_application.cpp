@@ -21,23 +21,18 @@
 // The major version number of the program
 #define __PROG_VERSION_MAJOR__ "d1"
 // The minor version number of the program
-#define __PROG_VERSION_MINOR__ "5.1"
+#define __PROG_VERSION_MINOR__ "6"
 
 // Handle to the main window used by the Gearworks Engine
 GLFWwindow *mainWindow;
 // The main shader program in use for the Gearworks Engine
 unsigned int mainShaderProgram;
 
-// The main engine instance
-Engine engine(&mainShaderProgram);
+// The main VAO
+VertexArrayObject mainVAO;
 
-/// <summary>
-/// <para>Initializes all required shaders for the program.</para>
-/// <para>Currently, the shaders implemented in this function are:</para>
-/// <para>  - Vertex</para>
-///	<para>  - Fragment</para>
-/// </summary>
-void InitializeShaders();
+// The main engine instance
+Engine engine(&mainShaderProgram, &mainVAO);
 
 /// <summary>
 /// <para>The main function of the program.</para>
@@ -80,29 +75,39 @@ int main() {
 	std::cout << "[GW] Initializing: Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
-	// Initialize the shaders
-	InitializeShaders();
-
-	// Create the main VAO
-	VertexArrayObject vao;
-
-	// Bind it so that any shapes can be initialized next
-	vao.Bind();
-	// Initialize the engine now so any shapes in it can be initialized after the vao has been bound
-	engine.Initialize();
-	// Then unbind it so it can be bound every frame when rendering instead of just at initialization
-	vao.Unbind();
-
-	// Initialize the coordinate system
-	util::coord::InitWorldCoordSystem(&mainShaderProgram, 500.0f);
-
 	// Print the version of OpenGL
-	std::cout << std::endl << "[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << "\n\n----------";
+	std::cout << std::endl << "----------\n[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << "\n----------";
 
 	// Print a welcome message
 	std::cout << std::endl << "   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
 		" | | |_ |/ _ \\/ _` | '_\\ \\ /\\ / / _ \\| '__| |/ / __|\n | |__| |  __/ (_| | |  \\ V  V / (_) | |  |   <\\__ \\\n  \\_____|\\___|\\__,_|_|   \\_/\\_/ \\___/|_|  |_|\\_\\___/" << std::endl;
 	std::cout << "\nBy Jack Bennett\n----------" << std::endl;
+
+	// Create the main shader program
+	mainShaderProgram = glCreateProgram();
+
+	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
+	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
+	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
+	
+	// Bind the shader program
+	GL_CALL(glUseProgram(mainShaderProgram));
+
+	// Enable blending for transparency
+	GL_CALL(glEnable(GL_BLEND));
+	GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
+	// Initialize the main VAO
+	mainVAO.Initialize();
+
+	// Initialize the engine now so any shapes in it can be initialized after the vao has been bound
+	engine.Initialize();
+
+	// Initialize the coordinate system
+	util::coord::InitWorldCoordSystem(&mainShaderProgram, 500.0f);
+
+	// Clear shader program
+	GL_CALL(glUseProgram(0));
 
 	// Main program loop
 	while (!glfwWindowShouldClose(mainWindow)) {
@@ -116,7 +121,7 @@ int main() {
 		// Bind the shader program
 		GL_CALL(glUseProgram(mainShaderProgram));
 		// Bind the vertex array
-		vao.Bind();
+		mainVAO.Bind();
 
 		// Render the engine instance
 		engine.Render();
@@ -129,7 +134,10 @@ int main() {
 	}
 
 	// Unbind the VAO
-	vao.Unbind();
+	mainVAO.Unbind();
+	// Unbind shader program
+	GL_CALL(glUseProgram(0));
+
 	// Clean the main instance of Engine.cpp
 	engine.Clean();
 
@@ -138,16 +146,4 @@ int main() {
 
 	// End the application successfully
 	return 0;
-}
-
-// InitializeShaders() implementation
-void InitializeShaders() {
-	// Create the main shader program
-	mainShaderProgram = glCreateProgram();
-
-	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
-	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
-	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
-
-	GL_CALL(glUseProgram(mainShaderProgram));
 }

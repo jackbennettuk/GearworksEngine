@@ -30,10 +30,10 @@ If there are versions of the same type made in the same day, change `experimenta
 ### 27/06/2021 - versions `d1.0` - `d1.1`:
 - \[++] Started development
 - \[+] Implemented shader parsing and compilation.
-### 28/06/2021 - versions `d1.2`:
+### 28/06/2021 - version `d1.2`:
 - \[++] Added VertexBufferObject handling
 - \[+] Refactored by adding some more comments and summary tags
-### 29/06/2021 - versions `d1.3`:
+### 29/06/2021 - version `d1.3`:
 - \[++] Added IndexBufferObject handling
 - \[+] Implemented a `GL_CALL` function that checks OpenGL functions for errors
 - \[+] Added some bad VAO code
@@ -45,9 +45,17 @@ If there are versions of the same type made in the same day, change `experimenta
 ### 01/07/2021 - versions `d1.4.1` - `d1.5`:
 - \[++] Converted default Normalized coordinate system to Absolute
 - \[+] Changed the console title due to the planned inclusion of a debug prompt in the first release
-### 01/07/2021 - versions `d1.5.1`:
+### 03/07/2021 - version `d1.5.1`:
 - \[++] Converted Absolute coordinate system to World system
 - \[+] Abstracted coordinate-related methods to the `util::coord` struct
+### 05/07/2021 - version `d1.5.1.1`:
+- \[+] Entirely refactored the Vertex Array system and how they are handled
+### 09/07/2021 - version `d1.6`:
+- \[++] Implemented textures!
+- \[++] Refactored shape structs so that a texture or colour can be given via the constructor
+- \[+] When shapes are created, their origin is now in the center rather than the bottom-left.
+- \[+] Refactored VAO system again, essentially reverting version d1.5.1.1 `¯\_(ツ)_/¯`
+- \[+] Renamed `DEV.md` to `CHANGELOG.md`
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

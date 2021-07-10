@@ -5,6 +5,7 @@
 #include <iostream>
 
 #pragma region Macros
+
 /// <summary>
 /// <para>Checks to see if a given function, variable, or other object exists.</para>
 /// <para>If it does not, debug-break the program.</para>
@@ -37,16 +38,10 @@ __pragma(warning(disable:4566));\
 glLogCall(#x, __FILE__, __LINE__);\
 __pragma(warning(pop))
 
-// Stops the program if there is an error
-static void glClearError() {
-	while (glGetError() != GL_NO_ERROR);
-}
-// Logs any errors in the console; ASSERT this function so that, if it logs any errors, the program is broken
-static void glLogCall(const char *fun, const char *path, int line) {
-	while (GLenum error = glGetError()) {
-		std::cout << "[OpenGL] Error " << error << " found in file " << path << " at line " << line << "!" << std::endl;
-	}
-}
+#define DELETE_PTR(x)\
+delete x;\
+x = NULL
+
 #pragma endregion
 
 class util {
@@ -59,22 +54,22 @@ public:
 	static void glfwErrorCallback(int error, const char *description);
 
 	/// <summary>
-	/// <para>Gets the current bound VAO</para>
+	/// Returns the size, as an unsigned int, of each OpenGL type
 	/// </summary>
-	static int GetCurrentBoundVAO();
+	/// <param name="type"></param>
+	static unsigned int GetSizeOfType(unsigned int type);
 
+	// Struct for any static coordinate-related methods and/or variables
 	struct coord {
 		/// <summary>
 		/// <para>Initializes the global coordinate system.</para>
-		/// <para></para>
 		/// </summary>
-		/// <param name="program"></param>
+		/// <param name="program">The shader program in use.</param>
+		/// <param name="maxVal">The maximum coordinate at either end of the world.</param>
 		static void InitWorldCoordSystem(unsigned int *program, float maxVal);
 	};
 
-	/// <summary>
-	/// <para>Struct to convert from RGBA-255 to RGBA-float (0-1)</para>
-	/// </summary>
+	// Struct that stores 4 channels of a colour in floats
 	struct ColourRGBA255 {
 		float r, g, b, a;
 
@@ -88,3 +83,14 @@ public:
 		ColourRGBA255(float _r, float _g, float _b, float _a);
 	};
 };
+
+// Stops the program if there is an error
+static void glClearError() {
+	while (glGetError() != GL_NO_ERROR);
+}
+// Logs any errors in the console; ASSERT this function so that, if it logs any errors, the program is broken
+static void glLogCall(const char *fun, const char *path, int line) {
+	while (GLenum error = glGetError()) {
+		std::cout << "[OpenGL] Error " << error << " found in file " << path << " at line " << line << "!" << std::endl;
+	}
+}

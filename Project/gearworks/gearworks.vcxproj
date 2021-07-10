@@ -164,14 +164,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bin\dependencies\depInclude\depGL\Glad\glad.c" />
+    <ClCompile Include="bin\dependencies\depInclude\stb\stb_image.c" />
     <ClCompile Include="src\lib\engine\Engine.cpp" />
     <ClCompile Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.cpp" />
     <ClCompile Include="src\lib\rendering\shapes\Rectangle.cpp" />
     <ClCompile Include="src\lib\rendering\shapes\Triangle.cpp" />
+    <ClCompile Include="src\lib\rendering\textures\Texture2D.cpp" />
     <ClCompile Include="src\lib\utility\Utility.cpp" />
     <ClCompile Include="src\process\win32_application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bin\dependencies\depInclude\stb\stb_image.h" />
+    <ClInclude Include="src\include\gwassets.h" />
     <ClInclude Include="src\include\gwengine.h" />
     <ClInclude Include="src\include\gwrendering.h" />
     <ClInclude Include="src\include\gwutility.h" />
@@ -179,14 +183,19 @@
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\ibo.hpp" />
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vao.hpp" />
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vbo.hpp" />
+    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vertexbufferlayout.hpp" />
     <ClInclude Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.h" />
     <ClInclude Include="src\lib\rendering\shapes\Rectangle.h" />
     <ClInclude Include="src\lib\rendering\shapes\Triangle.h" />
+    <ClInclude Include="src\lib\rendering\textures\Texture2D.h" />
     <ClInclude Include="src\lib\utility\Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\.frag" />
     <None Include="resources\shaders\.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

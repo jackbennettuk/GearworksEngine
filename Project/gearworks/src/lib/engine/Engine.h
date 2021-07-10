@@ -1,10 +1,13 @@
 #pragma once
 
+#include "gwrendering.h"
+
 class Engine {
 private:
-	unsigned int *mainShaderProgam;
+	unsigned int *mainShaderProgram;
+	VertexArrayObject *vao;
 public:
-	Engine(unsigned int *_mainShaderProgram);
+	Engine(unsigned int *_mainShaderProgram, VertexArrayObject *_vao);
 	~Engine();
 
 	/// <summary>

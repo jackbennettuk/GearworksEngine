@@ -1,38 +1,103 @@
 #include "Rectangle.h"
 
-Rectangle::Rectangle(glm::vec2 position, glm::vec2 scale) {
-	// Variable created to store the vertices as floats in their correct order as an array
-	float vertFloats[8] = {};
+// NOTE: The way the shader attributes are added to the vertex buffers is stupid, but other tested ways didn't seem to work.
+	  // And I would know, by the way, because I spent THREE DAYS trying to figure it out. Why didn't it work????
 
-	// Convert the vertices vectors to a standard float array so that the vbo constructor can use them
-	vertFloats[0] = position.r; vertFloats[1] = position.g;
-	vertFloats[2] = position.r + scale.r; vertFloats[3] = position.g;
-	vertFloats[4] = position.r + scale.r; vertFloats[5] = position.g + scale.g;
-	vertFloats[6] = position.r; vertFloats[7] = position.g + scale.g;
+// Texture constructor
+Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, std::string _texture)
+	: colour(NULL), mainShaderProgram(program) {
+	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
+	// It stores the position data by converting the given vec2s to one unified standard float array.
+	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
+	// NOTE: the origin of the rectangle is IN THE CENTER.
+	float posVBO_Data[] = {
+		position.r - (scale.r / 2), position.g - (scale.g / 2),
+		position.r + (scale.r / 2), position.g - (scale.g / 2),
+		position.r + (scale.r / 2), position.g + (scale.g / 2),
+		position.r - (scale.r / 2), position.g + (scale.g / 2)
+	};
+	// This float array is the data for the texture VBO (or 'texVBO') variable.
+	// It stores the texture coordinates in order: bottom_left, bottom_right, top_right, top_left.
+	float texVBO_Data[] = {
+		0.0f, 0.0f,
+		1.0f, 0.0f,
+		1.0f, 1.0f,
+		0.0f, 1.0f
+	};
 
-	// Clear out any old vbos and ibos
-	GL_CALL(glBindBuffer(GL_ARRAY_BUFFER, 0));
-	GL_CALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+	// Create the position VBO
+	posVBO = new VertexBufferObject(8, posVBO_Data);
+	// Create the texture VBO
+	texVBO = new VertexBufferObject(8, texVBO_Data);
 
-	// Initialize vbo and ibo with the 'new' keyword, unfortunately
-	vbo = new VertexBufferObject(8, vertFloats);		// VAO MUST be bound by this point!
+	// Create the IBO
 	ibo = new IndexBufferObject(6, indices);
-}
-Rectangle::~Rectangle() {
-	// Delete the VBO and set the dangling pointer to null
-	vbo->Unbind();
-	delete vbo;
-	vbo = NULL;
 
-	// Delete the IBO and set the dangling pointer to null
+	// Enable and define the position attribute for the position vertex buffer
+	vao->AddVertexBufferAttrib(*posVBO, 0, 2, GL_FLOAT, GL_FALSE, 8, 0);
+	// Enable and define the texture coordinate attribute for the texture vertex buffer
+	vao->AddVertexBufferAttrib(*texVBO, 1, 2, GL_FLOAT, GL_FALSE, 8, 0);
+
+	// Create the texture as a pointer
+	texture = new Texture2D(_texture);
+	texture->Unbind();
+
+	// Make sure the texture is being used
+	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 1);
+	// Set uniform `u_Texture` to 0, as the texture has been bound to slot 0.
+	Shader::ModifyUniform1i(mainShaderProgram, "u_Texture", 0);
+}
+
+// Colour constructor
+Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, glm::vec4 _colour)
+	: texture(nullptr), colour(_colour), texVBO(nullptr), mainShaderProgram(program) {
+	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
+	// It stores the position data by converting the given vec2s to one unified standard float array.
+	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
+	// NOTE: the origin of the rectangle is IN THE CENTER.
+	float posVBO_Data[] = {
+		position.r - (scale.r / 2), position.g - (scale.g / 2),
+		position.r + (scale.r / 2), position.g - (scale.g / 2),
+		position.r + (scale.r / 2), position.g + (scale.g / 2),
+		position.r - (scale.r / 2), position.g + (scale.g / 2)
+	};
+
+	// Create the position VBO
+	posVBO = new VertexBufferObject(8, posVBO_Data);
+
+	// Create the IBO
+	ibo = new IndexBufferObject(6, indices);
+
+	// Enable and define the position attribute for the position vertex buffer
+	vao->AddVertexBufferAttrib(*posVBO, 0, 2, GL_FLOAT, GL_FALSE, 8, 0);
+
+	// Make sure any textures are NOT being used
+	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 0);
+	// Apply the colour to the rectangle by modifying the appropriate uniform variable
+	Shader::ModifyUniform4f(mainShaderProgram, "u_Colour", colour);
+}
+
+Rectangle::~Rectangle() {
+	// Unbind the IBO and VBOs
 	ibo->Unbind();
-	delete ibo;
-	ibo = NULL;
+	posVBO->Unbind();
+	if (texVBO) texVBO->Unbind();
+
+	// Unbind the texture
+	if (texture) texture->Unbind();
+
+	// Delete all pointer variables here so the 'new' keyword doesn't ruin my program.
+	DELETE_PTR(posVBO);
+	DELETE_PTR(texVBO);
+	DELETE_PTR(ibo);
+	DELETE_PTR(texture);
 }
 
 void Rectangle::Render() {
 	// Bind the IBO
 	ibo->Bind();
+	// Bind the texture
+	if (texture) texture->Bind();
 
 	// Draw the rectangle
 	GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));

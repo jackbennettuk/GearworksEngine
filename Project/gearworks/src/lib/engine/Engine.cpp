@@ -6,15 +6,15 @@
 // If they require other libraries that have not yet been loaded, initialize the variables in the Initialize function
 Rectangle *rect;
 
-Engine::Engine(unsigned int *_mainShaderProgram)
-	: mainShaderProgam(_mainShaderProgram) {
+Engine::Engine(unsigned int *_mainShaderProgram, VertexArrayObject *_vao)
+	: mainShaderProgram(_mainShaderProgram), vao(_vao) {
 }
 Engine::~Engine() {}
 
 // Initialization logic here
 void Engine::Initialize() {
 	// Rectangle
-	rect = new Rectangle(glm::vec2(0, 0), glm::vec2(200, 200));
+	rect = new Rectangle(vao, mainShaderProgram, glm::vec2(0.0f, 0.0f), glm::vec2(400.0f, 296.0f), "resources/textures/logo.png");
 }
 
 // Updating variables etc
