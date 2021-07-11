@@ -1,19 +1,21 @@
 # Gearworks Engine
 
-_A little ASCII art always helps_
-```
-   _____                                    _        
-  / ____|                                  | |       
- | |  __  ___  __ _ _ ____      _____  _ __| | _____ 
- | | |_ |/ _ \/ _` | '__\ \ /\ / / _ \| '__| |/ / __|
- | |__| |  __/ (_| | |   \ V  V / (_) | |  |   <\__ \
-  \_____|\___|\__,_|_|    \_/\_/ \___/|_|  |_|\_\___/
-```
+<img src="logo.svg" width=200 align=right>
+
+## What is the Gearworks Engine?
+The Gearworks Engine is the name of my first rendering / physics / game engine. It is, then, pretty basic - it is mostly for learning and experience. For reference, it uses the following APIs and dependencies:
+- OpenGL, loaded with [glad](https://github.com/Dav1dde/glad)
+- [GLFW](https://github.com/glfw/glfw)
+- [stb_image](https://github.com/nothings/stb)
+
+I'm currently still in school so I don't have too much time for it. I try to keep it as organized and professional as a personal project should be :).
+
+I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program.
+
+Finally, I'm proud to say it is, and always will be, **completely open-source**, along with any other large projects I make in the future.
 
 ## Change log
 You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
-
-I also have a ClickUp list dedicated to the Gearworks Engine project; this is not public at the moment although I plan to release it at some point in the future.
 
 ## Commit guidelines
 When committing to this project, do the following:
