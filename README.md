@@ -1,6 +1,6 @@
 # Gearworks Engine
 
-<img src="logo.svg" width=200 align=right>
+<img src="github/logo.svg" width=200 align=right>
 
 ## What is the Gearworks Engine?
 The Gearworks Engine is the name of my first rendering / physics / game engine. It is, then, pretty basic - it is mostly for learning and experience. For reference, it uses the following APIs and dependencies:
