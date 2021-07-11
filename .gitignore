@@ -3,6 +3,11 @@
 
 # Modified for use in the Gearworks project
 
+# Visual Studio files
+*.sln
+*.vcxproj
+*.filters
+
 # User-specific files
 *.suo
 *.user
