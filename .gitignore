@@ -3,16 +3,15 @@
 
 # Modified for use in the Gearworks project
 
-# Visual Studio files
-*.sln
-*.vcxproj
-*.filters
-
 # User-specific files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+
+# .vs folder at differing locations
+.vs/
+gearworks/.vs/
 
 # Thumbnail files on Windows...
 Thumbs.db
