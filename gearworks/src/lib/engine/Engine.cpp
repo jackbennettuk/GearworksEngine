@@ -8,8 +8,8 @@ Rectangle *rect;
 
 VertexArrayObject rectVAO;
 
-Engine::Engine(unsigned int *_mainShaderProgram)
-	: mainShaderProgram(_mainShaderProgram) {
+Engine::Engine(GWRenderer *renderer)
+	: mainShaderProgram(renderer->GetShaderProgramID()) {
 }
 Engine::~Engine() {}
 

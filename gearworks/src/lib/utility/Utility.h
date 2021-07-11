@@ -13,7 +13,6 @@
 #define ASSERT(x)\
 if (!x) {\
 __debugbreak;\
-return -1;\
 }
 
 /// <summary>
@@ -22,7 +21,6 @@ return -1;\
 #define CONASSERT(x)\
 if (!x) {\
 std::cout << "Error: " << #x << " does not exist!" << std::endl;\
-return -1;\
 } else {\
 std::cout << "Successful!" << std::endl;\
 }
@@ -47,41 +45,10 @@ x = NULL
 class util {
 public:
 	/// <summary>
-	/// <para>GLFW error callback that outputs any errors to console.</para>
-	/// </summary>
-	/// <param name="error">The error number given by GLFW</param>
-	/// <param name="description">The error description allocated to error</param>
-	static void glfwErrorCallback(int error, const char *description);
-
-	/// <summary>
 	/// Returns the size, as an unsigned int, of each OpenGL type
 	/// </summary>
 	/// <param name="type"></param>
 	static unsigned int GetSizeOfType(unsigned int type);
-
-	// Struct for any static coordinate-related methods and/or variables
-	struct coord {
-		/// <summary>
-		/// <para>Initializes the global coordinate system.</para>
-		/// </summary>
-		/// <param name="program">The shader program in use.</param>
-		/// <param name="maxVal">The maximum coordinate at either end of the world.</param>
-		static void InitWorldCoordSystem(unsigned int *program, float maxVal);
-	};
-
-	// Struct that stores 4 channels of a colour in floats
-	struct ColourRGBA255 {
-		float r, g, b, a;
-
-		/// <summary>
-		/// <para>Constructor for ColourRGBA255 that converts from RGBA-255 to RGBA-float (0-1) by dividing the given values by 255.</para>
-		/// </summary>
-		/// <param name="_r">Red value</param>
-		/// <param name="_g">Green value</param>
-		/// <param name="_b">Blue value</param>
-		/// <param name="_a">Alpha value</param>
-		ColourRGBA255(float _r, float _g, float _b, float _a);
-	};
 };
 
 // Stops the program if there is an error

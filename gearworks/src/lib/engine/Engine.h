@@ -6,7 +6,7 @@ class Engine {
 private:
 	unsigned int *mainShaderProgram;
 public:
-	Engine(unsigned int *_mainShaderProgram);
+	Engine(GWRenderer *renderer);
 	~Engine();
 
 	/// <summary>

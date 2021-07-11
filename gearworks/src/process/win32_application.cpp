@@ -11,42 +11,17 @@
 #include <Windows.h>
 #include <time.h>
 
-// The width of the window
-#define WIN_WIDTH 720
-// The height of the window
-#define WIN_HEIGHT 480
-
-// The type of release for the program version
-#define __PROG_CONFIG__ "development"
-// The major version number of the program
-#define __PROG_VERSION_MAJOR__ "d1"
-// The minor version number of the program
-#define __PROG_VERSION_MINOR__ "6.1"
-
-// Handle to the main window used by the Gearworks Engine
-GLFWwindow *mainWindow;
-// The main shader program in use for the Gearworks Engine
-unsigned int mainShaderProgram;
-
-// The main engine instance
-Engine engine(&mainShaderProgram);
-
 /// <summary>
 /// <para>The main function of the program.</para>
 /// </summary>
 int main() {
-	// Colour variables
-	util::ColourRGBA255 bgCol = util::ColourRGBA255(38, 38, 38, 255);
-
-	// Create the window title with version, e.g. "Gearworks Rendering Engine - release version 3.2"
-	std::string winTitle = "Gearworks Rendering Engine (OpenGL) - ";
-	winTitle += __PROG_CONFIG__; winTitle += " version "; winTitle += __PROG_VERSION_MAJOR__; winTitle += "."; winTitle += __PROG_VERSION_MINOR__;
+	// Create the main renderer instance...
+	GWRenderer mainRenderer;
+	// ...and the main engine instance
+	Engine engine(&mainRenderer);
 
 	// Set the console window's title. In future release builds, this console window will be optional but available for debugging.
 	SetConsoleTitle(L"Gearworks Engine Debug Prompt");
-
-	// Set the GLFW error callback before initialization so that it can give any errors when initializing as well as during runtime
-	glfwSetErrorCallback(util::glfwErrorCallback);
 
 	// Initialize GLFW
 	std::cout << "[GW] Initializing: Loading GLFW... ";
@@ -58,77 +33,60 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
 
 	// Create the window
-	std::cout << "[GW] Initializing: Creating the window... ";
-	mainWindow = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, winTitle.c_str(), NULL, NULL);
-	CONASSERT(mainWindow);
-
-	// Set mainWindow to be the current OpenGL context
-	glfwMakeContextCurrent(mainWindow);
-
-	// Set the OpenGL swap interval to 1
-	glfwSwapInterval(1);
+	GWRenderer::GWWindow mainWindow("Gearworks Engine: Powered by OpenGL");
 
 	// Initialize Glad
 	std::cout << "[GW] Initializing: Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
-	// Print the version of OpenGL
-	std::cout << std::endl << "----------\n[OpenGL] Running OpenGL version " << glGetString(GL_VERSION) << "\n----------";
+	// Explicity set the OpenGL viewport size to be the window size
+	glViewport(0, 0, mainWindow.GetWindowSizeX(), mainWindow.GetWindowSizeY());
 
-	// Print a welcome message
-	std::cout << std::endl << "   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
-		" | | |_ |/ _ \\/ _` | '_\\ \\ /\\ / / _ \\| '__| |/ / __|\n | |__| |  __/ (_| | |  \\ V  V / (_) | |  |   <\\__ \\\n  \\_____|\\___|\\__,_|_|   \\_/\\_/ \\___/|_|  |_|\\_\\___/" << std::endl;
-	std::cout << "\nBy Jack Bennett\n----------" << std::endl;
+	// Print the name of the engine as ASCII art because why not :D
+	std::cout << "\n----------\n   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
+		" | | |_ |/ _ \\/ _` | '_\\ \\ /\\ / / _ \\| '__| |/ / __|\n | |__| |  __/ (_| | |  \\ V  V / (_) | |  |   <\\__ \\\n  \\_____|\\___|\\__,_|_|   \\_/\\_/ \\___/|_|  |_|\\_\\___/\n"
+		"\nBy Jack Bennett\n----------\n";
 
-	// Create the main shader program
-	mainShaderProgram = glCreateProgram();
+	// Enable transparent blending through the main renderer instance
+	mainRenderer.EnableTransparentBlending();
 
-	// Necessary shaders - they are destroyed when outside the InitializeShaders scope
-	Shader vertexShader("resources/shaders/.vert", GL_VERTEX_SHADER, mainShaderProgram);		// Vertex shader
-	Shader fragmentShader("resources/shaders/.frag", GL_FRAGMENT_SHADER, mainShaderProgram);	// Fragment shader
-	
-	// Bind the shader program
-	GL_CALL(glUseProgram(mainShaderProgram));
+	// Set up shaders
+	mainRenderer.InitializeShaders();
 
-	// Enable blending for transparency
-	GL_CALL(glEnable(GL_BLEND));
-	GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
-
-	// Initialize the engine now so any shapes in it can be initialized after the vao has been bound
+	// Initialize the engine
 	engine.Initialize();
 
 	// Initialize the coordinate system
-	util::coord::InitWorldCoordSystem(&mainShaderProgram, 500.0f);
+	mainRenderer.InitializeOrthoProjection();
 
 	// Clear shader program
-	GL_CALL(glUseProgram(0));
+	mainRenderer.UnbindShaderProgram();
+
+	// Update the title with the current-used OpenGL version
+	std::string _newWinTitle = "Gearworks Engine: Running OpenGl version "; _newWinTitle += (const char *)glGetString(GL_VERSION);
+	mainWindow.SetWindowTitle(_newWinTitle);
 
 	// Main program loop
-	while (!glfwWindowShouldClose(mainWindow)) {
-		// Change the background colour to a dark gray
-		GL_CALL(glClearColor(bgCol.r, bgCol.g, bgCol.b, bgCol.a));
-		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+	while (!glfwWindowShouldClose(mainWindow.GetGLFWInstance())) {
+		// Clear the screen with a dark gray colour
+		GWRenderer::ClearScreen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
 
 		// Update the engine instance
 		engine.Update();
-
 		// Bind the shader program
-		GL_CALL(glUseProgram(mainShaderProgram));
-
+		mainRenderer.BindShaderProgram();
 		// Render the engine instance
 		engine.Render();
 
-		// Swap buffers
-		glfwSwapBuffers(mainWindow);
-
-		// Poll window events
-		glfwPollEvents();
+		// Update the window instance
+		mainWindow.UpdateWindow();
 	}
 
 	// Clean the main instance of Engine.cpp
 	engine.Clean();
+
 	// Unbind shader program
-	GL_CALL(glUseProgram(0));
+	mainRenderer.UnbindShaderProgram();
 
 	// Terminate GLFW
 	glfwTerminate();

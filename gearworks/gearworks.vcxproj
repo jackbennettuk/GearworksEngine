@@ -101,6 +101,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,6 +137,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,6 +155,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bin\dependencies\depInclude\stb\stb_image.h" />
+    <ClInclude Include="resources\textures\process\resource.h" />
     <ClInclude Include="src\include\gwassets.h" />
     <ClInclude Include="src\include\gwengine.h" />
     <ClInclude Include="src\include\gwrendering.h" />
@@ -196,6 +201,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\logo.png" />
+    <Image Include="resources\textures\process\icon.ico" />
+    <Image Include="resources\textures\window\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\textures\process\icon.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

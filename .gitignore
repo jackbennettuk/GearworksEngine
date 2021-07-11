@@ -3,6 +3,9 @@
 
 # Modified for use in the Gearworks project
 
+# Resource binary files
+*.aps
+
 # User-specific files
 *.suo
 *.user

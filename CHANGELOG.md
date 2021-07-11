@@ -1,4 +1,4 @@
-# Gearworks Engine: Development log
+# Gearworks Engine: Change log
 This file details the history in development of the Gearworks Engine.
 
 ## Formatting
@@ -26,7 +26,7 @@ With this formatting system, a new version log should look like this in the Mark
 ```
 If there are versions of the same type made in the same day, change `experimental version '13'` to `experimental versions '13' - '16'`. However, if the versions are of different types, e.g. release and development, log them seperately. However, any versions of any type that are created on different days should be logged seperately.
 
-## Version logs
+## Version history
 ### 27/06/2021 - versions `d1.0` - `d1.1`:
 - \[++] Started development
 - \[+] Implemented shader parsing and compilation.
@@ -52,13 +52,19 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Entirely refactored the Vertex Array system and how they are handled
 ### 09/07/2021 - version `d1.6`:
 - \[++] Implemented textures!
-- \[++] Refactored shape structs so that a texture or colour can be given via the constructor
+- \[++] Modified shape structs so that a texture or colour can be given via the constructor
 - \[+] When shapes are created, their origin is now in the center rather than the bottom-left.
 - \[+] Refactored VAO system again, essentially reverting version d1.5.1.1 `¯\_(ツ)_/¯`
 - \[+] Renamed `DEV.md` to `CHANGELOG.md`
 ### 10/07/2021 - version `d1.6.1`:
 - \[+] Applied all changed to the rectangle (from `d1.6`) to the triangle struct. [Note: textures cannot be applied to triangles as of this version!]
-- \[+] Refactored VAO system AGAIN.
+- \[+] Refactored VAO system again. For the final time? I think?
+### 10/07/2021 - version `d1.7`:
+- \[++] Added the orange 'gear' window icon
+- \[+] Abstracted window management to `gwrendering.h` as part of the `gwrenderer` class
+- \[+] Abstracted orthographic initialization to the `gwrenderer` class.
+- \[+] Abstracted shader initialization to the `gwrenderer` class.
+- \[+] Abstracted blend handling to the `gwrenderer` class.
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
