@@ -1,7 +1,0 @@
-﻿  Engine.cpp
-  Rectangle.cpp
-  Generating code
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 454 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  gearworks.vcxproj -> C:\Users\Jack Bennett\Documents\GitHub\GearworksEngine\Project\gearworks\bin\build\Release\output\GearworksExecutable.exe
