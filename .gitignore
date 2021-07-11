@@ -32,6 +32,9 @@ ipch/
 *.opensdf
 *.sdf
 *.cachefile
+*.db
+*.db-shm
+*.db-wal
 
 # Visual Studio profiler
 *.psess
