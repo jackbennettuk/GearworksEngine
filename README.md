@@ -1,12 +1,15 @@
-# Gearworks Engine
+---
 
-<img src="github/logo.svg" width=200 align=right>
+<img src="github/wordmark-orange.svg">
 
-## What is the Gearworks Engine?
-The Gearworks Engine is the name of my first rendering / physics / game engine. It is, then, pretty basic - it is mostly for learning and experience. For reference, it uses the following APIs and dependencies:
-- OpenGL, loaded with [glad](https://github.com/Dav1dde/glad)
+---
+
+## Gearworks: A personal rendering and physics engine
+The Gearworks Engine is the name of my first rendering / physics / game engine. It is, then, pretty basic - it is mostly for learning and experience. For reference, it uses the following APIs and dependencies
+- OpenGL (minimum version **3.3**), loaded with [glad](https://github.com/Dav1dde/glad)
 - [GLFW](https://github.com/glfw/glfw)
 - [stb_image](https://github.com/nothings/stb)
+- [glm](https://github.com/g-truc/glm)
 
 I'm currently still in school so I don't have too much time for it. I try to keep it as organized and professional as a personal project should be :).
 
