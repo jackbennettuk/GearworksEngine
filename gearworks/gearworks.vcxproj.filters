@@ -96,6 +96,7 @@
   <ItemGroup>
     <None Include="resources\shaders\.vert" />
     <None Include="resources\shaders\.frag" />
+    <None Include="icon.aps" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\logo.png">

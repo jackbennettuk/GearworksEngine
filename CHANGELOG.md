@@ -59,12 +59,14 @@ If there are versions of the same type made in the same day, change `experimenta
 ### 10/07/2021 - version `d1.6.1`:
 - \[+] Applied all changed to the rectangle (from `d1.6`) to the triangle struct. [Note: textures cannot be applied to triangles as of this version!]
 - \[+] Refactored VAO system again. For the final time? I think?
-### 10/07/2021 - version `d1.7`:
+### 11/07/2021 - version `d1.7`:
 - \[++] Added the orange 'gear' window icon
 - \[+] Abstracted window management to `gwrendering.h` as part of the `gwrenderer` class
 - \[+] Abstracted orthographic initialization to the `gwrenderer` class.
 - \[+] Abstracted shader initialization to the `gwrenderer` class.
 - \[+] Abstracted blend handling to the `gwrenderer` class.
+### 12/07/2021 - version `d1.7.1`:
+- \[+] Some more rendering abstraction
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

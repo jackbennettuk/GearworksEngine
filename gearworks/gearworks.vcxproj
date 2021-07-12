@@ -196,6 +196,7 @@
     <ClInclude Include="src\lib\utility\Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="icon.aps" />
     <None Include="resources\shaders\.frag" />
     <None Include="resources\shaders\.vert" />
   </ItemGroup>

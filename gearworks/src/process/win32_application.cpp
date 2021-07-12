@@ -33,14 +33,15 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
 
 	// Create the window
-	GWRenderer::GWWindow mainWindow("Gearworks Engine: Powered by OpenGL");
+	mainRenderer.gwCreateWindow("Gearworks Engine: Powered by OpenGL");
 
 	// Initialize Glad
 	std::cout << "[GW] Initializing: Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
 
-	// Explicity set the OpenGL viewport size to be the window size
-	glViewport(0, 0, mainWindow.GetWindowSizeX(), mainWindow.GetWindowSizeY());
+	// Update the title with the current-used OpenGL version
+	std::string _newWinTitle = "Gearworks Engine: Running OpenGl version "; _newWinTitle += (const char *)glGetString(GL_VERSION);
+	mainRenderer.GetCurrentWindow()->SetWindowTitle(_newWinTitle);
 
 	// Print the name of the engine as ASCII art because why not :D
 	std::cout << "\n----------\n   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
@@ -49,7 +50,6 @@ int main() {
 
 	// Enable transparent blending through the main renderer instance
 	mainRenderer.EnableTransparentBlending();
-
 	// Set up shaders
 	mainRenderer.InitializeShaders();
 
@@ -57,29 +57,29 @@ int main() {
 	engine.Initialize();
 
 	// Initialize the coordinate system
-	mainRenderer.InitializeOrthoProjection();
+	mainRenderer.UpdateOrthoProjection();
 
 	// Clear shader program
 	mainRenderer.UnbindShaderProgram();
 
-	// Update the title with the current-used OpenGL version
-	std::string _newWinTitle = "Gearworks Engine: Running OpenGl version "; _newWinTitle += (const char *)glGetString(GL_VERSION);
-	mainWindow.SetWindowTitle(_newWinTitle);
-
 	// Main program loop
-	while (!glfwWindowShouldClose(mainWindow.GetGLFWInstance())) {
+	while (!glfwWindowShouldClose(mainRenderer.GetCurrentWindow()->GetGLFWInstance())) {
 		// Clear the screen with a dark gray colour
 		GWRenderer::ClearScreen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
 
-		// Update the engine instance
-		engine.Update();
 		// Bind the shader program
 		mainRenderer.BindShaderProgram();
+
+		// Update the renderer
+		mainRenderer.UpdateRendererInstance();
+
+		// Update the engine instance
+		engine.Update();
 		// Render the engine instance
 		engine.Render();
 
 		// Update the window instance
-		mainWindow.UpdateWindow();
+		mainRenderer.GetCurrentWindow()->UpdateWindowInstance();
 	}
 
 	// Clean the main instance of Engine.cpp

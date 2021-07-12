@@ -11,9 +11,12 @@
 /// <para>If it does not, debug-break the program.</para>
 /// </summary>
 #define ASSERT(x)\
+__pragma(warning(push));\
+__pragma(warning(disable:4551));\
 if (!x) {\
 __debugbreak;\
-}
+}\
+__pragma(warning(pop))
 
 /// <summary>
 /// <para>Same functionality as macro ASSERT, however CONASSERT prints its output to the console rather than debug-breaking it.</para>
