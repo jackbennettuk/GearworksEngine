@@ -67,8 +67,9 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Abstracted blend handling to the `gwrenderer` class.
 ### 12/07/2021 - version `d1.7.1`:
 - \[+] Some more rendering abstraction
-### 13/07/2021 - version `d1.7.2`:
+### 13/07/2021 - versions `d1.7.2` - `d1.7.3`:
 - \[++] Set up projection and viewports - for window resizing - better, so that more of the world is shown when the window is resized.
+- \[++] Updated the model view projection matrix setup
 - \[+] Some more various abstraction and refactoring
 
 ## Footnotes

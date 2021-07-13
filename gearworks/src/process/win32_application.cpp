@@ -48,10 +48,10 @@ int main() {
 	mainRenderer.EnableTransparentBlending();
 	// Set up shaders
 	mainRenderer.InitializeShaders();
-	// Initialize the coordinate system
-	mainRenderer.UpdateOrthoProjection();
+	// Update the renderer for the first time (basically initializing it)
+	mainRenderer.UpdateRendererInstance();
 
-	// Initialize the engine
+	// Initialize the instance of the Engine class
 	engine.Initialize();
 
 	// Clear shader program

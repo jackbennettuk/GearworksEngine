@@ -118,25 +118,29 @@ public:
 
 	/// <summary>
 	/// <para>Updates this instance of the renderer. Make sure to run this function every frame!</para>
+	/// <para>Also important: run this function once at program initialization, too.</para>
 	/// </summary>
 	inline void UpdateRendererInstance() {
 		// Update the window size variables
 		window->UpdateWindowProperties();
-		// Initialize the coordinate system
-		UpdateOrthoProjection();
-	}
-	/// <summary>
-	/// <para>Updates the global orthographic matrices as larger spaces than just -1.0 - 1.0.</para>
-	/// </summary>
-	inline void UpdateOrthoProjection() {
+
 		// Update the viewport size so it is resized with the window
 		glViewport(0, 0, window->GetWindowSizeX(), window->GetWindowSizeY());
 
 		// Create the projection matrix and update it so it is also resized along with window/viewport resize
-		glm::mat4 projMat = glm::ortho((float)-window->GetWindowSizeX(), (float)window->GetWindowSizeX(), (float)-window->GetWindowSizeY(),	(float)window->GetWindowSizeY(), -1.0f,	1.0f);
+		glm::mat4 projMat = glm::ortho((float)-window->GetWindowSizeX(), (float)window->GetWindowSizeX(), (float)-window->GetWindowSizeY(), (float)window->GetWindowSizeY(), -1.0f, 1.0f);
+		// Create the view matrix
+		// TODO: make it dynamic and not stupid so that values can be updated
+		glm::mat4 viewMat = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+		// Create the model matrix
+		// TODO: make it dynamic and not stupid so that values can be updated
+		glm::mat4 modelMat = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+		// Multiply these matrices together to create the ModelViewProjection matrix (MVP)
+		glm::mat4 mvpMat = projMat * viewMat * modelMat;
 
 		// Apply this matrix via the vertex shader
-		Shader::ModifyUniformmat4(&shaderProgramID, "u_ProjMat", projMat);
+		Shader::ModifyUniformmat4(&shaderProgramID, "u_ModelViewProjMat", mvpMat);
 	}
 
 	/// <summary>
