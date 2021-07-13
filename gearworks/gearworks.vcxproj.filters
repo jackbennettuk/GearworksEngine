@@ -83,9 +83,6 @@
     <ClInclude Include="src\lib\rendering\textures\Texture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vertexbufferlayout.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\include\gwassets.h">
       <Filter>Header Files</Filter>
     </ClInclude>

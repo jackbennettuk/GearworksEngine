@@ -13,6 +13,9 @@ private:
 	// The IBO and VBOs
 	VertexBufferObject *texVBO, *posVBO;
 	IndexBufferObject *ibo;
+	
+	// Pointer to the VAO
+	VertexArrayObject *vao;
 
 	// The default-used indices
 	unsigned int indices[6] = { 0, 1, 2, 0, 3, 2 };

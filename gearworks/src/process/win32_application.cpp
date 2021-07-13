@@ -33,15 +33,11 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
 
 	// Create the window
-	mainRenderer.gwCreateWindow("Gearworks Engine: Powered by OpenGL");
+	mainRenderer.gwCreateWindow("Gearworks Engine Renderer - development version - by Jack Bennett");
 
 	// Initialize Glad
 	std::cout << "[GW] Initializing: Loading Glad... ";
 	CONASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress));
-
-	// Update the title with the current-used OpenGL version
-	std::string _newWinTitle = "Gearworks Engine: Running OpenGl version "; _newWinTitle += (const char *)glGetString(GL_VERSION);
-	mainRenderer.GetCurrentWindow()->SetWindowTitle(_newWinTitle);
 
 	// Print the name of the engine as ASCII art because why not :D
 	std::cout << "\n----------\n   _____                                   _        \n  / ____|                                 | |       \n | |  __  ___  __ _ _____      _____  _ __| | _____ \n"
@@ -52,12 +48,11 @@ int main() {
 	mainRenderer.EnableTransparentBlending();
 	// Set up shaders
 	mainRenderer.InitializeShaders();
+	// Initialize the coordinate system
+	mainRenderer.UpdateOrthoProjection();
 
 	// Initialize the engine
 	engine.Initialize();
-
-	// Initialize the coordinate system
-	mainRenderer.UpdateOrthoProjection();
 
 	// Clear shader program
 	mainRenderer.UnbindShaderProgram();

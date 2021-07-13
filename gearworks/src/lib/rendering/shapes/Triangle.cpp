@@ -62,7 +62,7 @@ Triangle::Triangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 vert
 	// Make sure any textures are NOT being used
 	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 0);
 	// Apply the colour to the rectangle by modifying the appropriate uniform variable
-	Shader::ModifyUniform4f(mainShaderProgram, "u_Colour", colour);
+	Shader::ModifyUniform4fv(mainShaderProgram, "u_Colour", colour);
 }
 
 Triangle::~Triangle() {

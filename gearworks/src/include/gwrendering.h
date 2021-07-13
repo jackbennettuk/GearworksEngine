@@ -4,7 +4,6 @@
 
 #include "../lib/rendering/gl_buffer_objs/vbo.hpp"
 #include "../lib/rendering/gl_buffer_objs/ibo.hpp"
-#include "../lib/rendering/gl_buffer_objs/vertexbufferlayout.hpp"
 
 #include "../lib/rendering/gl_buffer_objs/vao.hpp"
 
@@ -123,32 +122,21 @@ public:
 	inline void UpdateRendererInstance() {
 		// Update the window size variables
 		window->UpdateWindowProperties();
-		// Update the viewport size so it is resized with the window
-		glViewport(
-			0,
-			0,
-			window->GetWindowSizeX(),
-			window->GetWindowSizeY()
-		);
-		// Update the projection matrix
+		// Initialize the coordinate system
 		UpdateOrthoProjection();
 	}
 	/// <summary>
 	/// <para>Updates the global orthographic matrices as larger spaces than just -1.0 - 1.0.</para>
 	/// </summary>
 	inline void UpdateOrthoProjection() {
-		// Create the projection matrix
-		glm::mat4 projMat = glm::ortho(
-			-500.0f * window->GetAspectRatio(),
-			 500.0f * window->GetAspectRatio(),
-			-500.0f * window->GetAspectRatio(),
-			 500.0f * window->GetAspectRatio(),
-			-1.0f,
-			 1.0f
-		);
+		// Update the viewport size so it is resized with the window
+		glViewport(0, 0, window->GetWindowSizeX(), window->GetWindowSizeY());
+
+		// Create the projection matrix and update it so it is also resized along with window/viewport resize
+		glm::mat4 projMat = glm::ortho((float)-window->GetWindowSizeX(), (float)window->GetWindowSizeX(), (float)-window->GetWindowSizeY(),	(float)window->GetWindowSizeY(), -1.0f,	1.0f);
 
 		// Apply this matrix via the vertex shader
-		Shader::ModifyUniformmat4(&shaderProgramID, "u_ProjectionMat", projMat);
+		Shader::ModifyUniformmat4(&shaderProgramID, "u_ProjMat", projMat);
 	}
 
 	/// <summary>

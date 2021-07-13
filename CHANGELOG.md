@@ -67,6 +67,9 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Abstracted blend handling to the `gwrenderer` class.
 ### 12/07/2021 - version `d1.7.1`:
 - \[+] Some more rendering abstraction
+### 13/07/2021 - version `d1.7.2`:
+- \[++] Set up projection and viewports - for window resizing - better, so that more of the world is shown when the window is resized.
+- \[+] Some more various abstraction and refactoring
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

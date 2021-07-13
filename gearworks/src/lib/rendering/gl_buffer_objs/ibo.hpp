@@ -9,6 +9,9 @@ private:
 	// The ID that is referred in GL commands such as glGenBuffers
 	unsigned int rendererID;
 public:
+	// rendererID getter
+	inline unsigned int GetRendererID() { return rendererID; }
+
 	/// <summary>
 	/// <para>The IndexBufferObject constructor that generates an IBO with the given count and data</para>
 	/// <para>The IBO is unbound by default - to bind it, call IndexBufferObject.Bind().</para>

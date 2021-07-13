@@ -4,8 +4,8 @@
 	  // And I would know, by the way, because I spent THREE DAYS trying to figure it out. Why didn't it work????
 
 // Texture constructor
-Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, std::string _texture)
-	: colour(NULL), mainShaderProgram(program) {
+Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, std::string _texture)
+	: colour(NULL), mainShaderProgram(program), vao(_vao) {
 	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
 	// It stores the position data by converting the given vec2s to one unified standard float array.
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
@@ -49,8 +49,8 @@ Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 po
 }
 
 // Colour constructor
-Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, glm::vec4 _colour)
-	: texture(nullptr), colour(_colour), texVBO(nullptr), mainShaderProgram(program) {
+Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, glm::vec4 _colour)
+	: texture(nullptr), colour(_colour), texVBO(nullptr), mainShaderProgram(program), vao(_vao) {
 	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
 	// It stores the position data by converting the given vec2s to one unified standard float array.
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
@@ -74,7 +74,7 @@ Rectangle::Rectangle(VertexArrayObject *vao, unsigned int *program, glm::vec2 po
 	// Make sure any textures are NOT being used
 	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 0);
 	// Apply the colour to the rectangle by modifying the appropriate uniform variable
-	Shader::ModifyUniform4f(mainShaderProgram, "u_Colour", colour);
+	Shader::ModifyUniform4fv(mainShaderProgram, "u_Colour", colour);
 }
 
 Rectangle::~Rectangle() {
@@ -94,8 +94,10 @@ Rectangle::~Rectangle() {
 }
 
 void Rectangle::Render() {
-	// Bind the IBO
+	// Bind VAO and IBO
+	vao->Bind();
 	ibo->Bind();
+
 	// Bind the texture
 	if (texture) texture->Bind();
 

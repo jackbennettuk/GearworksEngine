@@ -10,11 +10,11 @@ layout(location = 1) in vec2 l_TexCoord;
 out vec2 v_TexCoord;
 
 // Model matrix for world coordinates
-uniform mat4 u_ProjectionMat;
+uniform mat4 u_ProjMat;
 
 void main() {
 	// Set the position of the vertex, factoring the model matrix in
-	gl_Position = u_ProjectionMat * vec4(l_Position, 1.0, 1.0);
+	gl_Position = u_ProjMat * vec4(l_Position, 1.0, 1.0);
 
 	// Set the texture coordinates.
 	// This can be run without texture coords being given: it will just default to { 0.0, 0.0 }

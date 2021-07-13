@@ -41,20 +41,18 @@ public:
 	/// <para>Changes a uniform integer in a given program.</para>
 	/// </summary>
 	static inline void ModifyUniform1f(const unsigned int *program, const char *uniformName, float val) { GL_CALL(glUniform1f(glGetUniformLocation(*program, uniformName), val)); }
-
 	/// <summary>
 	/// <para>Changes a uniform vec2 in a given program.</para>
 	/// </summary>
-	static inline void ModifyUniform2f(const unsigned int *program, const char *uniformName, glm::vec2 val) { GL_CALL(glUniform2f(glGetUniformLocation(*program, uniformName), val.r, val.g)); }
+	static inline void ModifyUniform2fv(const unsigned int *program, const char *uniformName, glm::vec2 val) { GL_CALL(glUniform2f(glGetUniformLocation(*program, uniformName), val.r, val.g)); }
 	/// <summary>
 	/// <para>Changes a uniform vec3 in a given program.</para>
 	/// </summary>
-	static inline void ModifyUniform3f(const unsigned int *program, const char *uniformName, glm::vec3 val) { GL_CALL(glUniform3f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b)); }
+	static inline void ModifyUniform3fv(const unsigned int *program, const char *uniformName, glm::vec3 val) { GL_CALL(glUniform3f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b)); }
 	/// <summary>
 	/// <para>Changes a uniform vec3 in a given program.</para>
 	/// </summary>
-	static inline void ModifyUniform4f(const unsigned int *program, const char *uniformName, glm::vec4 val) { GL_CALL(glUniform4f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b, val.a)); }
-
+	static inline void ModifyUniform4fv(const unsigned int *program, const char *uniformName, glm::vec4 val) { GL_CALL(glUniform4f(glGetUniformLocation(*program, uniformName), val.r, val.g, val.b, val.a)); }
 	/// <summary>
 	/// <para>Changes a uniform mat4 in a given program.</para>
 	/// </summary>

@@ -9,6 +9,9 @@ private:
 	// The ID that is referred in GL commands such as glGenBuffers
 	unsigned int rendererID;
 public:
+	// rendererID getter
+	inline unsigned int GetRendererID() { return rendererID; }
+
 	/// <summary>
 	/// <para>The VertexBufferObject constructor that generates a VBO with the given size and data</para>
 	/// <para>The VBO is unbound by default - to bind it, call VertexBufferObject.Bind().</para>

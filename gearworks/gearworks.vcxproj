@@ -120,6 +120,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,6 +157,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\depInclude\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>Default</LanguageStandard>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -188,7 +190,6 @@
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\ibo.hpp" />
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vao.hpp" />
     <ClInclude Include="src\lib\rendering\gl_buffer_objs\vbo.hpp" />
-    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vertexbufferlayout.hpp" />
     <ClInclude Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.h" />
     <ClInclude Include="src\lib\rendering\shapes\Rectangle.h" />
     <ClInclude Include="src\lib\rendering\shapes\Triangle.h" />

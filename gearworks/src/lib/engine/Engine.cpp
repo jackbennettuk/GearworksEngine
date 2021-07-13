@@ -17,7 +17,7 @@ Engine::~Engine() {}
 void Engine::Initialize() {
 	// Rectangle
 	rectVAO.Initialize();
-	rect = new Rectangle(&rectVAO, mainShaderProgram, glm::vec2(0.0f, 0.0f), glm::vec2(400.0f, 400.0f), glm::vec4(1.0, 0.0, 1.0, 1.0));
+	rect = new Rectangle(&rectVAO, mainShaderProgram, glm::vec2(0.0f, 0.0f), glm::vec2(400.0f, 400.0f), glm::vec4(1.0, 0.0, 0.0, 1.0));
 }
 
 // Updating variables etc
