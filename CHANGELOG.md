@@ -71,6 +71,11 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[++] Set up projection and viewports - for window resizing - better, so that more of the world is shown when the window is resized.
 - \[++] Updated the model view projection matrix setup
 - \[+] Some more various abstraction and refactoring
+### 🔴 2021/07/14 - version `d1.8`:
+- \[++] Changed MVP system to allow for rendering of multiple shapes
+- \[+] Rearranged file structure
+- \[+] Refactored the way the `Renderer` (used to be `GWRenderer`) class is implemented (from inline to with a .cpp file)
+- \[-] (temporarily) deleted `Triangle` class as it was far out-dated compared to the `Rectangle` equivalent. A new version of it will be re-added later.
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
