@@ -172,11 +172,11 @@
     <ClCompile Include="bin\dependencies\depInclude\depGL\Glad\glad.c" />
     <ClCompile Include="bin\dependencies\depInclude\stb\stb_image.c" />
     <ClCompile Include="src\lib\engine\Engine.cpp" />
-    <ClCompile Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.cpp" />
-    <ClCompile Include="src\lib\rendering\shapes\Rectangle.cpp" />
-    <ClCompile Include="src\lib\rendering\shapes\Triangle.cpp" />
-    <ClCompile Include="src\lib\rendering\textures\Texture2D.cpp" />
-    <ClCompile Include="src\lib\utility\Utility.cpp" />
+    <ClCompile Include="src\lib\engine\rendering\Renderer.cpp" />
+    <ClCompile Include="src\lib\engine\rendering\shader_interpretation\ShaderInterpreter.cpp" />
+    <ClCompile Include="src\lib\engine\rendering\shapes\Rectangle.cpp" />
+    <ClCompile Include="src\lib\engine\rendering\textures\Texture2D.cpp" />
+    <ClCompile Include="src\lib\engine\utility\Utility.cpp" />
     <ClCompile Include="src\process\win32_application.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,14 +187,14 @@
     <ClInclude Include="src\include\gwrendering.h" />
     <ClInclude Include="src\include\gwutility.h" />
     <ClInclude Include="src\lib\engine\Engine.h" />
-    <ClInclude Include="src\lib\rendering\gl_buffer_objs\ibo.hpp" />
-    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vao.hpp" />
-    <ClInclude Include="src\lib\rendering\gl_buffer_objs\vbo.hpp" />
-    <ClInclude Include="src\lib\rendering\shader_interpretation\ShaderInterpreter.h" />
-    <ClInclude Include="src\lib\rendering\shapes\Rectangle.h" />
-    <ClInclude Include="src\lib\rendering\shapes\Triangle.h" />
-    <ClInclude Include="src\lib\rendering\textures\Texture2D.h" />
-    <ClInclude Include="src\lib\utility\Utility.h" />
+    <ClInclude Include="src\lib\engine\rendering\gl_buffer_objs\ibo.hpp" />
+    <ClInclude Include="src\lib\engine\rendering\gl_buffer_objs\vao.hpp" />
+    <ClInclude Include="src\lib\engine\rendering\gl_buffer_objs\vbo.hpp" />
+    <ClInclude Include="src\lib\engine\rendering\Renderer.h" />
+    <ClInclude Include="src\lib\engine\rendering\shader_interpretation\ShaderInterpreter.h" />
+    <ClInclude Include="src\lib\engine\rendering\shapes\Rectangle.h" />
+    <ClInclude Include="src\lib\engine\rendering\textures\Texture2D.h" />
+    <ClInclude Include="src\lib\engine\utility\Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.aps" />

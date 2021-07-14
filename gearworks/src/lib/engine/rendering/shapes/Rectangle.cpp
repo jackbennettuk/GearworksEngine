@@ -4,8 +4,8 @@
 	  // And I would know, by the way, because I spent THREE DAYS trying to figure it out. Why didn't it work????
 
 // Texture constructor
-Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, std::string _texture)
-	: colour(NULL), mainShaderProgram(program), vao(_vao) {
+Rectangle::Rectangle(VertexArrayObject *_vao, Renderer *_renderer, glm::vec2 position, glm::vec2 scale, std::string _texture)
+	: colour(NULL), renderer(_renderer), vao(_vao), translation(glm::vec2(0, 0)) {
 	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
 	// It stores the position data by converting the given vec2s to one unified standard float array.
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
@@ -41,26 +41,23 @@ Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 p
 	// Create the texture as a pointer
 	texture = new Texture2D(_texture);
 	texture->Unbind();
-
-	// Make sure the texture is being used
-	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 1);
-	// Set uniform `u_Texture` to 0, as the texture has been bound to slot 0.
-	Shader::ModifyUniform1i(mainShaderProgram, "u_Texture", 0);
 }
 
 // Colour constructor
-Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 position, glm::vec2 scale, glm::vec4 _colour)
-	: texture(nullptr), colour(_colour), texVBO(nullptr), mainShaderProgram(program), vao(_vao) {
+Rectangle::Rectangle(VertexArrayObject *_vao, Renderer *_renderer, glm::vec2 position, glm::vec2 scale, glm::vec4 _colour)
+	: texture(nullptr), colour(_colour), texVBO(nullptr), renderer(_renderer), vao(_vao), translation(position) {
 	// This float array is the data to be set for the position VBO (or 'posVBO') variable.
 	// It stores the position data by converting the given vec2s to one unified standard float array.
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
 	// NOTE: the origin of the rectangle is IN THE CENTER.
 	float posVBO_Data[] = {
-		position.r - (scale.r / 2), position.g - (scale.g / 2),
-		position.r + (scale.r / 2), position.g - (scale.g / 2),
-		position.r + (scale.r / 2), position.g + (scale.g / 2),
-		position.r - (scale.r / 2), position.g + (scale.g / 2)
+		translation.r - (scale.r / 2), translation.g - (scale.g / 2),
+		translation.r + (scale.r / 2), translation.g - (scale.g / 2),
+		translation.r + (scale.r / 2), translation.g + (scale.g / 2),
+		translation.r - (scale.r / 2), translation.g + (scale.g / 2)
 	};
+
+	translation = glm::vec2(0);
 
 	// Create the position VBO
 	posVBO = new VertexBufferObject(8, posVBO_Data);
@@ -70,11 +67,6 @@ Rectangle::Rectangle(VertexArrayObject *_vao, unsigned int *program, glm::vec2 p
 
 	// Enable and define the position attribute for the position vertex buffer
 	vao->AddVertexBufferAttrib(*posVBO, 0, 2, GL_FLOAT, GL_FALSE, 8, 0);
-
-	// Make sure any textures are NOT being used
-	Shader::ModifyUniform1i(mainShaderProgram, "u_UsingTexture", 0);
-	// Apply the colour to the rectangle by modifying the appropriate uniform variable
-	Shader::ModifyUniform4fv(mainShaderProgram, "u_Colour", colour);
 }
 
 Rectangle::~Rectangle() {
@@ -100,6 +92,16 @@ void Rectangle::Render() {
 
 	// Bind the texture
 	if (texture) texture->Bind();
+
+	// Set the renderer model matrix state to factor in the translation of this rectangle
+	renderer->modelMat = glm::translate(glm::mat4(1.0f), glm::vec3(translation, 0));
+	renderer->UpdateRendererInstance();
+
+	// Make sure any textures that have been given are being used
+	Shader::ModifyUniform1i(renderer->GetShaderProgramID(), "u_UsingTexture", (texture ? 1 : 0));
+	// Set the texture or colour uniform depending on which one is being used
+	if (texture) Shader::ModifyUniform1i(renderer->GetShaderProgramID(), "u_Texture", 0);
+	else Shader::ModifyUniform4fv(renderer->GetShaderProgramID(), "u_Colour", colour);
 
 	// Draw the rectangle
 	GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));

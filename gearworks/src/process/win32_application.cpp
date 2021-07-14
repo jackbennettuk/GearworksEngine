@@ -16,7 +16,7 @@
 /// </summary>
 int main() {
 	// Create the main renderer instance...
-	GWRenderer mainRenderer;
+	Renderer mainRenderer;
 	// ...and the main engine instance
 	Engine engine(&mainRenderer);
 
@@ -60,7 +60,7 @@ int main() {
 	// Main program loop
 	while (!glfwWindowShouldClose(mainRenderer.GetCurrentWindow()->GetGLFWInstance())) {
 		// Clear the screen with a dark gray colour
-		GWRenderer::ClearScreen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
+		Renderer::ClearScreen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
 
 		// Bind the shader program
 		mainRenderer.BindShaderProgram();

@@ -4,9 +4,10 @@
 
 class Engine {
 private:
-	unsigned int *mainShaderProgram;
+	// Handle to the renderer
+	Renderer *renderer;
 public:
-	Engine(GWRenderer *renderer);
+	Engine(Renderer *_renderer);
 	~Engine();
 
 	/// <summary>
