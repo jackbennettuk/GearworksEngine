@@ -39,7 +39,7 @@ __pragma(warning(disable:4566));\
 glLogCall(#x, __FILE__, __LINE__);\
 __pragma(warning(pop))
 
-#define DELETE_PTR(x)\
+#define DELETE_HALLOC(x)\
 delete x;\
 x = NULL
 

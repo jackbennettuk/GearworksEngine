@@ -6,7 +6,7 @@ Renderer::Renderer() : shaderProgramID(0), window(nullptr), modelMat(glm::transl
 // Destructor implementation
 Renderer::~Renderer() {
 	// Delete the window variable as it was heap allocated
-	DELETE_PTR(window);
+	DELETE_HALLOC(window);
 }
 
 // UpdateRendererInstance() implementation

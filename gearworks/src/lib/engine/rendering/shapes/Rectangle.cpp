@@ -79,10 +79,10 @@ Rectangle::~Rectangle() {
 	if (texture) texture->Unbind();
 
 	// Delete all pointer variables here so the 'new' keyword doesn't ruin my program.
-	DELETE_PTR(posVBO);
-	DELETE_PTR(texVBO);
-	DELETE_PTR(ibo);
-	DELETE_PTR(texture);
+	DELETE_HALLOC(posVBO);
+	DELETE_HALLOC(texVBO);
+	DELETE_HALLOC(ibo);
+	DELETE_HALLOC(texture);
 }
 
 void Rectangle::Render() {
@@ -105,4 +105,6 @@ void Rectangle::Render() {
 
 	// Draw the rectangle
 	GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+
+	vao->Unbind();
 }

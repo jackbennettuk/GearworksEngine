@@ -19,12 +19,11 @@ private:
 
 	// The default-used indices
 	unsigned int indices[6] = { 0, 1, 2, 0, 3, 2 };
-
+public:
 	// The texture of the rectangle (if not given, it is not used)
 	Texture2D *texture;
 	// The colour of the rectangle as a vec4 (if not given, it is not used)
 	glm::vec4 colour;
-public:
 	// Translation variable that is set to be the default positions given in the constructor/s
 	glm::vec2 translation;
 
