@@ -86,10 +86,10 @@
     <None Include="resources\shaders\frag.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\textures\logo.png">
+    <Image Include="resources\textures\crate.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="resources\textures\crate.png">
+    <Image Include="resources\textures\wall.jpeg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

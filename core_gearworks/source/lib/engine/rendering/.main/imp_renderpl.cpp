@@ -1,18 +1,25 @@
 #include "renderpl.h"
 
 #include <gearworks.h>
+#include <opengl/glm/gtx/string_cast.hpp>
 
 #pragma region gw_window implementation
-gw_window::gw_window(std::string title, int width, int height)
-	: window_title(title), window_width(width), window_height(height)
-{
+gw_window::gw_window()
+	: window_title(""), window_width(0), window_height(0), aspect_ratio(0), glfw_handle(0) {}
+
+void gw_window::create_window(std::string title, int width, int height) {
+	// initialize properties with arguments
+	window_title = title;
+	window_width = width;
+	window_height = height;
+
 	// Set the aspect ratio
 	aspect_ratio = (float)window_width / (float)window_height;
 
 	// Create the window
 	std::cout << "[GW] Creating window... ";
 	glfw_handle = glfwCreateWindow(window_width, window_height, window_title.c_str(), NULL, NULL);
-	
+
 	// Assert the now-created window
 	if (!glfw_handle) {
 		std::cout << "Error creating the window: the member \"glfw_handle\" does not exist!\n";
@@ -63,6 +70,7 @@ void gw_rendering_pl::gw_unbind_program() {
 	GL_CALL(glUseProgram(0));
 }
 void gw_rendering_pl::gw_toggle_wireframe(bool wireframe) {
+	// Set the OpenGl polygon mode accordingly.
 	if (wireframe) {
 		GL_CALL(glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
 	} else {
@@ -71,29 +79,26 @@ void gw_rendering_pl::gw_toggle_wireframe(bool wireframe) {
 }
 #pragma endregion
 #pragma region gw_renderer implementation
-gw_renderer::gw_renderer() 
-	: cur_shader_program_id(0), cur_window(nullptr),
-	project_matrix(NULL),
-	view_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
+gw_renderer::gw_renderer() : 
+	cur_shader_program_id(0), 
+	cur_window(),
+	project_matrix(NULL), 
+	view_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))), 
 	model_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)))
 {}
-gw_renderer::~gw_renderer() {
-	// Delete the window variable as it was heap allocated
-	DELETE_HALLOC(cur_window);
-}
 void gw_renderer::update_renderer() {
 	// Enable wireframe mode
 	// TODO: make this optional
 	gw_rendering_pl::gw_toggle_wireframe(false);
 
 	// Update the window
-	cur_window->reevaluate();
+	cur_window.reevaluate();
 
 	// Update the viewport size so it is resized with the window
-	glViewport(0, 0, cur_window->get_winwidth(), cur_window->get_winheight());
+	glViewport(0, 0, cur_window.get_winwidth(), cur_window.get_winheight());
 
 	// Update the projection matrix so it is also resized along with window/viewport resize
-	project_matrix = glm::ortho((float)-cur_window->get_winwidth(), (float)cur_window->get_winwidth(), (float)-cur_window->get_winheight(), (float)cur_window->get_winheight(), -1.0f, 1.0f);
+	project_matrix = glm::ortho((float)-cur_window.get_winwidth(), (float)cur_window.get_winwidth(), (float)-cur_window.get_winheight(), (float)cur_window.get_winheight(), -1.0f, 1.0f);
 
 	// Update the model-view-projection matrix
 	glm::mat4 mvpMat = project_matrix * view_matrix * model_matrix;
@@ -103,7 +108,7 @@ void gw_renderer::update_renderer() {
 }
 void gw_renderer::create_window(std::string title, int sizeX, int sizeY) {
 	// Assign the window pointer
-	cur_window = new gw_window(title, sizeX, sizeY);
+	cur_window.create_window(title, sizeX, sizeY);
 }
 void gw_renderer::initialize_shaders() {
 	// Create the main shader program

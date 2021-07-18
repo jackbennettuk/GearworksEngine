@@ -7,13 +7,17 @@ engine::engine(gw_renderer *_renderer)
 engine::~engine() {}
 
 gw_rectangle_prim rectangle;
-gw_rectangle_prim rectangle1;
-gw_rectangle_prim rectangle2;
+gw_triangle_prim triangle;
 
 void engine::initialize() {
-	rectangle.create_texture(renderer_handle, glm::vec2(-330.0f, 0.0f), glm::vec2(300.0f, 300.0f), "resources/textures/crate.png");
-	rectangle1.create_texture(renderer_handle, glm::vec2(0.0f, 0.0f), glm::vec2(300.0f, 222.0f), "resources/textures/logo.png");
-	rectangle2.create_colour(renderer_handle, glm::vec2(330.0f, 0.0f), glm::vec2(300.0f, 300.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+	rectangle.create_texture(renderer_handle, glm::vec2(-300.0f, 0.0f), glm::vec2(400.0f, 400.0f), "resources/textures/crate.png", true);
+
+	glm::vec2 vertices[3] = {
+		glm::vec2(80.0f, -200.0f),
+		glm::vec2(300.0f, 200.0f),
+		glm::vec2(520.0f, -200.0f)
+	};
+	triangle.create_texture(renderer_handle, vertices, "resources/textures/wall.jpeg", false);
 }
 
 void engine::update() {
@@ -21,8 +25,7 @@ void engine::update() {
 
 void engine::render() {
 	rectangle.render();
-	rectangle1.render();
-	rectangle2.render();
+	triangle.render();
 }
 
 void engine::clean() {}

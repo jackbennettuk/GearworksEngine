@@ -21,12 +21,15 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// Minimum OpenGL version = 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);						// ...
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
+	glfwWindowHint(GLFW_SAMPLES, 4);									// 4 samples for MSAA anti-aliasing
 
 	// Create the window
 	main_renderer.create_window("Gearworks Engine 3D Renderer - development version - by Jack Bennett");
 
 	// Load Glad
 	GW_INIT_GLAD();
+
+	GL_CALL(glEnable(GL_MULTISAMPLE));
 
 	// Enable transparent blending through the main renderer instance
 	gw_rendering_pl::gw_config_blending();
@@ -39,7 +42,7 @@ int main() {
 	main_engine.initialize();
 
 	// Main program loop
-	while (!glfwWindowShouldClose(main_renderer.get_currentwindowinstance()->get_glfwinstance())) {
+	while (!glfwWindowShouldClose(main_renderer.get_currentwindowinstance().get_glfwinstance())) {
 		// Clear the screen with a dark gray colour
 		gw_rendering_pl::gw_clear_screen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
 
@@ -55,7 +58,7 @@ int main() {
 		main_engine.render();
 
 		// Update the window instance
-		main_renderer.get_currentwindowinstance()->update_window();
+		main_renderer.get_currentwindowinstance().update_window();
 	}
 
 	// Print a success message

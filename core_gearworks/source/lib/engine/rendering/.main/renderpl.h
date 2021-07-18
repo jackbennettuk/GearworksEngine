@@ -17,12 +17,17 @@ private:
 	std::string window_title;
 public:
 	/// <summary>
+	/// <para>Window default constructor - does not create a window. To do that, use the create_window() function.</para>
+	/// </summary>
+	gw_window();
+
+	/// <summary>
 	/// <para>Creates a window and assigns it a GLFW window handle.</para>
 	/// </summary>
 	/// <param name="title">The title of the window.</param>
 	/// <param name="width">The width of the window (default is 720).</param>
 	/// <param name="height">The width of the window (default is 480).</param>
-	gw_window(std::string title, int sizeX = 720, int sizeY = 480);
+	void create_window(std::string title, int sizeX = 720, int sizeY = 480);
 
 	/// <summary>
 	/// <para>Reevaluates properties such as width and height variables.</para>
@@ -89,7 +94,7 @@ private:
 	// Handle to the shader program for the renderer
 	unsigned int cur_shader_program_id;
 	// The window currently assigned to the renderer
-	gw_window *cur_window;
+	gw_window cur_window;
 public:
 	// Projection, view, and model matrices
 	glm::mat4 project_matrix, view_matrix, model_matrix;
@@ -98,8 +103,6 @@ public:
 	/// <para>Constructor for the GW renderer.</para>
 	/// </summary>
 	gw_renderer();
-	// Destructor
-	~gw_renderer();
 
 	/// <summary>
 	/// <para>Updates this instance of the renderer. Make sure to run this function every frame!</para>
@@ -126,7 +129,7 @@ public:
 	/// <returns>the current shader program via its ID.</returns>
 	inline unsigned int *get_currentshaderprogram() { return &cur_shader_program_id; }
 	/// <returns>the current window.</returns>
-	inline gw_window *get_currentwindowinstance() { return cur_window; }
+	inline gw_window get_currentwindowinstance() { return cur_window; }
 };
 
 #endif

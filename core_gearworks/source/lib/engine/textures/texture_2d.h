@@ -23,7 +23,8 @@ public:
 	/// <para>Create the texture with a given path.</para>
 	/// </summary>
 	/// <param name="path">The path of the texture as a string.</param>
-	void load_texture(std::string _path);
+	/// <param name="has_trans">Set to true if the texture has any transparent pixels. Make sure to set to false if it does not.</param>
+	void load_texture(std::string _path, bool has_trans);
 
 	/// <summary>
 	/// Binds the texture at a (optional) given slot.

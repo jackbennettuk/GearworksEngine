@@ -77,10 +77,12 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Rearranged file structure
 - \[+] Refactored the way the `Renderer` (used to be `GWRenderer`) class is implemented (from inline to with a .cpp file)
 - \[-] (temporarily) deleted `Triangle` class as it was far out-dated compared to the `Rectangle` equivalent. A new version of it will be re-added later.
-### 🔴 2021/07/18 - version `d2.0` - Development Overhaul:
+### 🔴 2021/07/18 - versions `d2.0` - `d2.1`:
 - \[++] Refactored entire project for better quality of life when developing
 - \[++] Finally completed the VAO system for better optimization when showing multiple primitives
 - \[++] Re-added triangles
+- \[++] Added texture functionality to triangles
+- \[+] Added MSAA anti-aliasing
 - \[+] Refactored the renderer
 - \[+] Changed naming conventions from `camelCase` to `snake_case`
 - \[+] Mentally prepared for 3D rendering
