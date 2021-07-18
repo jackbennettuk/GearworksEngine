@@ -13,7 +13,7 @@ uniform mat4 u_ModelViewProjMat;
 
 void main() {
 	// Set the position of the vertex, factoring the model matrix in
-	gl_Position = l_Position * u_ModelViewProjMat;
+	gl_Position = u_ModelViewProjMat * l_Position;
 
 	// Set the texture coordinates.
 	v_TexCoord = l_TexCoord;

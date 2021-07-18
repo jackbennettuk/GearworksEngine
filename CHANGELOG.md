@@ -77,13 +77,14 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Rearranged file structure
 - \[+] Refactored the way the `Renderer` (used to be `GWRenderer`) class is implemented (from inline to with a .cpp file)
 - \[-] (temporarily) deleted `Triangle` class as it was far out-dated compared to the `Rectangle` equivalent. A new version of it will be re-added later.
-### 🔴 2021/07/18 - versions `d2.0` - `d2.2`:
+### 🔴 2021/07/18 - versions `d2.0` - `d2.2.1`:
 - \[++] Refactored entire project for better quality of life when developing
 - \[++] Finally completed the VAO system for better optimization when showing multiple primitives
 - \[++] Re-added triangles
 - \[+] Added texture-and-colour blending
 - \[+] Added MSAA anti-aliasing
 - \[+] Changed naming conventions from `camelCase` to `snake_case`
+- \[!] Fixed translation distortion bug (detailed in issue #1)
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

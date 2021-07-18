@@ -93,13 +93,13 @@ public:
 		// Bind the texture
 		texture_object.bind();
 
-		// Set the renderer model matrix state to factor in the translation of this triangle
-		renderer_handle->model_matrix = glm::translate(glm::mat4(1.0f), glm::vec3(translation, 0));
-		renderer_handle->update_renderer();
-
 		// Set the texture and colour uniform
 		shader_mgmt::modify_uniform_1i(renderer_handle->get_currentshaderprogram(), "u_Texture", 0);
 		shader_mgmt::modify_uniform_4fv(renderer_handle->get_currentshaderprogram(), "u_Colour", colour);
+
+		// Set the renderer model matrix state to factor in the translation of this triangle
+		renderer_handle->model_matrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+		renderer_handle->update_renderer();
 
 		// Draw the triangle
 		GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
