@@ -14,7 +14,7 @@
 
 # .vs folder at differing locations
 .vs/
-gearworks/.vs/
+core_gearworks/.vs/
 
 # Thumbnail files on Windows...
 Thumbs.db
@@ -25,7 +25,7 @@ Thumbs.db
 *.userprefs
 
 # Build results
-gearworks/bin/build/
+build/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
