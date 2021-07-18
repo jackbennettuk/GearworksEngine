@@ -56,9 +56,10 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] When shapes are created, their origin is now in the center rather than the bottom-left.
 - \[+] Refactored VAO system again, essentially reverting version d1.5.1.1 `¯\_(ツ)_/¯`
 - \[+] Renamed `DEV.md` to `CHANGELOG.md`
+- \[-] Removed Vertex Buffer Layouts (?)
 ### 🔴 2021/07/10 - version `d1.6.1`:
 - \[+] Applied all changed to the rectangle (from `d1.6`) to the triangle struct. [Note: textures cannot be applied to triangles as of this version!]
-- \[+] Refactored VAO system again. For the final time? I think?
+- \[+] Refactored VAO system again. For the final time? I think? (note: he was wrong)
 ### 🔴 2021/07/11 - version `d1.7`:
 - \[++] Added the orange 'gear' window icon
 - \[+] Abstracted window management to `gwrendering.h` as part of the `gwrenderer` class
@@ -76,6 +77,13 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Rearranged file structure
 - \[+] Refactored the way the `Renderer` (used to be `GWRenderer`) class is implemented (from inline to with a .cpp file)
 - \[-] (temporarily) deleted `Triangle` class as it was far out-dated compared to the `Rectangle` equivalent. A new version of it will be re-added later.
+### 🔴 2021/07/18 - version `d2.0` - Development Overhaul:
+- \[++] Refactored entire project for better quality of life when developing
+- \[++] Finally completed the VAO system for better optimization when showing multiple primitives
+- \[++] Re-added triangles
+- \[+] Refactored the renderer
+- \[+] Changed naming conventions from `camelCase` to `snake_case`
+- \[+] Mentally prepared for 3D rendering
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
