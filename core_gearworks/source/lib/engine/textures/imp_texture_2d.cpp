@@ -7,7 +7,7 @@
 texture_2d::texture_2d() 
 	: renderer_id(0), width(0), height(0), bits_per_pixel(0) {}
 
-void texture_2d::load_texture(std::string _path, bool has_trans) {
+void texture_2d::load_texture(std::string _path) {
 	// Initialize the local path variable.
 	path = _path;
 
@@ -18,11 +18,7 @@ void texture_2d::load_texture(std::string _path, bool has_trans) {
 	// Loads the texture with references to width, height, bpp
 	// In this case, store the texture image to the new localBuffer variable
 	unsigned char *local_buffer;
-	if (has_trans) {
-		local_buffer = stbi_load(path.c_str(), &width, &height, &bits_per_pixel, 4);
-	} else {
-		local_buffer = stbi_load(path.c_str(), &width, &height, &bits_per_pixel, 0);
-	}
+	local_buffer = stbi_load(path.c_str(), &width, &height, &bits_per_pixel, 4);
 
 	// Check if there was an error when loading the texture
 	if (stbi_failure_reason()) {
@@ -43,11 +39,8 @@ void texture_2d::load_texture(std::string _path, bool has_trans) {
 
 	// Assign the image at [path] to be set to the GL_TEXTURE_2D
 	// Also move the texture data to the GPU for use by the fragment shader
-	if (has_trans) {
-		GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, local_buffer));
-	} else {
-		GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, local_buffer));
-	}
+	GL_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, local_buffer));
+	
 	// Generate mipmaps
 	glGenerateMipmap(GL_TEXTURE_2D);
 

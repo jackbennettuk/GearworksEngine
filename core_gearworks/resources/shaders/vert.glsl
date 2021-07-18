@@ -16,6 +16,5 @@ void main() {
 	gl_Position = l_Position * u_ModelViewProjMat;
 
 	// Set the texture coordinates.
-	// This can be run without texture coords being given: it will just default to { 0.0, 0.0 }
 	v_TexCoord = l_TexCoord;
 }

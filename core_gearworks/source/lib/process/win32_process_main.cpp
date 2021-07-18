@@ -21,7 +21,7 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// Minimum OpenGL version = 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);						// ...
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
-	glfwWindowHint(GLFW_SAMPLES, 4);									// 4 samples for MSAA anti-aliasing
+	glfwWindowHint(GLFW_SAMPLES, 4);									// Multisampling for MSAA anti-aliasing = 4 samples
 
 	// Create the window
 	main_renderer.create_window("Gearworks Engine 3D Renderer - development version - by Jack Bennett");
@@ -29,6 +29,7 @@ int main() {
 	// Load Glad
 	GW_INIT_GLAD();
 
+	// Enable MSAA/multisampling
 	GL_CALL(glEnable(GL_MULTISAMPLE));
 
 	// Enable transparent blending through the main renderer instance
