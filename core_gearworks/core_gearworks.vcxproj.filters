@@ -80,6 +80,9 @@
     <ClInclude Include="bin\vendor\v_include\opengl\Glad\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\lib\engine\rendering\primitives\inl_primitives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\shaders\vert.glsl" />

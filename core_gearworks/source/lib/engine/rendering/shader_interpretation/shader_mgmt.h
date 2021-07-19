@@ -1,9 +1,10 @@
-#include <opengl_pack.h>
-
-#include "../../utility/utils.h"
-
 #ifndef SHADER_MGMT_H
 #define SHADER_MGMT_H
+
+#include <opengl_pack.h>
+#include <opengl/glm/gtc/type_ptr.hpp>
+
+#include "../../utility/utils.h"
 
 // Class for static functions
 class shader_mgmt {

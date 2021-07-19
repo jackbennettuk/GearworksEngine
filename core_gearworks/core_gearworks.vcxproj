@@ -182,6 +182,7 @@
     <ClInclude Include="source\lib\engine\rendering\gl_buffer_objs\inl_ibo.h" />
     <ClInclude Include="source\lib\engine\rendering\gl_buffer_objs\inl_vao.h" />
     <ClInclude Include="source\lib\engine\rendering\gl_buffer_objs\inl_vbo.h" />
+    <ClInclude Include="source\lib\engine\rendering\primitives\inl_primitives.h" />
     <ClInclude Include="source\lib\engine\rendering\primitives\inl_rectangle_primitive.h" />
     <ClInclude Include="source\lib\engine\rendering\primitives\inl_triangle_primitive.h" />
     <ClInclude Include="source\lib\engine\rendering\shader_interpretation\shader_mgmt.h" />
