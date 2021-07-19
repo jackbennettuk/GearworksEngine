@@ -85,6 +85,8 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Added MSAA anti-aliasing
 - \[+] Changed naming conventions from `camelCase` to `snake_case`
 - \[!] Fixed translation distortion bug (detailed in issue [#1](https://github.com/jackbennettuk/GearworksEngine/issues/1))
+### 🔴 2021/07/19 - versions `d2.2.2`:
+- \[+] Finalised `translate()`, `scale()`, and `rotate()` functions (affects **model** matrix)
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

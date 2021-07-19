@@ -15,6 +15,9 @@ void engine::initialize() {
 }
 
 void engine::update() {
+	crate.translate(glm::vec3(0.5f, 0.0f, 0.0f));
+	crate.rotate(glm::vec3(0.0f, 0.0f, 0.05f));
+	crate.scale(glm::vec3(0.0005f));
 }
 
 void engine::render() {

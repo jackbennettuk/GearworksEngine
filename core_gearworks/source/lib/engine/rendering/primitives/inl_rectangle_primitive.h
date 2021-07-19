@@ -16,7 +16,7 @@ public:
 	/// <para>A colour and a texture may be given.</para>
 	/// </summary>
 	/// <param name="renderer">The renderer that the rectangle will be 'bound' to.</param>
-	/// <param name="position">The STARTING(!) position coordinate of the rectangle primitive, with 0 as its center.</param>
+	/// <param name="position">The starting position coordinate of the rectangle primitive, with 0 as its center.</param>
 	/// <param name="scale">The scale values of the rectangle primitive.</param>
 	/// <param name="texture">The texture to use for the rectangle.</param>
 	/// <param name="trans_tex">Set to true if the texture has transparent pixels; false if it does not.</param>

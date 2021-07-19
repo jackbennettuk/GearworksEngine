@@ -98,9 +98,7 @@ void gw_renderer::update_renderer() {
 	glViewport(0, 0, cur_window.get_winwidth(), cur_window.get_winheight());
 
 	// Update the projection matrix so it is also resized along with window/viewport resize
-	// It is set to PERSPECTIVE by default.
-	// TODO: Make this an option to change on runtime
-	project_matrix = glm::perspective(glm::radians(45.0f), cur_window.get_winasprat(), 1000.0f, -1000.0f);
+	project_matrix = glm::ortho(float(-cur_window.get_winwidth()), float(cur_window.get_winwidth()), float(-cur_window.get_winheight()), float(cur_window.get_winheight()));
 
 	// Update the model-view-projection matrix
 	glm::mat4 mvpMat = project_matrix * view_matrix * model_matrix;
