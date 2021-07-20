@@ -1,12 +1,16 @@
 ---
 
-<img src="github/wordmark-orange.svg">
+[//]: # (This image relies on svgshare.com, so if that server goes down at all, this image will not work.)
+[//]: # (This could be an issue, but it should be fine for a while.)
+
+<img src="https://svgshare.com/i/ZNn.svg">
 
 ---
 
-## Gearworks: A personal rendering and physics engine
+## Gearworks: A personal rendering and physics engine 
+
 The Gearworks Engine is the name of my first rendering / physics / game engine. It is, then, pretty basic - it is mostly for learning and experience. For reference, it uses the following APIs and dependencies
-- OpenGL (minimum version **3.3**), loaded with [glad](https://github.com/Dav1dde/glad)
+- [OpenGL](https://opengl.org), loaded with [glad](https://github.com/Dav1dde/glad)
 - [GLFW](https://github.com/glfw/glfw)
 - [stb_image](https://github.com/nothings/stb)
 - [glm](https://github.com/g-truc/glm)
@@ -15,7 +19,7 @@ I'm currently still in school so I don't have too much time for it. I try to kee
 
 I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program.
 
-Finally, I'm proud to say it is, and always will be, **completely open-source**, along with any other large projects I make in the future.
+Finally, it will always be **completely open-source**, along with any other large projects I make in the future.
 
 ## Change log
 You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
