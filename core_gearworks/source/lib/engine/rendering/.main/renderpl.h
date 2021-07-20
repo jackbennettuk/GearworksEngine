@@ -95,8 +95,14 @@ private:
 	unsigned int cur_shader_program_id;
 	// The window currently assigned to the renderer
 	gw_window cur_window;
+
+	// Zooming values
+	float current_zoom;
+	const float max_zoom = 2.5f, min_zoom = 0.1f;
 public:
-	// Projection, view, and model matrices
+	/// <summary>
+	/// <para>Matrix used in calculation of the 'ModelViewProjection' or 'MVP' matrix.</para>
+	/// </summary>
 	glm::mat4 project_matrix, view_matrix, model_matrix;
 
 	/// <summary>
@@ -125,6 +131,13 @@ public:
 	/// <para>and binds them to this renderer.</para>
 	/// </summary>
 	void initialize_shaders();
+
+	/// <summary>
+	/// <para>Zooms in and out by a given amount.</para>
+	/// <para>When using this function, keep in mind that the minimum zoom is 0.1 and the maximum zoom is 2.5.</para>
+	/// </summary>
+	/// <param name="amount">The amount to zoom by. To zoom in, set it to be positive, and to zoom out, set it to be negative.</param>
+	void zoom_by_value(float amount);
 
 	/// <returns>the current shader program via its ID.</returns>
 	inline unsigned int *get_currentshaderprogram() { return &cur_shader_program_id; }

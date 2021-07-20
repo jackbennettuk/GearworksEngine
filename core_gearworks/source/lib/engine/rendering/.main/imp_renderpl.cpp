@@ -82,10 +82,12 @@ void gw_rendering_pl::gw_toggle_wireframe(bool wireframe) {
 gw_renderer::gw_renderer() : 
 	cur_shader_program_id(0), 
 	cur_window(),
-	project_matrix(NULL), 
+	project_matrix(NULL),
 	view_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))), 
-	model_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0)))
+	model_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
+	current_zoom(1.0f)
 {}
+
 void gw_renderer::update_renderer() {
 	// Enable wireframe mode
 	// TODO: make this optional
@@ -98,18 +100,26 @@ void gw_renderer::update_renderer() {
 	glViewport(0, 0, cur_window.get_winwidth(), cur_window.get_winheight());
 
 	// Update the projection matrix so it is also resized along with window/viewport resize
-	project_matrix = glm::ortho(float(-cur_window.get_winwidth()), float(cur_window.get_winwidth()), float(-cur_window.get_winheight()), float(cur_window.get_winheight()));
+	// Also factor in zoom for zooming capabilities.
+	project_matrix = glm::ortho(
+		(float)-cur_window.get_winwidth() / current_zoom,
+		(float)cur_window.get_winwidth() / current_zoom,
+		(float)-cur_window.get_winheight() / current_zoom,
+		(float)cur_window.get_winheight() / current_zoom
+	);
 
 	// Update the model-view-projection matrix
-	glm::mat4 mvpMat = project_matrix * view_matrix * model_matrix;
+	glm::mat4 mvp_matrix = project_matrix * view_matrix * model_matrix;
 
 	// Apply this matrix via the vertex shader
-	shader_mgmt::modify_uniform_4m(&cur_shader_program_id, "u_ModelViewProjMat", mvpMat);
+	shader_mgmt::modify_uniform_4m(&cur_shader_program_id, "u_ModelViewProjMat", mvp_matrix);
 }
+
 void gw_renderer::create_window(std::string title, int sizeX, int sizeY) {
 	// Assign the window pointer
 	cur_window.create_window(title, sizeX, sizeY);
 }
+
 void gw_renderer::initialize_shaders() {
 	// Create the main shader program
 	cur_shader_program_id = GL_CALL(glCreateProgram());
@@ -120,5 +130,12 @@ void gw_renderer::initialize_shaders() {
 
 	// Bind program
 	gw_rendering_pl::gw_bind_program(cur_shader_program_id);
+}
+
+void gw_renderer::zoom_by_value(float amount) {
+	// Increase current_zoom before clamping
+	current_zoom += amount;
+	// Clamp current_zoom
+	current_zoom = std::max(min_zoom, std::min(current_zoom, max_zoom));
 }
 #pragma endregion
