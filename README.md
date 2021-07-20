@@ -1,8 +1,4 @@
 ---
-
-[//]: # (This image relies on svgshare.com, so if that server goes down at all, this image will not work.)
-[//]: # (This could be an issue, but it should be fine for a while.)
-
 <img src="https://svgshare.com/i/ZNn.svg">
 
 ---
