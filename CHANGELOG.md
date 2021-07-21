@@ -89,6 +89,8 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Finalised `translate()`, `scale()`, and `rotate()` functions (affects **model** matrix)
 ### 🔴 2021/07/20 - versions `d2.2.3`:
 - \[+] Finalised the zooming feature.
+### 🔴 2021/07/21 - versions `d2.3`:
+- \[++] Implemented input handling, not completed yet.
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.
