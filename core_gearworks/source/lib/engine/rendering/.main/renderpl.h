@@ -142,7 +142,7 @@ public:
 	/// <returns>the current shader program via its ID.</returns>
 	inline unsigned int *get_currentshaderprogram() { return &cur_shader_program_id; }
 	/// <returns>the current window.</returns>
-	inline gw_window get_currentwindowinstance() { return cur_window; }
+	inline gw_window *get_currentwindowinstance() { return &cur_window; }
 };
 
 #endif

@@ -167,6 +167,9 @@
     <ClCompile Include="bin\vendor\v_include\opengl\Glad\glad.c" />
     <ClCompile Include="bin\vendor\v_include\stb\stb_image.c" />
     <ClCompile Include="source\lib\engine\.main\imp_engine.cpp" />
+    <ClCompile Include="source\lib\engine\input\imp_keyboard_input_mgmt.cpp" />
+    <ClCompile Include="source\lib\engine\input\imp_mouse_input_mgmt.cpp" />
+    <ClCompile Include="source\lib\engine\input\mouse_input_mgmt.h" />
     <ClCompile Include="source\lib\engine\rendering\.main\imp_renderpl.cpp" />
     <ClCompile Include="source\lib\engine\rendering\shader_interpretation\imp_shader_mgmt.cpp" />
     <ClCompile Include="source\lib\engine\textures\imp_texture_2d.cpp" />
@@ -178,6 +181,7 @@
     <ClInclude Include="source\headers\gearworks.h" />
     <ClInclude Include="source\headers\opengl_pack.h" />
     <ClInclude Include="source\lib\engine\.main\engine.h" />
+    <ClInclude Include="source\lib\engine\input\keyboard_input_mgmt.h" />
     <ClInclude Include="source\lib\engine\rendering\.main\renderpl.h" />
     <ClInclude Include="source\lib\engine\rendering\gl_buffer_objs\inl_ibo.h" />
     <ClInclude Include="source\lib\engine\rendering\gl_buffer_objs\inl_vao.h" />

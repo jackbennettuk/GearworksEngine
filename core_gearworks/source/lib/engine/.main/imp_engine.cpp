@@ -1,8 +1,6 @@
 #include <gearworks.h>
 #include "engine.h"
 
-#include <opengl/glm/gtx/string_cast.hpp>
-
 engine::engine(gw_renderer *_renderer) 
 	: renderer_handle(_renderer) {}
 
@@ -17,7 +15,6 @@ void engine::initialize() {
 }
 
 void engine::update() {
-	renderer_handle->zoom_by_value(0.02f);
 }
 
 void engine::render() {

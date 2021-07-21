@@ -36,6 +36,15 @@
     <ClCompile Include="bin\vendor\v_include\stb\stb_image.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\lib\engine\input\imp_keyboard_input_mgmt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\engine\input\mouse_input_mgmt.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\engine\input\imp_mouse_input_mgmt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\headers\gearworks.h">
@@ -81,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\lib\engine\rendering\primitives\inl_primitives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\engine\input\keyboard_input_mgmt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

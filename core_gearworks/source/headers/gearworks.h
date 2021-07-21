@@ -16,6 +16,9 @@
 #include "../lib/engine/rendering/gl_buffer_objs/inl_ibo.h"					// inl_ibo.h					[(inline) ibo]
 #include "../lib/engine/rendering/gl_buffer_objs/inl_vao.h"					// inl_vao.h					[(inline) vao]
 
+// Input
+#include "../lib/engine/input/keyboard_input_mgmt.h"						// keyboard_input_mgmt.h		[keyboard input management]
+
 // Textures
 #include "../lib/engine/textures/texture_2d.h"								// texture.h					[texture]
 

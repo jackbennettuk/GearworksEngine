@@ -4,10 +4,18 @@
 
 #include <opengl_pack.h>
 #include <gearworks.h>
+#include "../engine/input/keyboard_input_mgmt.h"		// for some reason, bundling this header in gearworks.h would CONSTANTLY cause circular dependencies, so it's easier to just reference it seperately.
+#include "../engine/input/mouse_input_mgmt.h"		// for some reason, bundling this header in gearworks.h would CONSTANTLY cause circular dependencies, so it's easier to just reference it seperately.
 
 int main() {
 	// Renderer instance
 	gw_renderer main_renderer;
+
+	// Input
+	// TODO: abstract this
+	keyboard keyboard_man;
+	cursor cursor_main;
+
 	// Engine object
 	engine main_engine(&main_renderer);
 
@@ -42,8 +50,12 @@ int main() {
 	// Initialize the engine object
 	main_engine.initialize();
 
+	// Initialize the keyboard object
+	keyboard_man.initialize_keyboard(main_renderer.get_currentwindowinstance());
+	cursor_main.initialize_cursor(main_renderer.get_currentwindowinstance());
+
 	// Main program loop
-	while (!glfwWindowShouldClose(main_renderer.get_currentwindowinstance().get_glfwinstance())) {
+	while (!glfwWindowShouldClose(main_renderer.get_currentwindowinstance()->get_glfwinstance())) {
 		// Clear the screen with a dark gray colour
 		gw_rendering_pl::gw_clear_screen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
 
@@ -55,11 +67,17 @@ int main() {
 
 		// Update the engine instance
 		main_engine.update();
+
+		keyboard_man.update_keyboard();
+		cursor_main.update_cursor();
+
+		std::cout << cursor_main.get_cursorxpos() << " | " << cursor_main.get_cursorypos() << "\n";
+
 		// Render the engine instance
 		main_engine.render();
 
 		// Update the window instance
-		main_renderer.get_currentwindowinstance().update_window();
+		main_renderer.get_currentwindowinstance()->update_window();
 	}
 
 	// Print a success message
