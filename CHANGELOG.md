@@ -91,6 +91,11 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Finalised the zooming feature.
 ### 🔴 2021/07/21 - versions `d2.3`:
 - \[++] Implemented input handling, not completed yet.
+### 🔴 2021/08/04 - versions `d3.0`:
+- \[++] Moved all current code to a static library (now in project `core_gearworks_lib`) rather than an executable
+- \[++] Created a demo project to store the demo executable (project `demo`)
+- \[++] Created namespace `gearworks` to store all classes and members related to the library
+- \[+] Refactored various functions etc
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

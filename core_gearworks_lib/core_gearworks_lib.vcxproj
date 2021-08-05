@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{d9c1bdb1-98c1-4d98-8fc4-5b23ac413de5}</ProjectGuid>
+    <RootNamespace>gearworks</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>core_gearworks_lib</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>gearworks</TargetName>
+    <OutDir>.\bin\build\$(Configuration)\output\</OutDir>
+    <IntDir>.\bin\build\$(Configuration)\intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>gearworks</TargetName>
+    <OutDir>.\bin\build\$(Configuration)\output\</OutDir>
+    <IntDir>.\bin\build\$(Configuration)\intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>gearworks</TargetName>
+    <OutDir>.\bin\build\$(Configuration)\output\</OutDir>
+    <IntDir>.\bin\build\$(Configuration)\intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>gearworks</TargetName>
+    <OutDir>.\bin\build\$(Configuration)\output\</OutDir>
+    <IntDir>.\bin\build\$(Configuration)\intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="bin\dependencies\opengl\Glad\glad.h" />
+    <ClInclude Include="bin\dependencies\opengl\Glad\khrplatform.h" />
+    <ClInclude Include="bin\dependencies\opengl\GLFW3\glfw3.h" />
+    <ClInclude Include="bin\dependencies\opengl\GLFW3\glfw3native.h" />
+    <ClInclude Include="bin\dependencies\opengl\glm\common.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\exponential.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\ext.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\fwd.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\geometric.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\glm.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\bitfield.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\color_space.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\constants.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\epsilon.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\integer.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\matrix_access.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\matrix_integer.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\matrix_inverse.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\matrix_transform.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\noise.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\packing.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\quaternion.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\random.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\reciprocal.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\round.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\type_aligned.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\type_precision.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\type_ptr.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\ulp.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\gtc\vec1.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\integer.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat2x2.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat2x3.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat2x4.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat3x2.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat3x3.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat3x4.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat4x2.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat4x3.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\mat4x4.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\matrix.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\packing.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\trigonometric.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\vec2.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\vec3.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\vec4.hpp" />
+    <ClInclude Include="bin\dependencies\opengl\glm\vector_relational.hpp" />
+    <ClInclude Include="bin\dependencies\stb\stb_image.h" />
+    <ClInclude Include="include\gearworks.h" />
+    <ClInclude Include="source\lib\defs.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bin\dependencies\opengl\Glad\glad.c" />
+    <ClCompile Include="bin\dependencies\stb\stb_image.c" />
+    <ClCompile Include="source\lib\imp_nonstatic.cpp" />
+    <ClCompile Include="source\lib\imp_input.cpp" />
+    <ClCompile Include="source\lib\imp_rendering.cpp" />
+    <ClCompile Include="source\lib\imp_shapes.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\dependencies\opengl\glm\gtc\bitfield.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\color_space.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\constants.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\epsilon.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\integer.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\matrix_access.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\matrix_inverse.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\matrix_transform.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\noise.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\packing.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\quaternion.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\quaternion_simd.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\random.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\reciprocal.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\round.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\type_precision.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\type_ptr.inl" />
+    <None Include="bin\dependencies\opengl\glm\gtc\ulp.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
