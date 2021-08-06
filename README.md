@@ -24,8 +24,6 @@ You can read the development log in the file `CHANGELOG.md`, linked [here](CHANG
 | &nbsp;&nbsp; :warning: &nbsp;&nbsp; This guide was written as of version **d3.0.1**. It may be wrong in future updates; in this case, it will be updated. |
 |---------------------------------------------------------------------------------------------------------------------------------|
 
-#### *Please note that this guide was written as of version **d3.0.1**. It may be wrong in future updates; if it is, I'll update it to fix any issues.*
-
 ### `Main function`
 In the file that contains your `main()` function, put the following code in. This is all you need in most cases in this file, even in larger projects.
 
