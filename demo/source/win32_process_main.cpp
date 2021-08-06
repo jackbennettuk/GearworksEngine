@@ -40,11 +40,8 @@ int main() {
 	// Initialize base object
 	baseobj.initialize();
 
-	// Main program loop
-	while (!glfwWindowShouldClose(baseobj.renderer.get_currentwindowinstance()->get_glfwinstance())) {
-		// Update base object
-		baseobj.update();
-	}
+	// Update base object
+	baseobj.update();
 
 	// Destroy base object
 	baseobj.destroy();

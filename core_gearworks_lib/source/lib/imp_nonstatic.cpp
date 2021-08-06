@@ -57,23 +57,23 @@ void gearworks::gwehaviour::initialize() {
 }
 
 void gearworks::gwehaviour::update() {
-	// Clear the screen with a dark gray colour
-	gearworks::clear_screen(glm::vec4(0.12f, 0.12f, 0.12f, 1.0f));
-	// Bind the shader program
-	gearworks::bind_program(*(renderer.get_currentshaderprogram()));
+	while (!glfwWindowShouldClose(renderer.get_currentwindowinstance()->get_glfwinstance())) {
+		// Bind the shader program
+		gearworks::bind_program(*(renderer.get_currentshaderprogram()));
 
-	// Update the renderer
-	renderer.update_renderer();
-	// Update the engine instance
-	main_engine.update();
+		// Update the renderer
+		renderer.update_renderer();
+		// Update the engine instance
+		main_engine.update();
 
-	// Update the input manager
-	input.update();
+		// Update the input manager
+		input.update();
 
-	// Render the engine instance
-	main_engine.render();
-	// Update the window instance
-	renderer.get_currentwindowinstance()->update_window();
+		// Render the engine instance
+		main_engine.render();
+		// Update the window instance
+		renderer.get_currentwindowinstance()->update_window();
+	}
 }
 
 void gearworks::gwehaviour::destroy() {
