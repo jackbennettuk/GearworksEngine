@@ -98,6 +98,9 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[+] Refactored various functions etc
 ### 🔴 2021/07/21 - versions `d3.0.1`:
 - \[+] Abstracted some update code to the `gwehaviour.update()` function
+- \[+] Ignored warning LNK4098 (#3)
+### 🔴 2021/07/21 - versions `d3.0.2`:
+- \[+] Removed duplicate dependencies from the demo project (#2).
 
 ## Footnotes
 - <sup>1</sup> This numbering system is due to the limited number of experimental releases; a major and minor number system is simple not necessary.

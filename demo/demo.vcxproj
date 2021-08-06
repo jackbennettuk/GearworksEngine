@@ -97,13 +97,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\vendor\v_include\;$(ProjectDir)source\headers\;$(SolutionDir)core_gearworks_lib\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)core_gearworks_lib\include\;$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)bin\vendor\v_lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl/GLFW3/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -115,15 +115,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\vendor\v_include\;$(ProjectDir)source\headers\;$(SolutionDir)core_gearworks_lib\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)core_gearworks_lib\include\;$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)bin\vendor\v_lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl/GLFW3/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -133,13 +133,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\vendor\v_include\;$(ProjectDir)source\headers\;$(SolutionDir)core_gearworks_lib\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)core_gearworks_lib\include\;$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)bin\vendor\v_lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl/GLFW3/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -151,21 +151,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\vendor\v_include\;$(ProjectDir)source\headers\;$(SolutionDir)core_gearworks_lib\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)core_gearworks_lib\include\;$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)bin\vendor\v_lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl/GLFW3/glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)core_gearworks_lib\bin\dependencies\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/ignore:4098 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bin\vendor\v_include\opengl\Glad\glad.c" />
-    <ClCompile Include="bin\vendor\v_include\stb\stb_image.c" />
     <ClCompile Include="source\win32_process_main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,74 +171,6 @@
     <Image Include="resources\textures\wall.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bin\vendor\v_include\opengl\Glad\glad.h" />
-    <ClInclude Include="bin\vendor\v_include\opengl\Glad\khrplatform.h" />
-    <ClInclude Include="bin\vendor\v_include\opengl\GLFW3\glfw3.h" />
-    <ClInclude Include="bin\vendor\v_include\opengl\GLFW3\glfw3native.h" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\common.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\exponential.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\ext.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\fwd.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\geometric.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\glm.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\bitfield.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\color_space.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\constants.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\epsilon.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\integer.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\matrix_access.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\matrix_integer.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\matrix_inverse.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\matrix_transform.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\noise.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\packing.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\quaternion.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\random.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\reciprocal.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\round.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\type_aligned.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\type_precision.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\type_ptr.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\ulp.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\gtc\vec1.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\integer.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat2x2.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat2x3.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat2x4.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat3x2.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat3x3.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat3x4.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat4x2.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat4x3.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\mat4x4.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\matrix.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\packing.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\trigonometric.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\vec2.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\vec3.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\vec4.hpp" />
-    <ClInclude Include="bin\vendor\v_include\opengl\glm\vector_relational.hpp" />
-    <ClInclude Include="bin\vendor\v_include\stb\stb_image.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\bitfield.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\color_space.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\constants.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\epsilon.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\integer.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\matrix_access.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\matrix_inverse.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\matrix_transform.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\noise.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\packing.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\quaternion.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\quaternion_simd.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\random.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\reciprocal.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\round.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\type_precision.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\type_ptr.inl" />
-    <None Include="bin\vendor\v_include\opengl\glm\gtc\ulp.inl" />
     <None Include="resources\shaders\frag.glsl" />
     <None Include="resources\shaders\vert.glsl" />
   </ItemGroup>

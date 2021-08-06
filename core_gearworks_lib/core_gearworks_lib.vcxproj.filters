@@ -242,4 +242,7 @@
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="bin\dependencies\opengl\GLFW3\glfw3.lib" />
+  </ItemGroup>
 </Project>
