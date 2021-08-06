@@ -21,7 +21,7 @@ You can read the development log in the file `CHANGELOG.md`, linked [here](CHANG
 
 ## Getting Started
 
-| &nbsp;&nbsp; :warning: &nbsp;&nbsp; This guide was written as of version **d3.0.1**. It may be wrong in future updates; in this case, it will be updated. |
+| :warning: This guide was written as of version **d3.0.1**. It may be wrong in future updates; in this case, it will be updated. |
 |---------------------------------------------------------------------------------------------------------------------------------|
 
 ### `Main function`
