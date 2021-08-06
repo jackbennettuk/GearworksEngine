@@ -77,6 +77,26 @@ if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {\
 #pragma endregion
 
 namespace gearworks {
+#pragma region Colours
+	const static glm::vec3 col_black = glm::vec3(0.0f, 0.0f, 0.0f);						// Gearworks default: black colour
+	const static glm::vec3 col_verydarkgray = glm::vec3(0.10f, 0.10f, 0.10f);			// Gearworks default: very dark gray colour
+	const static glm::vec3 col_darkgray = glm::vec3(0.25f, 0.25f, 0.25f);				// Gearworks default: dark gray colour
+	const static glm::vec3 col_midgray = glm::vec3(0.5f, 0.5f, 0.5f);					// Gearworks default: 50/50 gray colour
+	const static glm::vec3 col_lightgray = glm::vec3(0.75f, 0.75f, 0.75f);				// Gearworks default: light gray colour
+	const static glm::vec3 col_verylightgray = glm::vec3(0.90f, 0.90f, 0.90f);			// Gearworks default: very light gray colour
+	const static glm::vec3 col_white = glm::vec3(1.00f, 1.00f, 1.00f);					// Gearworks default: white colour
+
+	const static glm::vec3 col_brightred = glm::vec3(1.00f, 0.00f, 0.00f);				// Gearworks default: bright red colour
+	const static glm::vec3 col_brightgreen = glm::vec3(0.00f, 1.00f, 0.00f);			// Gearworks default: bright green colour
+	const static glm::vec3 col_brightblue = glm::vec3(0.00f, 0.00f, 1.00f);				// Gearworks default: bright blue colour
+	const static glm::vec3 col_brightyellow = glm::vec3(1.00f, 1.00f, 0.00f);			// Gearworks default: bright yellow colour
+	const static glm::vec3 col_brightmagenta = glm::vec3(1.00f, 0.00f, 1.00f);			// Gearworks default: bright magenta colour
+	const static glm::vec3 col_brightcyan = glm::vec3(0.00f, 1.00f, 1.00f);				// Gearworks default: bright cyan colour
+
+	const static glm::vec3 col_orange = glm::vec3(0.75f, 0.31f, 0.13f);					// Gearworks default: orange colour
+	const static glm::vec3 col_orangered = glm::vec3(0.91f, 0.28f, 0.15f);				// Gearworks default: orange-red colour (think Reddit branding)
+	const static glm::vec3 col_brown = glm::vec3(0.33f, 0.21f, 0.18f);					// Gearworks default: brown colour
+#pragma endregion
 #pragma region Rendering
 
 #pragma region General

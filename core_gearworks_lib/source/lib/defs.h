@@ -5,7 +5,7 @@
 #define DEFS_H
 
 #include "../../include/gearworks.h"
-#include <iostream>
+#include <iosfwd>
 #include <list>
 #include <fstream>
 #include <sstream>
@@ -27,7 +27,7 @@ class gearworks::input_manager {
 private:
 	// Pointer to the window
 	gearworks::window *window_ptr;
-
+	
 	// --- KEYBOARD MEMBER(S) ---
 	std::list<int> current_pressed_keys, previous_pressed_keys;					// Lists of current and previous pressed keys
 

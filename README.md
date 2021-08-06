@@ -16,8 +16,8 @@ I'm currently still in school so I don't have too much time for it. I try to kee
 
 I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program. I'm also very lazy.
 
-## Change log
-You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
+## Changelog
+You can read the changelog in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
 
 ## Getting Started
 
