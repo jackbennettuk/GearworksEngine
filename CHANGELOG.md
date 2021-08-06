@@ -96,7 +96,7 @@ If there are versions of the same type made in the same day, change `experimenta
 - \[++] Created a demo project to store the demo executable (project `demo`)
 - \[++] Created namespace `gearworks` to store all classes and members related to the library
 - \[+] Refactored various functions etc
-### 🔴 2021/07/21 - versions `d3.0.0.1`:
+### 🔴 2021/07/21 - versions `d3.0.1`:
 - \[+] Abstracted some update code to the `gwehaviour.update()` function
 
 ## Footnotes
