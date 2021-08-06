@@ -20,126 +20,118 @@ I have tried integrating CMake for a better project setup, but have gone back to
 You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
 
 ## Getting Started
+
+| &nbsp;&nbsp; :warning: &nbsp;&nbsp; This guide was written as of version **d3.0.1**. It may be wrong in future updates; in this case, it will be updated. |
+|---------------------------------------------------------------------------------------------------------------------------------|
+
 #### *Please note that this guide was written as of version **d3.0.1**. It may be wrong in future updates; if it is, I'll update it to fix any issues.*
 
-<details>
-  <summary>Getting Started guide</summary>
-  
-  ### `File with main() function`
-  In the file that contains your main() function, put the following code in. This is all you need in most cases in this file, even in larger projects.
+### `Main function`
+In the file that contains your `main()` function, put the following code in. This is all you need in most cases in this file, even in larger projects.
 
-  <details>
-    <summary><i><b>Related code</b></i></summary>
+```
+// Include the Gearworks Engine library with its gearworks.h header file
+#include <gearworks.h>
 
-    // Include the Gearworks Engine library with its gearworks.h header file
-    #include <gearworks.h>
+// The main function
+int main() {
+    // Base gearworks behaviour object that handles all the behind-the-scenes logic
+    gearworks::gwehaviour baseobj;
 
-    // The main function
-    int main() {
-            // Base gearworks behaviour object that handles all the behind-the-scenes logic
-            gearworks::gwehaviour baseobj;
+    // Set the base object's initial shaders
+    baseobj.vertex_shader_path = "resources/shaders/vert.glsl";
+    baseobj.fragment_shader_path = "resources/shaders/frag.glsl";
 
-            // Set the base object's initial shaders
-            baseobj.vertex_shader_path = "resources/shaders/vert.glsl";
-            baseobj.fragment_shader_path = "resources/shaders/frag.glsl";
+    // Initialize the base object
+    baseobj.initialize();
 
-            // Initialize the base object
-            baseobj.initialize();
+    // Update the base object (This function runs every frame until the window is closed)
+    baseobj.update();
 
-            // Update the base object (This function runs every frame until the window is closed)
-            baseobj.update();
+    // Destroy the base object when the window is closed
+    baseobj.destroy();
 
-            // Destroy the base object when the window is closed
-            baseobj.destroy();
+    // End the application successfully
+    return 0;
+}
+```
 
-            // End the application successfully
-            return 0;
-    }
-  </details>
+### `Engine implementation file`
+In another file (or the main file), you can implement the library's `engine` class to put your own logic. Keep in mind that, even in a blank project, you need to implement these functions. If you don't have any logic in them, leave them blank but keep the function definition there.
 
-  ### `Engine implementation file`
-  In another file (or the main file), you can implement the library's `engine` class to put your own logic. Keep in mind that, even in a blank project, you need to implement these functions. If you don't have any logic in them, leave them blank but keep the function definition there.
+```
+// Include the gearworks file here
+#include <gearworks.h>
 
-  <details>
-    <summary><i><b>Related code</b></i></summary>
+void gearworks::engine::initialize() {
+    // Put all of your initialization logic here
+}
 
-    // Include the gearworks file here
-    #include <gearworks.h>
+void gearworks::engine::update() {
+    // Put all of your updating logic (updating variables etc) here
+}
 
-    void gearworks::engine::initialize() {
-            // Put all of your initialization logic here
-    }
+void gearworks::engine::render() {
+    // Clears the screen to a bright red colour
+    gearworks::clear_screen(glm::vec3(0.97f, 0.11f, 0.11f));
 
-    void gearworks::engine::update() {
-            // Put all of your updating logic (updating variables etc) here
-    }
+    // Put any of your rendering code here
+}
 
-    void gearworks::engine::render() {
-            // Clears the screen to a bright red colour
-            gearworks::clear_screen(glm::vec3(0.97f, 0.11f, 0.11f));
+void gearworks::engine::clean() {
+    // If you have any members that need to be deleted, do that here
+}
+```
 
-            // Put any of your rendering code here
-    }
+### `Shader files`
+Finally, you need to write the shaders of the program yourself - this is here so you can have them work however you want. They are used by OpenGL and so are written in GLSL. The code for a very basic vertex shader is below:
 
-    void gearworks::engine::clean() {
-            // If you have any members that need to be deleted, do that here
-    }
-  </details>
+```
+// Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
+#version 330 core
 
-  ### `Shader files`
-  Finally, you need to write the shaders of the program yourself - this is here so you can have them work however you want. They are used by OpenGL and so are written in GLSL. The code for a very basic vertex shader is below:
+// l_Position stores the position of the vertex.
+layout(location = 0) in vec4 l_Position;
+// l_TexCoord stores the positions of the texture coordinates. You won't need to worry about this when using Gearworks as it is all abstracted away.
+layout(location = 1) in vec2 l_TexCoord;
 
-  <details>
-    <summary><i><b>Related code</b></i></summary>
+// Varying variable v_TexCoord sends the above texture coordinates to the fragment shader to be used.
+out vec2 v_TexCoord;
 
-    // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
-    #version 330 core
+// The model matrix - once again, you won't normally need to worry about this if you are not confident in OpenGL.
+uniform mat4 u_ModelViewProjMat;
 
-    // l_Position stores the position of the vertex.
-    layout(location = 0) in vec4 l_Position;
-    // l_TexCoord stores the positions of the texture coordinates. You won't need to worry about this when using Gearworks as it is all abstracted away.
-    layout(location = 1) in vec2 l_TexCoord;
+void main() {
+    // Set the actual position of the variable on the u_ModelViewProjMat matrix.
+    gl_Position = u_ModelViewProjMat * l_Position;
 
-    // Varying variable v_TexCoord sends the above texture coordinates to the fragment shader to be used.
-    out vec2 v_TexCoord;
+    // Set the texture coordinates varying variable.
+    v_TexCoord = l_TexCoord;
+}
+```
 
-    // The model matrix - once again, you won't normally need to worry about this if you are not confident in OpenGL.
-    uniform mat4 u_ModelViewProjMat;
+Here is the fragment shader, which you also need:
 
-    void main() {
-            // Set the actual position of the variable on the u_ModelViewProjMat matrix.
-            gl_Position = u_ModelViewProjMat * l_Position;
+```
+// Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
+#version 330 core
 
-            // Set the texture coordinates varying variable.
-            v_TexCoord = l_TexCoord;
-    }
-  </details>
+// The l_Colour variable stores the colour of the pixels.
+layout(location = 0) out vec4 l_Colour;
 
-  Here is the fragment shader, which you also need:
+// Texture coordinates, passed here by the vertex shader.
+in vec2 v_TexCoord;
 
-  <details>
-    <summary><i><b>Related code</b></i></summary>
+// The given texture.
+uniform sampler2D u_Texture;
+// The given blending colour.
+uniform vec4 u_Colour;
 
-    // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
-    #version 330 core
+void main() {
+    // Get the colour of the pixel from the texture, using the texture coordinates.
+    vec4 texColour = texture(u_Texture, v_TexCoord) * u_Colour;
 
-    // The l_Colour variable stores the colour of the pixels.
-    layout(location = 0) out vec4 l_Colour;
-
-    // Texture coordinates, passed here by the vertex shader.
-    in vec2 v_TexCoord;
-
-    // The given texture.
-    uniform sampler2D u_Texture;
-    // The given blending colour.
-    uniform vec4 u_Colour;
-
-    void main() {
-            // Get the colour of the pixel from the texture, using the texture coordinates.
-            vec4 texColour = texture(u_Texture, v_TexCoord) * u_Colour;
-
-            // Apply the colour.
-            l_Colour = texColour;
-    }
-  </details>
-</details>
+    // Apply the colour.
+    l_Colour = texColour;
+}
+```
