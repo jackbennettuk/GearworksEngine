@@ -1,4 +1,5 @@
 ---
+
 <img src="https://svgshare.com/i/ZNn.svg">
 
 ---
@@ -13,9 +14,11 @@ The Gearworks Engine is the name of my first rendering / physics / game engine. 
 
 I'm currently still in school so I don't have too much time for it. I try to keep it as organized and professional as a personal project should be :).
 
-I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program.
+I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program. I'm also very lazy.
 
-Finally, it will always be **completely open-source**, along with any other large projects I make in the future.
+## Using the library
+⚠ ***This section has yet to be added as Gearworks is still very early in development. Some documentation will be made at first release.***
+
 
 ## Change log
 You can read the development log in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
