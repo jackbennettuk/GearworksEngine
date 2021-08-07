@@ -16,10 +16,11 @@ void gearworks::engine::initialize() {
 	tri.translate(glm::vec3(300, 0, 0));
 }
 void gearworks::engine::update() {
+	tri.rotate(glm::vec3(0, 0, 0.5));
 }
 void gearworks::engine::render() {
 	// Clears the screen to a dark grey colour.
-	gearworks::clear_screen(gearworks::col_orangered);
+	gearworks::clear_screen(gearworks::col_verydarkgray);
 
 	rect.render();
 	tri.render();
