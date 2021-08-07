@@ -84,7 +84,7 @@ void gearworks::engine::clean() {
 ### `Shader files`
 Finally, you need to write the shaders of the program yourself - this is here so you can have them work however you want. They are used by OpenGL and so are written in GLSL. The code for a very basic vertex shader is below:
 
-```C++
+```GLSL
 // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
 #version 330 core
 
@@ -110,7 +110,7 @@ void main() {
 
 Here is the fragment shader, which you also need:
 
-```C++
+```GLSL
 // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
 #version 330 core
 
