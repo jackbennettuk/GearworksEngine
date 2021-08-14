@@ -15,7 +15,7 @@
 #include <list>
 #include <fstream>
 #include <sstream>
-#include <Windows.h>
+#include <Windows.h>		// Library is currently only compatible with Windows.
 
 // GLM
 #include <opengl/glm/vec4.hpp>
@@ -49,7 +49,7 @@
 __pragma(warning(push));\
 __pragma(warning(disable:4566));\
 while (GLenum error = glGetError()) {\
-std::cout << "[OpenGL] Error " << error << " found referencing function " << #x << " in file " << __FILE__ << " at line " << __LINE__ << "!" << std::endl;\
+std::cout << "  OpenGL Error " << error << " found referencing function " << #x << " in file " << __FILE__ << " at line " << __LINE__ << "!" << std::endl;\
 }\
 __pragma(warning(pop))
 
@@ -63,22 +63,22 @@ x = NULL
 /// Loads GLFW.
 /// </summary>
 #define GW_INIT_GLFW()\
-std::cout << "[GW] Loading GLFW... ";\
+std::cout << "  Loading GLFW... ";\
 if (!glfwInit()) {\
 	std::cout << "Error loading GLFW: the function \"glfwInit()\" does not exist or work!\n";\
 } else {\
-	std::cout << "Successful!\n";\
+	std::cout << "OK!\n";\
 }
 
 /// <summary>
 /// Initializes the Glad OpenGl loader.
 /// </summary>
 #define GW_INIT_GLAD()\
-std::cout << "[GW] Loading Glad... ";\
+std::cout << "  Loading Glad... ";\
 if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {\
 	std::cout << "Error loading Glad: the function gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) does not exist or work!\n\n";\
 } else {\
-	std::cout << "Successful!\n\n";\
+	std::cout << "OK!\n";\
 }
 
 #pragma endregion

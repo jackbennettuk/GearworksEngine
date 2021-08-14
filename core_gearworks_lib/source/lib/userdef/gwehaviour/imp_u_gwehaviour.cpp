@@ -12,11 +12,22 @@ void gearworks::gwehaviour::initialize() {
 	renderer = new gearworks::renderer();
 	input = new gearworks::input_manager();
 
+	// Get Windows Console instance
+	HANDLE win_console_instance = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	// Set the console window's title
+	SetConsoleTitle(L"Gearworks Engine Debug Prompt");
+	// Set console text colour to green
+	SetConsoleTextAttribute(win_console_instance, 10);
+
+	// Print debug console title
+	std::cout << "  -- GEARWORKS ENGINE DEBUG CONSOLE --\nRevision 1.0.0: Windows-only compatibility\n";
+
+	// Print initializing title
+	std::cout << "\nInitializing:\n";
+
 	// Create the engine object
 	main_engine->create(renderer);
-
-	// Set the console window's title. In future release builds, this console window can be optional but available for debugging.
-	SetConsoleTitle(L"Gearworks Engine Debug Prompt");
 
 	// Initialize GLFW
 	GW_INIT_GLFW();
@@ -28,7 +39,7 @@ void gearworks::gwehaviour::initialize() {
 	glfwWindowHint(GLFW_SAMPLES, 4);									// Multisampling for MSAA anti-aliasing = 4 samples
 
 	// Create the window
-	renderer->create_window("Gearworks Engine - development version - by Jack Bennett");
+	renderer->create_window("Gearworks Engine - development version");
 
 	// Load Glad
 	GW_INIT_GLAD();
@@ -49,6 +60,10 @@ void gearworks::gwehaviour::initialize() {
 
 	// Initialize the input manager
 	input->initialize(renderer->get_currentwindowinstance());
+
+	// Then print the OpenGL version
+	std::cout << "\nRunning engine:\n";
+	std::cout << "  Running with minimum OpenGL version " << glGetString(GL_VERSION) << ".\n";
 }
 
 void gearworks::gwehaviour::update() {
@@ -72,13 +87,22 @@ void gearworks::gwehaviour::update() {
 }
 
 void gearworks::gwehaviour::destroy() {
-	// Print a success message
-	std::cout << "Window successfully closed; process ended.\n";
+	std::cout << "\nTermination:\n";
+	std::cout << "  Window successfully closed.\n";
 
 	// Destroy the engine
 	main_engine->clean();
 	// Unbind shader program
 	gearworks::unbind_program();
+
 	// Terminate GLFW
 	glfwTerminate();
+	std::cout << "  GLFW terminated.\n";
+
+	// Done!
+	std::cout << "  Done!\n";
+
+	// Prompt the user to press any key to close the console window
+	std::cout << "\n  -- Press enter to close the debug window. --";
+	std::cin.get();
 }

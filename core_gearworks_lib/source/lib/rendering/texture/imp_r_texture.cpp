@@ -22,7 +22,7 @@ void gearworks::texture_2d::load(std::string _path) {
 
 	// Check if there was an error when loading the texture
 	if (stbi_failure_reason()) {
-		std::cout << "[stbi] Error: " << stbi_failure_reason() << "\n";
+		std::cout << "  stb_image error: " << stbi_failure_reason() << "\n";
 	}
 
 	// Generates and binds the texture buffer

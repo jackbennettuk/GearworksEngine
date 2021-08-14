@@ -61,7 +61,7 @@ unsigned int gearworks::compile_shader(unsigned int type, const std::string &sou
 		GL_CALL(GL_CALL(glGetShaderInfoLog(id, length, &length, errorMessage)));
 
 		// Log the error message to console
-		std::cout << "[OpenGL] Shader compilation error ecnountered: failed to compile shader of type " << type << "!" << std::endl;
+		std::cout << "  Shader compilation error ecnountered: failed to compile shader of type " << type << "!" << std::endl;
 		std::cout << errorMessage << std::endl;
 
 		// Delete the shader

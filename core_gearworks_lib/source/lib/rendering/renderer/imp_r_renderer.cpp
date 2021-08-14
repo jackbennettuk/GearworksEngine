@@ -48,12 +48,12 @@ void gearworks::renderer::initialize_shaders(std::string vertex_shader_path, std
 
 	// Create the VERTEX shader
 	if (vertex_shader_path == GW_NULLSTR)		// if the path was not given, throw a warning in console.
-		std::cout << "[GW] Warning: the string \"vertex_shader_path\" (gearworks::renderer::initialize_shaders) is set to ngiven - some things might not work properly.";
+		std::cout << "  Warning: the string \"vertex_shader_path\" (gearworks::renderer::initialize_shaders) is set to ngiven - some things might not work properly.";
 	gearworks::shader vertex_shad(vertex_shader_path, GL_VERTEX_SHADER, cur_shader_program_id);
 
 	// Create the FRAGMENT shader
 	if (fragment_shader_path == GW_NULLSTR)		// if the path was not given, throw a warning in console.
-		std::cout << "[GW] Warning: the string \"fragment_shader_path\" (gearworks::renderer::initialize_shaders) is set to ngiven - some things might not work properly.";
+		std::cout << "  Warning: the string \"fragment_shader_path\" (gearworks::renderer::initialize_shaders) is set to ngiven - some things might not work properly.";
 	gearworks::shader fragment_shad(fragment_shader_path, GL_FRAGMENT_SHADER, cur_shader_program_id);
 
 	// Bind program

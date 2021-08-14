@@ -14,14 +14,14 @@ void gearworks::window::create_window(std::string title, int width, int height) 
 	aspect_ratio = (float)window_width / (float)window_height;
 
 	// Create the window
-	std::cout << "[GW] Creating window... ";
+	std::cout << "  Creating window... ";
 	glfw_handle = glfwCreateWindow(window_width, window_height, window_title.c_str(), NULL, NULL);
 
 	// Assert the now-created window
 	if (!glfw_handle) {
 		std::cout << "Error creating the window: the member \"glfw_handle\" does not exist!\n";
 	} else {
-		std::cout << "Successful!\n";
+		std::cout << "OK!\n";
 	}
 
 	// Set this window to be the current OpenGL context

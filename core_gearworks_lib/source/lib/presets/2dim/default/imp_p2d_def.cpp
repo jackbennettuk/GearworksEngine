@@ -89,7 +89,7 @@ void defshape::render() {
 			break;
 		default:
 			count = 0;
-			std::cout << "[GW] Error: invalid primitive_type given in file inl_primitives!\n";
+			std::cout << "  Error: invalid primitive_type given in file inl_primitives!\n";
 			break;
 	}
 
