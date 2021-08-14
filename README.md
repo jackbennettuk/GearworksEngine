@@ -21,9 +21,9 @@ You can read the changelog in the file `CHANGELOG.md`, linked [here](CHANGELOG.m
 
 ## Getting Started
 
-| :warning: This guide is confirmed to work  as of version **d3.1.1**. It may be wrong in future updates; in this case, it will be updated. |
+| :warning: This guide was last confirmed at version **dev-v3.1.1**. |
 =======
-|---------------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------|
 
 ### `Main function`
 In the file that contains your `main()` function, put the following code in. This is all you need in most cases in this file, even in larger projects.
