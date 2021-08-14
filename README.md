@@ -22,12 +22,13 @@ You can read the changelog in the file `CHANGELOG.md`, linked [here](CHANGELOG.m
 ## Getting Started
 
 | :warning: This guide is confirmed to work  as of version **d3.1.1**. It may be wrong in future updates; in this case, it will be updated. |
+=======
 |---------------------------------------------------------------------------------------------------------------------------------|
 
 ### `Main function`
 In the file that contains your `main()` function, put the following code in. This is all you need in most cases in this file, even in larger projects.
 
-```
+```C++
 // Include the Gearworks Engine library with its gearworks.h header file
 #include <gearworks.h>
 
@@ -57,7 +58,7 @@ int main() {
 ### `Engine implementation file`
 In another file (or the main file), you can implement the library's `engine` class to put your own logic. Keep in mind that, even in a blank project, you need to implement these functions. If you don't have any logic in them, leave them blank but keep the function definition there.
 
-```
+```C++
 // Include the gearworks file here
 #include <gearworks.h>
 
@@ -84,7 +85,7 @@ void gearworks::engine::clean() {
 ### `Shader files`
 Finally, you need to write the shaders of the program yourself - this is here so you can have them work however you want. They are used by OpenGL and so are written in GLSL. The code for a very basic vertex shader is below:
 
-```
+```GLSL
 // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
 #version 330 core
 
@@ -110,7 +111,7 @@ void main() {
 
 Here is the fragment shader, which you also need:
 
-```
+```GLSL
 // Using GLSL version 3.3 (core). You may need to DELETE this comment in your own file - there may be parsing issues otherwise.
 #version 330 core
 
