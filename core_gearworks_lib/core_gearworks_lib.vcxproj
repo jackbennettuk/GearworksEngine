@@ -221,15 +221,34 @@
     <ClInclude Include="bin\dependencies\opengl\glm\vector_relational.hpp" />
     <ClInclude Include="bin\dependencies\stb\stb_image.h" />
     <ClInclude Include="include\gearworks.h" />
-    <ClInclude Include="source\lib\defs.h" />
+    <ClInclude Include="source\lib\input\i_input.h" />
+    <ClInclude Include="source\lib\presets\2dim\default\p2d_def.h" />
+    <ClInclude Include="source\lib\presets\2dim\triangle\p2d_triangle.h" />
+    <ClInclude Include="source\lib\presets\2dim\rectangle\p2d_rectangle.h" />
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_ibo.h" />
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vao.h" />
+    <ClInclude Include="source\lib\rendering\bufferobjs\r_bufferobjs.h" />
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vbo.h" />
+    <ClInclude Include="source\lib\rendering\renderer\r_renderer.h" />
+    <ClInclude Include="source\lib\rendering\shader\r_shader.h" />
+    <ClInclude Include="source\lib\rendering\texture\r_texture.h" />
+    <ClInclude Include="source\lib\rendering\window\r_window.h" />
+    <ClInclude Include="source\lib\userdef\engine\u_engine.h" />
+    <ClInclude Include="source\lib\userdef\gwehaviour\u_gwehaviour.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c" />
     <ClCompile Include="bin\dependencies\stb\stb_image.c" />
-    <ClCompile Include="source\lib\imp_nonstatic.cpp" />
-    <ClCompile Include="source\lib\imp_input.cpp" />
-    <ClCompile Include="source\lib\imp_rendering.cpp" />
-    <ClCompile Include="source\lib\imp_shapes.cpp" />
+    <ClCompile Include="source\lib\presets\2dim\default\imp_p2d_def.cpp" />
+    <ClCompile Include="source\lib\presets\2dim\triangle\imp_p2d_triangle.cpp" />
+    <ClCompile Include="source\lib\rendering\shader\imp_r_shader.cpp" />
+    <ClCompile Include="source\lib\rendering\texture\imp_r_texture.cpp" />
+    <ClCompile Include="source\lib\rendering\window\imp_r_window.cpp" />
+    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp" />
+    <ClCompile Include="source\lib\input\imp_i_input.cpp" />
+    <ClCompile Include="source\lib\rendering\renderer\imp_r_renderer.cpp" />
+    <ClCompile Include="source\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp" />
+    <ClCompile Include="source\lib\userdef\gwehaviour\imp_u_gwehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\dependencies\opengl\glm\gtc\bitfield.inl" />

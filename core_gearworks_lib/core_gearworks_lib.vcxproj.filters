@@ -18,9 +18,6 @@
     <ClInclude Include="bin\dependencies\opengl\Glad\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\lib\defs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="bin\dependencies\stb\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -165,24 +162,84 @@
     <ClInclude Include="include\gearworks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\lib\rendering\renderer\r_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\shader\r_shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\texture\r_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\window\r_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\bufferobjs\r_bufferobjs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vbo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_ibo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\userdef\engine\u_engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\userdef\gwehaviour\u_gwehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\input\i_input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\presets\2dim\rectangle\p2d_rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\presets\2dim\default\p2d_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\presets\2dim\triangle\p2d_triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\lib\imp_rendering.cpp">
+    <ClCompile Include="source\lib\rendering\renderer\imp_r_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\imp_input.cpp">
+    <ClCompile Include="source\lib\input\imp_i_input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\imp_nonstatic.cpp">
+    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\imp_shapes.cpp">
+    <ClCompile Include="source\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bin\dependencies\stb\stb_image.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\rendering\shader\imp_r_shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\rendering\texture\imp_r_texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\rendering\window\imp_r_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\userdef\gwehaviour\imp_u_gwehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\presets\2dim\default\imp_p2d_def.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\presets\2dim\triangle\imp_p2d_triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

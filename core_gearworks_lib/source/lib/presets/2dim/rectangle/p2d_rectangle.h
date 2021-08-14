@@ -1,0 +1,26 @@
+#ifndef P2D_RECTANGLE_H
+#define P2D_RECTANGLE_H
+
+#include "../default/p2d_def.h"
+
+class gearworks::rectangle : public defshape {
+private:
+	// The default-used indices
+	unsigned int indices[6] = { 0, 1, 2, 0, 3, 2 };
+public:
+	// Use the default shape constructor
+	using defshape::defshape;
+
+	/// <summary>
+	/// Creates a Rectangle struct and its appropriate VBOs and IBO.
+	/// A blend colour and a texture may be given.
+	/// </summary>
+	/// <param name="renderer">The renderer that the rectangle will be 'bound' to.</param>
+	/// <param name="position">The starting position coordinate of the rectangle primitive, with 0 as its center.</param>
+	/// <param name="scale">The scale values of the rectangle primitive.</param>
+	/// <param name="texture_path">The texture to use for the rectangle.</param>
+	/// <param name="blend_colour">The colour to render the rectangle. Default is white.</param>
+	void create(gearworks::renderer *renderer, glm::vec3 position, glm::vec3 scale, std::string texture_path, glm::vec4 blend_colour = glm::vec4(1.0, 1.0, 1.0, 1.0));
+};
+
+#endif // header guard

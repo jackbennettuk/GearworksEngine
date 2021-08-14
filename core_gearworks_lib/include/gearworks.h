@@ -1,25 +1,32 @@
-// ---
+// ---------------------------------------------------------------------
 // Gearworks Engine: gearworks.h - main library header file
 // Include this in your project to make use of the Gearworks game engine
-// ---
+// ---------------------------------------------------------------------
 
 #ifndef GWREND_H
 #define GWREND_H
 
+// -------------------------------------------
+// Include third-party and system dependencies
+// -------------------------------------------
+
+// System
 #include <iostream>
 #include <list>
 #include <fstream>
 #include <sstream>
-
 #include <Windows.h>
 
+// GLM
 #include <opengl/glm/vec4.hpp>
 #include <opengl/glm/mat4x4.hpp>
 #include <opengl/glm/gtc/matrix_transform.hpp>
 
+// Glad
 #include <opengl/Glad/glad.h>
 #include <opengl/GLFW3/glfw3.h>
 
+// stb_image
 #include <stb/stb_image.h>
 
 #pragma region Macros
@@ -114,26 +121,51 @@ namespace gearworks {
 	/// <summary>
 	/// Sets up blending to allow for transparent pixels or textures.
 	/// </summary>
-	static void config_blending();
+	inline static void config_blending() {
+		// Enable blending for transparency
+		GL_CALL(glEnable(GL_BLEND));
+		GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+	}
+
 	/// <summary>
 	/// Clears the screen of the window assigned to the current OpenGL context.
 	/// </summary>
 	/// <param name="colour">The colour of the screen to clear. If not given, the screen will be cleared to black.</param>
-	static void clear_screen(glm::vec3 colour = glm::vec3(0));
+	inline static void clear_screen(glm::vec3 colour = glm::vec3(0)) {
+		// Change the background colour to the colour variable
+		GL_CALL(glClearColor(colour.r, colour.g, colour.b, 1.0f));
+		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+	}
+
 	/// <summary>
 	/// Binds a given shader program.
 	/// </summary>
 	/// <param name="shader_program_id">The shader program to bind.</param>
-	static void bind_program(unsigned int shader_program_id);
+	inline static void bind_program(unsigned int shader_program_id) {
+		// Bind a shader program via its id
+		GL_CALL(glUseProgram(shader_program_id));
+	}
+
 	/// <summary>
 	/// Unbinds all shader programs.
 	/// </summary>
-	static void unbind_program();
+	inline static void unbind_program() {
+		// Unbind any shader programs
+		GL_CALL(glUseProgram(0));
+	}
+
 	/// <summary>
 	/// Turns wireframe rendering on or off.
 	/// </summary>
 	/// <param name="wireframe">Either on or off, basically.</param>
-	static void toggle_wireframe(bool wireframe);
+	inline static void toggle_wireframe(bool wireframe) {
+		// Set the OpenGl polygon mode accordingly.
+		if (wireframe) {
+			GL_CALL(glPolygonMode(GL_FRONT_AND_BACK, GL_LINE));
+		} else {
+			GL_CALL(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
+		}
+	}
 
 #pragma endregion
 #pragma region Shaders
@@ -229,7 +261,7 @@ namespace gearworks {
 
 #pragma endregion
 
-#pragma region Nonstatic
+#pragma region User-defined
 
 	/// <summary>
 	/// Class for all user logic to be referenced in.
@@ -245,8 +277,42 @@ namespace gearworks {
 #pragma endregion
 }
 
-// This file defines the classes in the gearworks namespace.
-// (It doesn't define each member of the classes - it just declares them. Those are defined in their own files, like imp_input.cpp or imp_shapes.cpp)
-#include "../source/lib/defs.h"
+// ------------------------------------------------------------------------
+// If not otherwise specified, include the definition files for the library
+// ------------------------------------------------------------------------
+
+// Rendering
+#ifndef GW_NOINCLUDE_RENDER_DEFS
+
+#include "../source/lib/rendering/shader/r_shader.h"
+#include "../source/lib/rendering/bufferobjs/r_bufferobjs.h"
+#include "../source/lib/rendering/texture/r_texture.h"
+#include "../source/lib/rendering/window/r_window.h"
+#include "../source/lib/rendering/renderer/r_renderer.h"
+
+#endif // Rendering files
+
+// Input
+#ifndef GW_NOINCLUDE_INPUT_DEFS
+
+#include "../source/lib/input/i_input.h"
+
+#endif // Input files
+
+// Presets
+#ifndef GW_NOINCLUDE_PRESET_DEFS
+
+#include "../source/lib/presets/2dim/rectangle/p2d_rectangle.h"
+#include "../source/lib/presets/2dim/triangle/p2d_triangle.h"
 
 #endif
+
+// User-defined classes
+#ifndef GW_NOINCLUDE_NONSTATIC_DEFS
+
+#include "../source/lib/userdef/engine/u_engine.h"
+#include "../source/lib/userdef/gwehaviour/u_gwehaviour.h"
+
+#endif // Userdef files
+
+#endif // Header guard

@@ -101,6 +101,8 @@ Currently, there has not been any experimental versions.
 - \[+] Abstracted some update code to the `gwehaviour.update()` function
 - \[+] Removed duplicate dependencies from the demo project ([#2](https://github.com/jackbennettuk/GearworksEngine/issues/2)).
 - \[+] Ignored warning LNK4098 ([#3](https://github.com/jackbennettuk/GearworksEngine/issues/3))
+### 2021/08/14 - version `d3.1.1`:
+- \[+] Refactored library code classes into more seperated files for readability
 
 </details>
 
