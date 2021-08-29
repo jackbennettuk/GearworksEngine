@@ -19,7 +19,7 @@ public:
 	/// <param name="vertices">The starting vertex coordinates to use.</param>
 	/// <param name="texture_path">The texture to use for the rectangle.</param>
 	/// <param name="blend_colour">The colour to render the rectangle. Default is white.</param>
-	void create(gearworks::renderer *renderer, glm::vec2 vertices[3], std::string texture_path, glm::vec4 blend_colour = glm::vec4(1.0, 1.0, 1.0, 1.0));
+	void create(gearworks::renderer *renderer, vec2 vertices[3], std::string texture_path, vec4 blend_colour = vec4(255, 255, 255, 255));
 };
 
 #endif // header guard

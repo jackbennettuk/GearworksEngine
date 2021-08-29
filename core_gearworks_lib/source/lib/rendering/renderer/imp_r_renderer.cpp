@@ -4,8 +4,8 @@ gearworks::renderer::renderer() :
 	cur_shader_program_id(0),
 	cur_window(),
 	project_matrix(NULL),
-	view_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
-	model_matrix(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
+	view_matrix(glm::translate(mat4(1.0f), vec3(0, 0, 0))),
+	model_matrix(glm::translate(mat4(1.0f), vec3(0, 0, 0))),
 	current_zoom(1.0f)
 {}
 gearworks::renderer::~renderer() {
@@ -29,7 +29,7 @@ void gearworks::renderer::update_renderer() {
 	);
 
 	// Update the model-view-projection matrix
-	glm::mat4 mvp_matrix = project_matrix * view_matrix * model_matrix;
+	mat4 mvp_matrix = project_matrix * view_matrix * model_matrix;
 
 	// Apply this matrix via the vertex shader
 	gearworks::modify_uniform_4m(&cur_shader_program_id, "u_ModelViewProjMat", mvp_matrix);

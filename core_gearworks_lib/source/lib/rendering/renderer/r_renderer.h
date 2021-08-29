@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// Matrix used in calculation of the 'ModelViewProjection' or 'MVP' matrix.
 	/// </summary>
-	glm::mat4 project_matrix, view_matrix, model_matrix;
+	mat4 project_matrix, view_matrix, model_matrix;
 
 	/// <summary>
 	/// Constructor for the GW renderer.

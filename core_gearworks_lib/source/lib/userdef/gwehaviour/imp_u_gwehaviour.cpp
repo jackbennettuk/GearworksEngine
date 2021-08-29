@@ -39,7 +39,6 @@ void gearworks::gwehaviour::initialize() {
 	GW_INIT_GLAD();
 
 	// Enable multi-sample anti-aliasing
-	// TODO: make this an option for lower-end machines
 	GL_CALL(glEnable(GL_MULTISAMPLE));
 
 	// Enable transparent blending through the main renderer instance

@@ -1,6 +1,6 @@
 #include "p2d_triangle.h"
 
-void gearworks::triangle::create(gearworks::renderer *renderer, glm::vec2 vertices[3], std::string texture_path, glm::vec4 blend_colour) {
+void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3], std::string texture_path, vec4 blend_colour) {
 	// Specify that the type of primitive here is triangle, or 0.
 	primitive_type = 0;
 

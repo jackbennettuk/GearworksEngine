@@ -1,17 +1,16 @@
 #include "p2d_def.h"
 
 void defshape::apply_transformations() {
-
 	// Create an identity matrix to store the applied transformations
-	glm::mat4 applied_transformation = glm::mat4(1.0f);
+	mat4 applied_transformation = mat4(1.0f);
 
 	// Add the active translation to the stored transformations variable
 	applied_transformation = glm::translate(applied_transformation, active_translation);
 
 	// Add the active rotation to the stored transformations variable, with the given axes being affected
-	if (active_rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.x, glm::vec3(1, 0, 0));
-	if (active_rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.y, glm::vec3(0, 1, 0));
-	if (active_rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.z, glm::vec3(0, 0, 1));
+	if (active_rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.x, vec3(1, 0, 0));
+	if (active_rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.y, vec3(0, 1, 0));
+	if (active_rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.z, vec3(0, 0, 1));
 
 	// Add the active scale to the stored transformations variable
 	applied_transformation = glm::scale(applied_transformation, active_scaling);
@@ -22,7 +21,7 @@ void defshape::apply_transformations() {
 
 	// Reset the translation of the model matrix back to 0
 	// This step ensures that the object rotates around its local origin, rather than the world space origin
-	applied_transformation = glm::translate(applied_transformation, glm::vec3(0.0f));
+	applied_transformation = glm::translate(applied_transformation, vec3(0.0f));
 
 	// Then apply this change to the renderer.
 	renderer_handle->model_matrix = applied_transformation;
@@ -35,9 +34,9 @@ defshape::defshape() :
 	texture(),
 	vao(),
 	ibo(),
-	active_rotation(glm::vec3(0.0f)),
-	active_scaling(glm::vec3(1.0f)),		// The matrix begins at 1x size.
-	active_translation(glm::vec3(0.0f)),
+	active_rotation(vec3(0.0f)),
+	active_scaling(vec3(1.0f)),		// The matrix begins at 1x size.
+	active_translation(vec3(0.0f)),
 	primitive_type(0),
 	texture_object(nullptr)
 {}
@@ -55,7 +54,7 @@ void defshape::render() {
 
 	// Set the texture and colour uniform
 	gearworks::modify_uniform_1i(renderer_handle->get_currentshaderprogram(), "u_Texture", 0);
-	gearworks::modify_uniform_4fv(renderer_handle->get_currentshaderprogram(), "u_Colour", colour);
+	gearworks::modify_uniform_4fv(renderer_handle->get_currentshaderprogram(), "u_Colour", vec4(colour.r / 255, colour.g / 255, colour.b / 255, colour.a / 255));
 
 	// Draw the shape
 	GLsizei count = 0;

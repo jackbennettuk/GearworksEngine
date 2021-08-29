@@ -78,27 +78,35 @@ if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {\
 }
 
 #pragma endregion
+#pragma region Aliases
+
+typedef glm::vec2 vec2;		//done
+typedef glm::vec3 vec3;		//done
+typedef glm::vec4 vec4;
+typedef glm::mat4 mat4;
+
+#pragma endregion
 
 namespace gearworks {
 #pragma region Colours
-	const static glm::vec3 col_black = glm::vec3(0.0f, 0.0f, 0.0f);						// Gearworks default: black colour
-	const static glm::vec3 col_verydarkgray = glm::vec3(0.10f, 0.10f, 0.10f);			// Gearworks default: very dark gray colour
-	const static glm::vec3 col_darkgray = glm::vec3(0.25f, 0.25f, 0.25f);				// Gearworks default: dark gray colour
-	const static glm::vec3 col_midgray = glm::vec3(0.5f, 0.5f, 0.5f);					// Gearworks default: 50/50 gray colour
-	const static glm::vec3 col_lightgray = glm::vec3(0.75f, 0.75f, 0.75f);				// Gearworks default: light gray colour
-	const static glm::vec3 col_verylightgray = glm::vec3(0.90f, 0.90f, 0.90f);			// Gearworks default: very light gray colour
-	const static glm::vec3 col_white = glm::vec3(1.00f, 1.00f, 1.00f);					// Gearworks default: white colour
+	const static vec3 col_black = vec3(0, 0, 0);						// Gearworks default: black colour
+	const static vec3 col_verydarkgray = vec3(26, 26, 26);			// Gearworks default: very dark gray colour
+	const static vec3 col_darkgray = vec3(64, 64, 64);				// Gearworks default: dark gray colour
+	const static vec3 col_midgray = vec3(128, 128, 128);				// Gearworks default: 50/50 gray colour
+	const static vec3 col_lightgray = vec3(191, 191, 191);			// Gearworks default: light gray colour
+	const static vec3 col_verylightgray = vec3(230, 230, 230);		// Gearworks default: very light gray colour
+	const static vec3 col_white = vec3(255, 255, 255);				// Gearworks default: white colour
 
-	const static glm::vec3 col_brightred = glm::vec3(1.00f, 0.00f, 0.00f);				// Gearworks default: bright red colour
-	const static glm::vec3 col_brightgreen = glm::vec3(0.00f, 1.00f, 0.00f);			// Gearworks default: bright green colour
-	const static glm::vec3 col_brightblue = glm::vec3(0.00f, 0.00f, 1.00f);				// Gearworks default: bright blue colour
-	const static glm::vec3 col_brightyellow = glm::vec3(1.00f, 1.00f, 0.00f);			// Gearworks default: bright yellow colour
-	const static glm::vec3 col_brightmagenta = glm::vec3(1.00f, 0.00f, 1.00f);			// Gearworks default: bright magenta colour
-	const static glm::vec3 col_brightcyan = glm::vec3(0.00f, 1.00f, 1.00f);				// Gearworks default: bright cyan colour
+	const static vec3 col_brightred = vec3(255, 0, 0);				// Gearworks default: bright red colour
+	const static vec3 col_brightgreen = vec3(0, 255, 0);				// Gearworks default: bright green colour
+	const static vec3 col_brightblue = vec3(0, 0, 255);				// Gearworks default: bright blue colour
+	const static vec3 col_brightyellow = vec3(255, 255, 0);			// Gearworks default: bright yellow colour
+	const static vec3 col_brightmagenta = vec3(255, 0, 255);			// Gearworks default: bright magenta colour
+	const static vec3 col_brightcyan = vec3(0, 255, 255);				// Gearworks default: bright cyan colour
 
-	const static glm::vec3 col_orange = glm::vec3(0.75f, 0.31f, 0.13f);					// Gearworks default: orange colour
-	const static glm::vec3 col_orangered = glm::vec3(0.91f, 0.28f, 0.15f);				// Gearworks default: orange-red colour (think Reddit branding)
-	const static glm::vec3 col_brown = glm::vec3(0.33f, 0.21f, 0.18f);					// Gearworks default: brown colour
+	const static vec3 col_orange = vec3(191, 79, 37);					// Gearworks default: orange colour
+	const static vec3 col_orangered = vec3(230, 0.28f, 38);			// Gearworks default: orange-red colour
+	const static vec3 col_brown = vec3(79, 64, 39);					// Gearworks default: brown colour
 #pragma endregion
 #pragma region Rendering
 
@@ -126,10 +134,21 @@ namespace gearworks {
 	/// <summary>
 	/// Clears the screen of the window assigned to the current OpenGL context.
 	/// </summary>
-	/// <param name="colour">The colour of the screen to clear. If not given, the screen will be cleared to black.</param>
-	inline static void clear_screen(glm::vec3 colour = glm::vec3(0)) {
+	/// <param name="colour">The colour of the screen to clear in RGB255 format. If not given, the screen will be cleared to black.</param>
+	inline static void clear_screen(vec3 colour = vec3(0)) {
 		// Change the background colour to the colour variable
-		GL_CALL(glClearColor(colour.r, colour.g, colour.b, 1.0f));
+		GL_CALL(glClearColor(colour.r / 255, colour.g / 255, colour.b / 255, 1.0f));
+		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+	}
+	/// <summary>
+	/// Clears the screen of the window assigned to the current OpenGL context.
+	/// </summary>
+	/// <param name="r">The value for red (0-255). Defaults to 0.</param>
+	/// <param name="g">The value for green (0-255). Defaults to 0.</param>
+	/// <param name="b">The value for blue (0-255). Defaults to 0.</param>
+	inline static void clear_screen(float r = 0, float g = 0, float b = 0) {
+		// Change the background colour to the colour variable
+		GL_CALL(glClearColor(r / 255, g / 255, b / 255, 1.0f));
 		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
 	}
 
@@ -195,19 +214,19 @@ namespace gearworks {
 	/// <summary>
 	/// Changes a uniform vec2 in a given program.
 	/// </summary>
-	void modify_uniform_2fv(const unsigned int *program, const char *uniform_name, glm::vec2 val);
+	void modify_uniform_2fv(const unsigned int *program, const char *uniform_name, vec2 val);
 	/// <summary>
 	/// Changes a uniform vec3 in a given program.
 	/// </summary>
-	void modify_uniform_3fv(const unsigned int *program, const char *uniform_name, glm::vec3 val);
+	void modify_uniform_3fv(const unsigned int *program, const char *uniform_name, vec3 val);
 	/// <summary>
 	/// Changes a uniform vec4 in a given program.
 	/// </summary>
-	void modify_uniform_4fv(const unsigned int *program, const char *uniform_name, glm::vec4 val);
+	void modify_uniform_4fv(const unsigned int *program, const char *uniform_name, vec4 val);
 	/// <summary>
 	/// Changes a uniform mat4 in a given program.
 	/// </summary>
-	void modify_uniform_4m(const unsigned int *program, const char *uniform_name, glm::mat4 val);
+	void modify_uniform_4m(const unsigned int *program, const char *uniform_name, mat4 val);
 
 #pragma endregion
 #pragma region Buffer objects
@@ -301,7 +320,7 @@ namespace gearworks {
 #include "../source/lib/presets/2dim/rectangle/p2d_rectangle.h"
 #include "../source/lib/presets/2dim/triangle/p2d_triangle.h"
 
-#endif
+#endif // Preset shape files
 
 // User-defined classes
 #ifndef GW_NOINCLUDE_NONSTATIC_DEFS

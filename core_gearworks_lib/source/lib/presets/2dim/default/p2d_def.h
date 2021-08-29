@@ -55,22 +55,51 @@ public:
 	/// </summary>
 	void render();
 
+#pragma region Transformation methods
 	/// <summary>
 	/// Translates, or moves, the shape by a given distance.
 	/// </summary>
-	/// <param name="transformation">The distance to move by in x, y, and z.</param>
-	inline void translate(glm::vec3 transformation) { active_translation += transformation; }		// cache a translation to be applied in render()
+	/// <param name="x">Value to move on the X axis.</param>
+	/// <param name="y">Value to move on the Y axis.</param>
+	/// <param name="z">Value to move on the Z axis.</param>
+	inline void translate(float x, float y, float z) { active_translation += glm::vec3(x, y, z); }
+	/// <summary>
+	/// Translates, or moves, the shape by a given distance.
+	/// </summary>
+	/// <param name="vect">Value to move on the 3 axes stored as a glm::vec3.</param>
+	inline void translate(glm::vec3 vect) { active_translation += vect; }
+
 	/// <summary>
 	/// Rotates the shape by a given amount.
 	/// </summary>
-	/// <param name="scaling">The amount to rotate by in degrees.</param>
-	/// <param name="axes">The axes to rotate around.</param>
-	inline void rotate(glm::vec3 rotation) { active_rotation -= glm::radians(rotation); }			// cache a rotation amount to be applied in render() (subtracted to go clockwise by default)
+	/// <param name="x">Value to rotate on the X axis.</param>
+	/// <param name="y">Value to rotate on the Y axis.</param>
+	/// <param name="z">Value to rotate on the Z axis.</param>
+	inline void rotate(float x, float y, float z) { active_rotation -= glm::radians(glm::vec3(x, y, z)); } // subtracted to rotate clockwise by default
+	/// <summary>
+	/// Rotates the shape by a given amount.
+	/// </summary>
+	/// <param name="vect">Value to rotate the shape on the 3 axes stored as a glm::vec3.</param>
+	inline void rotate(glm::vec3 vect) { active_rotation -= glm::radians(vect); } // subtracted to rotate clockwise by default
+
 	/// <summary>
 	/// Scales the shape by a given amount.
 	/// </summary>
-	/// <param name="scaling">The amount to scale by.</param>
-	inline void scale(glm::vec3 scaling) { active_scaling += scaling; }								// cache an amount to be scaled by in render()
+	/// <param name="x">Value to scale on the X axis.</param>
+	/// <param name="y">Value to scale on the Y axis.</param>
+	/// <param name="z">Value to scale on the Z axis.</param>
+	inline void scale(float x, float y, float z) { active_scaling += glm::vec3(x, y, z); }
+	/// <summary>
+	/// Scales the shape by a given amount.
+	/// </summary>
+	/// <param name="vect">Value to scale by on the 3 axes stored as a glm::vec3.</param>
+	inline void scale(glm::vec3 vect) { active_scaling += vect; }
+	/// <summary>
+	/// Scales the shape by a given amount.
+	/// </summary>
+	/// <param name="val">Value to scale on all axes.</param>
+	inline void scale(float val) { active_scaling += glm::vec3(val); }
+#pragma endregion
 };
 
 #endif // header guard

@@ -1,6 +1,6 @@
 #include "p2d_rectangle.h"
 
-void gearworks::rectangle::create(gearworks::renderer *renderer, glm::vec3 position, glm::vec3 scale, std::string texture_path, glm::vec4 blend_colour) {
+void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, vec3 scale, std::string texture_path, vec4 blend_colour) {
 	// Specify that the type of primitive here is rectangle, or 1.
 	primitive_type = 1;
 
@@ -28,6 +28,7 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, glm::vec3 posit
 
 	// Initialize the VAO
 	vao.initialize();
+
 	// Initialize a new VBO
 	vertex_buffer_object vbo;
 	vbo.initialize(20, vbo_data);

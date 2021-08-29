@@ -4,19 +4,21 @@ gearworks::rectangle rect;
 gearworks::triangle tri;
 
 void gearworks::engine::initialize() {
-	rect.create(renderer_handle, glm::vec3(-300, 0, 0), glm::vec3(400), "resources/textures/crate.png");
+	rect.create(renderer_handle, vec3(-400, 0, 0), vec3(400), "resources/textures/crate.png");
 
-	glm::vec2 vertices[3] = {
-		glm::vec2(-200, -200),
-		glm::vec2(0, 200),
-		glm::vec2(200, -200)
+	vec2 vertices[3] = {
+		vec2(-200, -200),
+		vec2(0, 200),
+		vec2(200, -200)
 	};
 
 	tri.create(renderer_handle, vertices, "resources/textures/wall.jpeg");
-	tri.translate(glm::vec3(300, 0, 0));
+	tri.translate(400, 0, 0);
+	tri.colour = vec4(255, 0, 0, 255);
 }
 void gearworks::engine::update() {
-	tri.rotate(glm::vec3(0, 0, 1));
+	tri.rotate(0, 0, 2);
+	rect.rotate(0, 0, -2);
 }
 void gearworks::engine::render() {
 	// Clears the screen to a dark grey colour.

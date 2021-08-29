@@ -101,8 +101,9 @@ Currently, there has not been any experimental versions.
 - \[+] Refactored library code to more seperated, readable files
 - \[+] Removed duplicate dependencies from the demo project ([#2](https://github.com/jackbennettuk/GearworksEngine/issues/2)).
 - \[+] Ignored warning LNK4098 ([#3](https://github.com/jackbennettuk/GearworksEngine/issues/3))
-### 2021/08/29 - version `dev-v3.1.2`:
-- \[++] Fixed a major rotation bug as detailed in issue [#4](https://github.com/jackbennettuk/GearworksEngine/issues/4)
+### 2021/08/29 - versions `dev-v3.1.2` - `dev-v3.1.3`:
+- \[+] Minor changes to simplify some functions, e.g. aliases for glm objects
+- \[!] Fixed a major rotation bug as detailed in issue [#4](https://github.com/jackbennettuk/GearworksEngine/issues/4)
 </details>
 
 ---
