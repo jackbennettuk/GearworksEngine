@@ -16,7 +16,7 @@ void gearworks::engine::initialize() {
 	tri.translate(glm::vec3(300, 0, 0));
 }
 void gearworks::engine::update() {
-	tri.rotate(glm::vec3(0, 0, 0.5));
+	tri.rotate(glm::vec3(0, 0, 1));
 }
 void gearworks::engine::render() {
 	// Clears the screen to a dark grey colour.
@@ -25,24 +25,24 @@ void gearworks::engine::render() {
 	rect.render();
 	tri.render();
 }
-void gearworks::engine::clean() {
-}
+void gearworks::engine::clean() 
+{}
 
 int main() {
-	// Base gearworks behaviour object
+	// Base gearworks behaviour object that handles all the behind-the-scenes logic
 	gearworks::gwehaviour baseobj;
 
 	// Set the base object's initial shaders
 	baseobj.vertex_shader_path = "resources/shaders/vert.glsl";
 	baseobj.fragment_shader_path = "resources/shaders/frag.glsl";
 
-	// Initialize base object
+	// Initialize the base object
 	baseobj.initialize();
 
-	// Update base object
+	// Update the base object (This function runs every frame until the window is closed)
 	baseobj.update();
 
-	// Destroy base object
+	// Destroy the base object when the window is closed
 	baseobj.destroy();
 
 	// End the application successfully

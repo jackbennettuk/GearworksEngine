@@ -1,5 +1,6 @@
 // ---------------------------------------------------------------------
 // Gearworks Engine: gearworks.h - main library header file
+// ---------------------------------------------------------------------
 // Include this in your project to make use of the Gearworks game engine
 // ---------------------------------------------------------------------
 
@@ -35,12 +36,7 @@
 /// The maximum amount of keys that GLFW can handle at once.
 /// The value '377' is based on the extended ASCII table at https://www.ascii-code.com/.
 /// </summary>
-#define GW_KEY_AMOUNT 377
-
-/// <summary>
-/// A string to use in place of null in gearworks operations.
-/// </summary>
-#define GW_NULLSTR "ngiven"
+#define GLFW_KEY_AMOUNT 377
 
 /// <summary>
 /// Checks an OpenGL function for errors - if there is one, output the line and file-path at which the error occurs to the console.

@@ -65,7 +65,7 @@ public:
 	/// </summary>
 	/// <param name="scaling">The amount to rotate by in degrees.</param>
 	/// <param name="axes">The axes to rotate around.</param>
-	inline void rotate(glm::vec3 rotation) { active_rotation += +glm::radians(rotation); }			// cache a rotation amount to be applied in render()
+	inline void rotate(glm::vec3 rotation) { active_rotation -= glm::radians(rotation); }			// cache a rotation amount to be applied in render() (subtracted to go clockwise by default)
 	/// <summary>
 	/// Scales the shape by a given amount.
 	/// </summary>

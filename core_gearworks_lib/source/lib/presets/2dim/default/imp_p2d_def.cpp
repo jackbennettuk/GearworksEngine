@@ -1,27 +1,6 @@
 #include "p2d_def.h"
 
 void defshape::apply_transformations() {
-	// Variable to store the affected rotation axes
-	glm::vec3 _active_rotation_axes = glm::vec3(0, 0, 0);
-
-	// Get the affected axes for rotation
-	// x/r axis
-	if ((int)active_rotation.x != 1)
-		_active_rotation_axes.x = 1;		// if the x value of active_rotation is being changed, then the x axis is being affected.
-	else
-		_active_rotation_axes.x = 0;		// if not, set that axis to 0.
-
-	// y/g axis
-	if ((int)active_rotation.y != 1)
-		_active_rotation_axes.y = 1;		// if the y value of active_rotation is being changed, then the y axis is being affected.
-	else
-		_active_rotation_axes.y = 0;		// if not, set that axis to 0.
-
-	// z/b axis
-	if ((int)active_rotation.z != 1)
-		_active_rotation_axes.z = 1;		// if the z value of active_rotation is being changed, then the z axis is being affected.
-	else
-		_active_rotation_axes.z = 0;		// if not, set that axis to 0.
 
 	// Create an identity matrix to store the applied transformations
 	glm::mat4 applied_transformation = glm::mat4(1.0f);
@@ -30,9 +9,9 @@ void defshape::apply_transformations() {
 	applied_transformation = glm::translate(applied_transformation, active_translation);
 
 	// Add the active rotation to the stored transformations variable, with the given axes being affected
-	if (_active_rotation_axes.x != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.x, glm::vec3(_active_rotation_axes.x, 0, 0));
-	if (_active_rotation_axes.y != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.y, glm::vec3(0, _active_rotation_axes.y, 0));
-	if (_active_rotation_axes.z != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.z, glm::vec3(0, 0, _active_rotation_axes.z));
+	if (active_rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.x, glm::vec3(1, 0, 0));
+	if (active_rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.y, glm::vec3(0, 1, 0));
+	if (active_rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.z, glm::vec3(0, 0, 1));
 
 	// Add the active scale to the stored transformations variable
 	applied_transformation = glm::scale(applied_transformation, active_scaling);
@@ -57,7 +36,7 @@ defshape::defshape() :
 	vao(),
 	ibo(),
 	active_rotation(glm::vec3(0.0f)),
-	active_scaling(glm::vec3(1.0f)),		// The matrix begins at 1x - default size.
+	active_scaling(glm::vec3(1.0f)),		// The matrix begins at 1x size.
 	active_translation(glm::vec3(0.0f)),
 	primitive_type(0),
 	texture_object(nullptr)

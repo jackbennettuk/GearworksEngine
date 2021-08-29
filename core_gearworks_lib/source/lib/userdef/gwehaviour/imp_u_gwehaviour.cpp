@@ -32,12 +32,6 @@ void gearworks::gwehaviour::initialize() {
 	// Initialize GLFW
 	GW_INIT_GLFW();
 
-	// Set window hints
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// Minimum OpenGL version = 3.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);						// ...
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);		// OpenGL profile = core
-	glfwWindowHint(GLFW_SAMPLES, 4);									// Multisampling for MSAA anti-aliasing = 4 samples
-
 	// Create the window
 	renderer->create_window("Gearworks Engine - development version");
 
@@ -62,7 +56,7 @@ void gearworks::gwehaviour::initialize() {
 	input->initialize(renderer->get_currentwindowinstance());
 
 	// Then print the OpenGL version
-	std::cout << "\nRunning engine:\n";
+	std::cout << "\nRuntime:\n";
 	std::cout << "  Running with minimum OpenGL version " << glGetString(GL_VERSION) << ".\n";
 }
 
@@ -71,10 +65,10 @@ void gearworks::gwehaviour::update() {
 		// Bind the shader program
 		gearworks::bind_program(*(renderer->get_currentshaderprogram()));
 
-		// Update the renderer
-		renderer->update_renderer();
 		// Update the engine instance
 		main_engine->update();
+		// Update the renderer
+		renderer->update_renderer();
 
 		// Update the input manager
 		input->update();

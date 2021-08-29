@@ -24,7 +24,7 @@
     <ProjectGuid>{7a5cf318-bb65-4146-8280-1f8a49c79441}</ProjectGuid>
     <RootNamespace>nmsp_gearworks</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>demo</ProjectName>
+    <ProjectName>.demo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

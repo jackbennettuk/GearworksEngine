@@ -48,7 +48,7 @@ public:
 	/// </summary>
 	/// <param name="vertex_shader_path">Path to the vertex shader to use.</param>
 	/// <param name="fragment_shader_path">Path to the fragment shader to use.</param>
-	void initialize_shaders(std::string vertex_shader_path = GW_NULLSTR, std::string fragment_shader_path = GW_NULLSTR);
+	void initialize_shaders(std::string vertex_shader_path = "", std::string fragment_shader_path = "");
 
 	/// <summary>
 	/// Zooms in and out by a given amount.

@@ -12,16 +12,19 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, glm::vec3 posit
 	colour = blend_colour;
 
 	// This float array is the data to be set for the vbo.
-	// It stores the position data by converting the given vec2s to one unified standard float array.
+	// Here it stores the positions based on only size. The given position for the rectangle is translated on the model matrix next.
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
 	// It also stores the texture coordinates in the same order.
 	float vbo_data[] = {
-		// Position coordinates												// Texture coordinates
-		position.x - (scale.x / 2), position.y - (scale.y / 2), 0.0f,		0.0f, 0.0f,
-		position.x + (scale.x / 2), position.y - (scale.y / 2), 0.0f,		1.0f, 0.0f,
-		position.x + (scale.x / 2), position.y + (scale.y / 2), 0.0f,		1.0f, 1.0f,
-		position.x - (scale.x / 2), position.y + (scale.y / 2), 0.0f,		0.0f, 1.0f
+		// Position coordinates						// Texture coordinates
+		-(scale.x / 2), -(scale.y / 2), 0.0f,		0.0f, 0.0f,
+		 scale.x / 2,   -(scale.y / 2), 0.0f,		1.0f, 0.0f,
+		 scale.x / 2,     scale.y / 2, 0.0f,		1.0f, 1.0f,
+		-(scale.x) / 2,   scale.y / 2, 0.0f,		0.0f, 1.0f
 	};
+
+	// Translate the rectangle by position after setting to the correct size
+	translate(position);
 
 	// Initialize the VAO
 	vao.initialize();

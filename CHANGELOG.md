@@ -61,7 +61,6 @@ Currently, there has not been any experimental versions.
 - \[+] Applied all changed to the rectangle (from `dev-v1.6`) to the triangle struct. [Note: textures cannot be applied to triangles as of this version!]
 - \[+] Refactored VAO system again. For the final time? I think? (note: he was wrong)
 ### 2021/07/11 - version `dev-v1.7`:
-- \[++] Added the orange 'gear' window icon
 - \[+] Abstracted window management to `gwrendering.h` as part of the `gwrenderer` class
 - \[+] Abstracted orthographic initialization to the `gwrenderer` class.
 - \[+] Abstracted shader initialization to the `gwrenderer` class.
@@ -96,12 +95,14 @@ Currently, there has not been any experimental versions.
 - \[++] Created a demo project to store the demo executable (project `demo`)
 - \[++] Created namespace `gearworks` to store all classes and members related to the library
 - \[+] Refactored various functions etc
-### 2021/08/06 - versions `dev-v3.0.1` - `dev-v3.1`:
+### 2021/08/06 - versions `dev-v3.0.1` - `dev-v3.1.1`:
 - \[++] Added default colours to store vector-3s, e.g. `gearworks::col_orangered`
 - \[+] Abstracted some update code to the `gwehaviour.update()` function
+- \[+] Refactored library code to more seperated, readable files
 - \[+] Removed duplicate dependencies from the demo project ([#2](https://github.com/jackbennettuk/GearworksEngine/issues/2)).
 - \[+] Ignored warning LNK4098 ([#3](https://github.com/jackbennettuk/GearworksEngine/issues/3))
-
+### 2021/08/29 - version `dev-v3.1.2`:
+- \[++] Fixed a major rotation bug as detailed in issue [#4](https://github.com/jackbennettuk/GearworksEngine/issues/4)
 </details>
 
 ---
