@@ -35,14 +35,14 @@ void gearworks::renderer::update_renderer() {
 	gearworks::modify_uniform_4m(&cur_shader_program_id, "u_ModelViewProjMat", mvp_matrix);
 }
 
-void gearworks::renderer::create_window(std::string title, int sizeX, int sizeY) {
+void gearworks::renderer::create_window(string title, int sizeX, int sizeY) {
 	// Heap-allocate the window variable
 	cur_window = new gearworks::window();
 	// Assign the window pointer
 	cur_window->create_window(title, sizeX, sizeY);
 }
 
-void gearworks::renderer::initialize_shaders(std::string vertex_shader_path, std::string fragment_shader_path) {
+void gearworks::renderer::initialize_shaders(string vertex_shader_path, string fragment_shader_path) {
 	// Create the main shader program
 	cur_shader_program_id = GL_CALL(glCreateProgram());
 

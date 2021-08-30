@@ -104,6 +104,10 @@ Currently, there has not been any experimental versions.
 ### 2021/08/29 - versions `dev-v3.1.2` - `dev-v3.1.3`:
 - \[+] Minor changes to simplify some functions, e.g. aliases for glm objects
 - \[!] Fixed a major rotation bug as detailed in issue [#4](https://github.com/jackbennettuk/GearworksEngine/issues/4)
+### 2021/08/30 - version `dev-v3.2.0`:
+- \[++] Added the `properties` struct to shapes to better organise attributes such as colour and position
+- \[+] Slightly redesigned the way shape transformations are applied every frame
+- \[!] Fixed a bug where partially transparent shapes would occasionally not render
 </details>
 
 ---

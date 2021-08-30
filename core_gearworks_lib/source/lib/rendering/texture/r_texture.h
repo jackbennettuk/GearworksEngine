@@ -8,7 +8,7 @@ private:
 	// Renderer ID
 	unsigned int renderer_id;
 	// Path to the image file
-	std::string path;
+	string path;
 	// Texture properties - width, height, and bits-per-pixel.
 	int width, height, bits_per_pixel;
 public:
@@ -21,7 +21,7 @@ public:
 	/// Load a given image into the texture.
 	/// </summary>
 	/// <param name="_path">The path of the texture as a string.</param>
-	void load(std::string _path);
+	void load(string _path);
 
 	/// <summary>
 	/// Binds the texture at a (optional) given slot.

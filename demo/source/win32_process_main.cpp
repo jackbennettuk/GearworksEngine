@@ -14,11 +14,10 @@ void gearworks::engine::initialize() {
 
 	tri.create(renderer_handle, vertices, "resources/textures/wall.jpeg");
 	tri.translate(400, 0, 0);
-	tri.colour = vec4(255, 0, 0, 255);
 }
 void gearworks::engine::update() {
-	tri.rotate(0, 0, 2);
-	rect.rotate(0, 0, -2);
+	tri.rotate(0, 0, -2);
+	rect.properties.rotation.z += 2;
 }
 void gearworks::engine::render() {
 	// Clears the screen to a dark grey colour.

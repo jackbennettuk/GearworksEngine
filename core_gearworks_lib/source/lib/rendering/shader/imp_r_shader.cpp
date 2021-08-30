@@ -1,6 +1,6 @@
 #include "r_shader.h"
 
-gearworks::shader::shader(const std::string &path, unsigned int type, unsigned int program)
+gearworks::shader::shader(const string &path, unsigned int type, unsigned int program)
 	: shader_program_id(program) {
 	// Compile the given source and attach the new shader to the program
 	unsigned int shaderID = gearworks::compile_shader(type, gearworks::parse_shader(path));
@@ -16,12 +16,12 @@ gearworks::shader::shader(const std::string &path, unsigned int type, unsigned i
 	GL_CALL(glDeleteShader(shaderID));
 }
 
-std::string gearworks::parse_shader(const std::string &path) {
+string gearworks::parse_shader(const string &path) {
 	// Get the file associated with the given path
 	std::ifstream file(path);
 
 	std::stringstream result;
-	std::string line;
+	string line;
 
 	while (getline(file, line)) {
 		// Add each line of the source code to the result variable
@@ -32,7 +32,7 @@ std::string gearworks::parse_shader(const std::string &path) {
 	return result.str();
 }
 
-unsigned int gearworks::compile_shader(unsigned int type, const std::string &source) {
+unsigned int gearworks::compile_shader(unsigned int type, const string &source) {
 	// Set the shader renderer id to a new shader of the given type
 	unsigned int id = glCreateShader(type);
 

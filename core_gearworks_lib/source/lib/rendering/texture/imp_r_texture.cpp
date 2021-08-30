@@ -7,7 +7,7 @@ gearworks::texture_2d::texture_2d()
 	  bits_per_pixel(NULL)
 {}
 
-void gearworks::texture_2d::load(std::string _path) {
+void gearworks::texture_2d::load(string _path) {
 	// Update the local path variable.
 	path = _path;
 

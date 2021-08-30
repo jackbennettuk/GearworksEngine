@@ -4,7 +4,7 @@ gearworks::window::window()
 	: window_title(""), window_width(0), window_height(0), aspect_ratio(0), glfw_handle(0)
 {}
 
-void gearworks::window::create_window(std::string title, int width, int height) {
+void gearworks::window::create_window(string title, int width, int height) {
 	// Set window hints
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);						// Minimum OpenGL version = 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);						// ...

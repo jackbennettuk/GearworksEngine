@@ -14,7 +14,7 @@ public:
 	/// <param name="path">The path to the source file for the shader</param>
 	/// <param name="type">The type of shader, given as an OpenGL macro</param>
 	/// <param name="program">A handle to the program the shader should be linked to</param>
-	shader(const std::string &path, unsigned int type, unsigned int program);
+	shader(const string &path, unsigned int type, unsigned int program);
 
 	/// <returns>the handle to the shader program that this shader is bound to</returns>
 	inline unsigned int *get_shaderprogramid() { return &shader_program_id; }

@@ -1,6 +1,6 @@
 #include "p2d_rectangle.h"
 
-void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, vec3 scale, std::string texture_path, vec4 blend_colour) {
+void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, vec3 scale, string texture_path, vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is rectangle, or 1.
 	primitive_type = 1;
 
@@ -9,7 +9,8 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, 
 
 	// Initialize variables here, except this time with parameters
 	renderer_handle = renderer;
-	colour = blend_colour;
+	properties.colour = blend_colour;
+	properties.opacity = blend_opacity;
 
 	// This float array is the data to be set for the vbo.
 	// Here it stores the positions based on only size. The given position for the rectangle is translated on the model matrix next.
@@ -23,8 +24,8 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, 
 		-(scale.x) / 2,   scale.y / 2, 0.0f,		0.0f, 1.0f
 	};
 
-	// Translate the rectangle by position after setting to the correct size
-	translate(position);
+	// Set the position to the given value
+	properties.position = position;
 
 	// Initialize the VAO
 	vao.initialize();

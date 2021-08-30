@@ -13,7 +13,7 @@ private:
 	float aspect_ratio;
 
 	// Window title
-	std::string window_title;
+	string window_title;
 public:
 	/// <summary>
 	/// Window default constructor - does not create a window. To do that, use the create_window() function.
@@ -26,7 +26,7 @@ public:
 	/// <param name="title">The title of the window.</param>
 	/// <param name="width">The width of the window (default is 720).</param>
 	/// <param name="height">The width of the window (default is 480).</param>
-	void create_window(std::string title, int sizeX = 720, int sizeY = 480);
+	void create_window(string title, int sizeX = 720, int sizeY = 480);
 
 	/// <summary>
 	/// Reevaluates properties such as width and height variables.
@@ -49,11 +49,11 @@ public:
 	inline float get_winasprat() { return aspect_ratio; }
 
 	/// <returns>the window title.</returns>
-	inline std::string get_wintitle() { return window_title; }
+	inline string get_wintitle() { return window_title; }
 	/// <summary>
 	/// Sets the window title with a given string as its parameter.
 	/// </summary>
-	inline void set_wintitle(std::string str) { window_title = str; glfwSetWindowTitle(glfw_handle, window_title.c_str()); }
+	inline void set_wintitle(string str) { window_title = str; glfwSetWindowTitle(glfw_handle, window_title.c_str()); }
 };
 
 

@@ -1,6 +1,6 @@
 #include "p2d_triangle.h"
 
-void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3], std::string texture_path, vec4 blend_colour) {
+void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3], string texture_path, vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is triangle, or 0.
 	primitive_type = 0;
 
@@ -9,7 +9,8 @@ void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3]
 
 	// Initialize variables here, except this time with parameters
 	renderer_handle = renderer;
-	colour = blend_colour;
+	properties.colour = blend_colour;
+	properties.opacity = blend_opacity;
 
 	// This float array is the data to be set for the vbo.
 	// It stores the position data by converting the given vec2s to one unified standard float array.

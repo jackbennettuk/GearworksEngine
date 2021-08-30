@@ -1,19 +1,27 @@
 #include "p2d_def.h"
 
+defshape::shape_properties_struct::shape_properties_struct() :
+	colour(NULL),
+	opacity(255),
+	position(vec3(0)),
+	rotation(vec3(0)),
+	scale(vec3(1))
+{}
+
 void defshape::apply_transformations() {
 	// Create an identity matrix to store the applied transformations
 	mat4 applied_transformation = mat4(1.0f);
 
 	// Add the active translation to the stored transformations variable
-	applied_transformation = glm::translate(applied_transformation, active_translation);
+	applied_transformation = glm::translate(applied_transformation, properties.position);
 
 	// Add the active rotation to the stored transformations variable, with the given axes being affected
-	if (active_rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.x, vec3(1, 0, 0));
-	if (active_rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.y, vec3(0, 1, 0));
-	if (active_rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, active_rotation.z, vec3(0, 0, 1));
+	if (properties.rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.x), vec3(1, 0, 0));
+	if (properties.rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.y), vec3(0, 1, 0));
+	if (properties.rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.z), vec3(0, 0, 1));
 
 	// Add the active scale to the stored transformations variable
-	applied_transformation = glm::scale(applied_transformation, active_scaling);
+	applied_transformation = glm::scale(applied_transformation, properties.scale);
 
 	// Apply these changes to the renderer by setting its model matrix and then updating it
 	renderer_handle->model_matrix = applied_transformation;
@@ -30,13 +38,8 @@ void defshape::apply_transformations() {
 
 defshape::defshape() :
 	renderer_handle(nullptr),
-	colour(NULL),
-	texture(),
 	vao(),
 	ibo(),
-	active_rotation(vec3(0.0f)),
-	active_scaling(vec3(1.0f)),		// The matrix begins at 1x size.
-	active_translation(vec3(0.0f)),
 	primitive_type(0),
 	texture_object(nullptr)
 {}
@@ -52,9 +55,17 @@ void defshape::render() {
 	// Bind the texture if it was given
 	texture_object->bind();
 
-	// Set the texture and colour uniform
+	// Set the texture slot
 	gearworks::modify_uniform_1i(renderer_handle->get_currentshaderprogram(), "u_Texture", 0);
-	gearworks::modify_uniform_4fv(renderer_handle->get_currentshaderprogram(), "u_Colour", vec4(colour.r / 255, colour.g / 255, colour.b / 255, colour.a / 255));
+	// Set the colour vec4
+	gearworks::modify_uniform_4fv(renderer_handle->get_currentshaderprogram(), "u_Colour", 
+		vec4(
+			properties.colour.r / 255, 
+			properties.colour.g / 255, 
+			properties.colour.b / 255, 
+			properties.opacity / 255
+		)
+	);
 
 	// Draw the shape
 	GLsizei count = 0;
@@ -70,8 +81,8 @@ void defshape::render() {
 			std::cout << "  Error: invalid primitive_type given in file inl_primitives!\n";
 			break;
 	}
-
-	// Apply outstanding transformations.
+	
+	// Update transformation with variables and user input
 	apply_transformations();
 
 	// Draw the rectangle

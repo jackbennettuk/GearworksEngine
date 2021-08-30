@@ -38,7 +38,7 @@ public:
 	/// <param name="title">The title of the window.</param>
 	/// <param name="sizeX">The width of the window.</param>
 	/// <param name="sizeY">The height of the window.</param>
-	void create_window(std::string title, int sizeX = 720, int sizeY = 480);
+	void create_window(string title, int sizeX = 720, int sizeY = 480);
 
 	/// <summary>
 	/// Initializes the global:
@@ -48,7 +48,7 @@ public:
 	/// </summary>
 	/// <param name="vertex_shader_path">Path to the vertex shader to use.</param>
 	/// <param name="fragment_shader_path">Path to the fragment shader to use.</param>
-	void initialize_shaders(std::string vertex_shader_path = "", std::string fragment_shader_path = "");
+	void initialize_shaders(string vertex_shader_path = "", string fragment_shader_path = "");
 
 	/// <summary>
 	/// Zooms in and out by a given amount.

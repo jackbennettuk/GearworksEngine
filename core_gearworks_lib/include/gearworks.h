@@ -80,8 +80,10 @@ if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {\
 #pragma endregion
 #pragma region Aliases
 
-typedef glm::vec2 vec2;		//done
-typedef glm::vec3 vec3;		//done
+typedef std::string string;
+
+typedef glm::vec2 vec2;
+typedef glm::vec3 vec3;
 typedef glm::vec4 vec4;
 typedef glm::mat4 mat4;
 
@@ -126,7 +128,7 @@ namespace gearworks {
 	/// Sets up blending to allow for transparent pixels or textures.
 	/// </summary>
 	inline static void config_blending() {
-		// Enable blending for transparency
+		// Enable blending
 		GL_CALL(glEnable(GL_BLEND));
 		GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 	}
@@ -194,14 +196,14 @@ namespace gearworks {
 	/// Takes a file path of a shader and returns the source code of the shader from that file as a string.
 	/// </summary>
 	/// <param name="path">The path to the source code of the shader.</param>
-	std::string parse_shader(const std::string &path);
+	string parse_shader(const string &path);
 
 	/// <summary>
 	/// Compiles a shader with standard OpenGL error handling.
 	/// </summary>
 	/// <param name="type">The type of shader, given as an OpenGL macro.</param>
 	/// <param name="source">The source code of the shader as a string - NOT the file path of the shader!</param>
-	unsigned int compile_shader(unsigned int type, const std::string &source);
+	unsigned int compile_shader(unsigned int type, const string &source);
 
 	/// <summary>
 	/// Changes a uniform integer in a given program.

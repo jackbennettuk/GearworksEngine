@@ -20,7 +20,7 @@ void gearworks::gwehaviour::initialize() {
 	// Set console text colour to green
 	SetConsoleTextAttribute(win_console_instance, 10);
 
-	// Print debug console title
+	// Print debug console title 
 	std::cout << "  -- GEARWORKS ENGINE DEBUG CONSOLE --\nRevision 1.0.0: Windows-only compatibility\n";
 
 	// Print initializing title
@@ -94,8 +94,4 @@ void gearworks::gwehaviour::destroy() {
 
 	// Done!
 	std::cout << "  Done!\n";
-
-	// Prompt the user to press any key to close the console window
-	std::cout << "\n  -- Press enter to close the debug window. --";
-	std::cin.get();
 }
