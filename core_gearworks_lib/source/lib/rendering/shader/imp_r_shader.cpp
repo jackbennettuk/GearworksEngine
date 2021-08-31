@@ -72,10 +72,3 @@ unsigned int gearworks::compile_shader(unsigned int type, const string &source) 
 	// Return the now-working shader
 	return id;
 }
-
-void gearworks::modify_uniform_1i(const unsigned int *program, const char *uniform_name, int val) { GL_CALL(glUniform1i(glGetUniformLocation(*program, uniform_name), val)); }
-void gearworks::modify_uniform_1f(const unsigned int *program, const char *uniform_name, float val) { GL_CALL(glUniform1f(glGetUniformLocation(*program, uniform_name), val)); }
-void gearworks::modify_uniform_2fv(const unsigned int *program, const char *uniform_name, vec2 val) { GL_CALL(glUniform2f(glGetUniformLocation(*program, uniform_name), val.r, val.g)); }
-void gearworks::modify_uniform_3fv(const unsigned int *program, const char *uniform_name, vec3 val) { GL_CALL(glUniform3f(glGetUniformLocation(*program, uniform_name), val.r, val.g, val.b)); }
-void gearworks::modify_uniform_4fv(const unsigned int *program, const char *uniform_name, vec4 val) { GL_CALL(glUniform4f(glGetUniformLocation(*program, uniform_name), val.r, val.g, val.b, val.a)); }
-void gearworks::modify_uniform_4m(const unsigned int *program, const char *uniform_name, mat4 val) { GL_CALL(glUniformMatrix4fv(glGetUniformLocation(*program, uniform_name), 1, GL_FALSE, &val[0][0])); }

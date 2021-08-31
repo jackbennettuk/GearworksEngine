@@ -221,7 +221,9 @@
     <ClInclude Include="bin\dependencies\opengl\glm\vector_relational.hpp" />
     <ClInclude Include="bin\dependencies\stb\stb_image.h" />
     <ClInclude Include="include\gearworks.h" />
+    <ClInclude Include="source\lib\alias.h" />
     <ClInclude Include="source\lib\input\i_input.h" />
+    <ClInclude Include="source\lib\prepro.h" />
     <ClInclude Include="source\lib\presets\2dim\default\p2d_def.h" />
     <ClInclude Include="source\lib\presets\2dim\triangle\p2d_triangle.h" />
     <ClInclude Include="source\lib\presets\2dim\rectangle\p2d_rectangle.h" />
@@ -235,6 +237,7 @@
     <ClInclude Include="source\lib\rendering\window\r_window.h" />
     <ClInclude Include="source\lib\userdef\engine\u_engine.h" />
     <ClInclude Include="source\lib\userdef\gwehaviour\u_gwehaviour.h" />
+    <ClInclude Include="source\lib\utility\inl_ut_utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c" />

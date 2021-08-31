@@ -15,7 +15,7 @@ void gearworks::input_manager::update() {
 	// Clear current pressed keys list
 	kb_current_pressed_keys.clear();
 	// Increment through all possible keys available in GLFW
-	for (int i = 0; i < GLFW_KEY_AMOUNT; i++) {
+	for (int i = 0; i < 377; i++) {			// the value '377' is based on the extended ASCII table at https://www.ascii-code.com/
 		if (glfwGetKey(window_ptr->get_glfwinstance(), i)) {
 			// If each key is being pressed, add it to the kb_current_pressed_keys array.
 			kb_current_pressed_keys.push_back(i);

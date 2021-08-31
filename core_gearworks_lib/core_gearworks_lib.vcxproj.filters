@@ -204,6 +204,15 @@
     <ClInclude Include="source\lib\presets\2dim\triangle\p2d_triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\lib\prepro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\utility\inl_ut_utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\lib\alias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\lib\rendering\renderer\imp_r_renderer.cpp">

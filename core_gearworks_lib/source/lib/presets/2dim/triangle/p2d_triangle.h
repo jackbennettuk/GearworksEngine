@@ -10,7 +10,6 @@ private:
 public:
 	// Use the default shape constructor
 	using defshape::defshape;
-
 	/// <summary>
 	/// Creates a Rectangle struct and its appropriate VBOs and IBO.
 	/// A blend colour and a texture may be given.

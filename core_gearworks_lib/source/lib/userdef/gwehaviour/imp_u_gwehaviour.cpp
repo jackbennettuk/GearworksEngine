@@ -23,8 +23,8 @@ void gearworks::gwehaviour::initialize() {
 	// Print debug console title 
 	std::cout << "  -- GEARWORKS ENGINE DEBUG CONSOLE --\nRevision 1.0.0: Windows-only compatibility\n";
 
-	// Print initializing title
-	std::cout << "\nInitializing:\n";
+	// Print initialization title
+	std::cout << "\nInitialization:\n";
 
 	// Create the engine object
 	main_engine->create(renderer);

@@ -108,6 +108,9 @@ Currently, there has not been any experimental versions.
 - \[++] Added the `properties` struct to shapes to better organise attributes such as colour and position
 - \[+] Slightly redesigned the way shape transformations are applied every frame
 - \[!] Fixed a bug where partially transparent shapes would occasionally not render
+### 2021/08/31 - version `dev-v3.2.0.1`:
+- \[+] Some minor changes to the file structure
+- \[+] Added some aliases for frequently-used functions, e.g. `glm::vec3` -> simply `vec3`
 </details>
 
 ---
