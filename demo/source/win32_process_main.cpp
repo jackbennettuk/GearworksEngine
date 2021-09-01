@@ -1,22 +1,11 @@
 #include <gearworks.h>
 
 gearworks::rectangle rect;
-gearworks::triangle tri;
 
 void gearworks::engine::initialize() {
-	rect.create(renderer, "resources/textures/crate.png", vec3(0, 0, 500), vec2(100), vec3(0, 0, 0));
-
-	vec3 vertices[3] = {
-		vec3(-100, -200, 0),
-		vec3(100, 100, 0),
-		vec3(100, -200, 0)
-	};
-
-	tri.create(renderer, GEAR_RIGHTANGLE_TRI, "resources/textures/wall.jpeg", vec3(0, 0, 500), vec2(100));
+	rect.create(renderer, "resources/textures/crate.png", vec3(0, 0, 500), vec2(100), vec3(45, 0, 0));
 }
 void gearworks::engine::update() {
-	rect.rotate(0, 1, 0);
-	tri.rotate(0, -1, 0);
 
 	if (input->get_key(GLFW_KEY_W)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians(1.0f), vec3(1, 0, 0)); }
 	if (input->get_key(GLFW_KEY_A)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians(-1.0f), vec3(0, 1, 0)); }
@@ -28,7 +17,6 @@ void gearworks::engine::render() {
 	gearworks::clear_screen(gearworks::col_verydarkgray);
 
 	rect.render();
-	tri.render();
 }
 void gearworks::engine::clean() 
 {}
