@@ -12,10 +12,7 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_
 	properties.colour = blend_colour;
 	properties.opacity = blend_opacity;
 
-	// This float array is the data to be set for the vbo.
-	// Here it stores the positions based on only size. The given position for the rectangle is translated on the model matrix next.
-	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
-	// It also stores the texture coordinates in the same order.
+	// This float array is the data to be set for the vbo (the vertices before transformations)
 	float vbo_data[] = {
 		// Position coordinates		// Texture coordinates
 		-1, -1, 0,					0.0f, 0.0f,

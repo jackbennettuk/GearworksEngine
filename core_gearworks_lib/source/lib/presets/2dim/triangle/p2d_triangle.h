@@ -1,7 +1,7 @@
 #ifndef P2D_TRIANGLE_H
 #define P2D_TRIANGLE_H
 
-#include "../default/p2d_def.h"
+#include "../.default/p2d_def.h"
 
 class gearworks::triangle : public defshape {
 private:

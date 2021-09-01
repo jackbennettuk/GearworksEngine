@@ -4,7 +4,7 @@ gearworks::renderer::renderer() :
 	cur_shader_program_id(0),
 	cur_window(),
 	project_matrix(NULL),
-	view_matrix(glm::rotate(mat4(1.0f), glm::radians(180.0f), vec3(0, 1, 0))),
+	view_matrix(glm::translate(mat4(1.0f), vec3(0, 0, 0))),
 	model_matrix(glm::translate(mat4(1.0f), vec3(0, 0, 0))),
 	current_zoom(1.0f)
 {}
@@ -21,7 +21,7 @@ void gearworks::renderer::update_renderer() {
 
 	// Update the projection matrix so it is also resized along with window/viewport resize
 	// Also factor in zoom for zooming capabilities.
-	project_matrix = glm::perspective(
+	project_matrix = glm::perspectiveLH(
 		45.0f,
 		cur_window->get_winasprat(),
 		0.1f,

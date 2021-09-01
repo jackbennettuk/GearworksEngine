@@ -39,7 +39,7 @@ void gearworks::engine::behaviour_initialize() {
 	GL_CALL(glEnable(GL_MULTISAMPLE));
 
 	// Enable transparent blending through the main renderer instance
-	gearworks::config_blending();
+	gearworks::config_renderer();
 	// Set up shaders
 	renderer->initialize_shaders(vertex_shader_path, fragment_shader_path);
 	// Update the renderer for the first time (basically initializing it)

@@ -1,6 +1,6 @@
-#include "p2d_def.h"
+#include "p3d_def.h"
 
-defshape::shape_properties_struct::shape_properties_struct() :
+defshape3d::shape_properties_struct::shape_properties_struct() :
 	colour(NULL),
 	opacity(255),
 	position(vec3(0)),
@@ -8,7 +8,7 @@ defshape::shape_properties_struct::shape_properties_struct() :
 	scale(vec3(1))
 {}
 
-void defshape::apply_transformations() {
+void defshape3d::apply_transformations() {
 	// Create an identity matrix to store the applied transformations
 	mat4 applied_transformation = mat4(1.0f);
 
@@ -21,7 +21,7 @@ void defshape::apply_transformations() {
 	if (properties.rotation.x != 0) applied_transformation = glm::rotate(applied_transformation,  glm::radians(properties.rotation.x), vec3(1, 0, 0));
 
 	// Add the active scale to the stored transformations variable
-	applied_transformation = glm::scale(applied_transformation, vec3(properties.scale, 0.0f));
+	applied_transformation = glm::scale(applied_transformation, vec3(properties.scale));
 
 	// Apply these changes to the renderer by setting its model matrix and then updating it
 	renderer_handle->model_matrix = applied_transformation;
@@ -36,18 +36,18 @@ void defshape::apply_transformations() {
 	renderer_handle->update_renderer();
 }
 
-defshape::defshape() :
+defshape3d::defshape3d() :
 	renderer_handle(nullptr),
 	vao(),
 	ibo(),
-	primitive_type(0),
+	shape_type(0),
 	texture_object(nullptr)
 {}
-defshape::~defshape() {
+defshape3d::~defshape3d() {
 	DELETE_HALLOC(texture_object);
 }
 
-void defshape::render() {
+void defshape3d::render() {
 	// Bind VAO and IBO
 	vao.bind();
 	ibo.bind();
@@ -69,12 +69,9 @@ void defshape::render() {
 
 	// Draw the shape
 	GLsizei count = 0;
-	switch (primitive_type) {
-		case 0:		// triangle
-			count = 3;
-			break;
-		case 1:		// rectangle
-			count = 6;
+	switch (shape_type) {
+		case 0:		// cuboid
+			count = 36;
 			break;
 		default:
 			count = 0;
@@ -85,8 +82,8 @@ void defshape::render() {
 	// Update transformation with variables and user input
 	apply_transformations();
 
-	// Draw the rectangle
-	GL_CALL(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+	// Draw the shape
+	GL_CALL(glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr));
 
 	// Unbind the VAO
 	vao.unbind();

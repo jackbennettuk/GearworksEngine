@@ -93,13 +93,22 @@ namespace gearworks {
 	// -----------------------
 
 	/// <summary>
-	/// A rectangle object. To create it using a solid colour, use create().
+	/// A 2D rectangle shape.
 	/// </summary>
 	class rectangle;
 	/// <summary>
-	/// A triangle object. To create it using a solid colour, use create().
+	/// A 2D triangle shape.
 	/// </summary>
 	class triangle;
+
+	// ----------------
+	// 3D shape presets
+	// ----------------
+
+	/// <summary>
+	/// A 3D default cube/cuboid.
+	/// </summary>
+	class cuboid;
 
 	// ------------
 	// Engine class
@@ -137,6 +146,7 @@ namespace gearworks {
 
 // Presets
 #ifndef GW_NOINCLUDE_PRESET_DEFS
+#include "../source/lib/presets/3dim/cuboid/p3d_cuboid.h"
 #include "../source/lib/presets/2dim/rectangle/p2d_rectangle.h"
 #include "../source/lib/presets/2dim/triangle/p2d_triangle.h"
 #endif // Preset shape files

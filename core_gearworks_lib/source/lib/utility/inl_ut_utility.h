@@ -35,10 +35,13 @@ namespace gearworks {
 	/// <summary>
 	/// Sets up blending to allow for transparent pixels or textures.
 	/// </summary>
-	inline static void config_blending() {
+	inline static void config_renderer() {
 		// Enable blending
 		GL_CALL(glEnable(GL_BLEND));
 		GL_CALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+	
+		// Set up z-buffer/depth buffer
+		glEnable(GL_DEPTH_TEST);
 	}
 
 	/// <summary>
@@ -48,7 +51,7 @@ namespace gearworks {
 	inline static void clear_screen(vec3 colour = vec3(0)) {
 		// Change the background colour to the colour variable
 		GL_CALL(glClearColor(colour.r / 255, colour.g / 255, colour.b / 255, 1.0f));
-		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+		GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 	}
 	/// <summary>
 	/// Clears the screen of the window assigned to the current OpenGL context.
@@ -59,7 +62,7 @@ namespace gearworks {
 	inline static void clear_screen(float r = 0, float g = 0, float b = 0) {
 		// Change the background colour to the colour variable
 		GL_CALL(glClearColor(r / 255, g / 255, b / 255, 1.0f));
-		GL_CALL(glClear(GL_COLOR_BUFFER_BIT));
+		GL_CALL(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 	}
 
 	/// <summary>
