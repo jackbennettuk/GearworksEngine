@@ -2,31 +2,27 @@
 This file details the history in development of the Gearworks Engine.
 
 ---
-
-<details>
-<summary><b>Release</b> version history</summary>
-
+<img align=right width=80 src="https://svgshare.com/i/_ic.svg"> 
+  
 ## **Release** version history
 Currently, there has not been any release versions.
 
-</details>
-
 ---
 
-<details>
-<summary><b>Experimental</b> version history</summary>
+<img align=right width=80 src="https://svgshare.com/i/_i0.svg"> 
 
 ## **Experimental** version history
 Currently, there has not been any experimental versions.
 
-</details>
-
 ---
 
-<details>
-<summary><b>Development</b> version history</summary>
+<img align=right width=80 src="https://svgshare.com/i/_iK.svg"> 
 
 ## **Development** version history
+  
+<details>
+<summary><i>Version dev-v1.x</i></summary>
+  
 ### 2021/06/27 - versions `dev-v1.0` - `dev-v1.1`:
 - \[++] Started development
 - \[+] Implemented shader parsing and compilation.
@@ -76,6 +72,12 @@ Currently, there has not been any experimental versions.
 - \[+] Rearranged file structure
 - \[+] Refactored the way the `Renderer` (used to be `GWRenderer`) class is implemented (from inline to with a .cpp file)
 - \[-] (temporarily) deleted `Triangle` class as it was far out-dated compared to the `Rectangle` equivalent. A new version of it will be re-added later.
+
+</details>
+  
+<details>
+<summary><i>Version dev-v2.x</i></summary>
+
 ### 2021/07/18 - versions `dev-v2.0` - `dev-v2.2.1`:
 - \[++] Refactored entire project for better quality of life when developing
 - \[++] Finally completed the VAO system for better optimization when showing multiple primitives
@@ -90,6 +92,12 @@ Currently, there has not been any experimental versions.
 - \[+] Finalised the zooming feature.
 ### 2021/07/21 - version `dev-v2.3`:
 - \[++] Implemented input handling, not completed yet.
+  
+</details>
+
+<details>
+<summary><i>Version dev-v3.x</i></summary>
+  
 ### 2021/08/04 - version `dev-v3.0`:
 - \[++] Moved all current code to a static library (now in project `core_gearworks_lib`) rather than an executable
 - \[++] Created a demo project to store the demo executable (project `demo`)
@@ -115,6 +123,7 @@ Currently, there has not been any experimental versions.
 - \[++] Converted most code to work in 3D space
 - \[+] Added some "camera" rotation to the demo project using WASD for testing
 - \[!] Fixed 3D rotation around the center of objects
+  
 </details>
 
 ---
