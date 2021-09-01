@@ -119,8 +119,10 @@ Currently, there has not been any experimental versions.
 ### 2021/08/31 - version `dev-v3.2.0.1`:
 - \[+] Some minor changes to the file structure
 - \[+] Added some aliases for frequently-used functions, e.g. `glm::vec3` -> simply `vec3`
-### 2021/08/31 - version `dev-v3.2.1`:
+### 2021/09/01 - versions `dev-v3.2.1` - `dev-3.2.1.1`:
 - \[++] Converted most code to work in 3D space
+- \[++] Added triangle types, e.g. `GEAR_EQUILATERAL_TRI` and `GEAR_SCALENE_TRI`
+- \[+] Added position, rotation, and scale parameters to shapes to further simplify using them
 - \[+] Added some "camera" rotation to the demo project using WASD for testing
 - \[!] Fixed 3D rotation around the center of objects
   

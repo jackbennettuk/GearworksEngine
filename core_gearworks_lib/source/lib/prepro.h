@@ -1,6 +1,14 @@
 #ifndef PREPRO_H
 #define PREPRO_H
 
+#pragma region One-line definitions
+
+#define GEAR_EQUILATERAL_TRI	0x0001
+#define GEAR_SCALENE_TRI		0x0002
+#define GEAR_RIGHTANGLE_TRI		0x0003
+
+#pragma endregion
+
 // TODO: this is Windows-only due to the use of backslashes
 /// <summary>
 /// The name of the file this macro is called from.

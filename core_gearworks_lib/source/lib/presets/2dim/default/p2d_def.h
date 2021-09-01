@@ -53,7 +53,11 @@ public:
 		/// <summary>
 		/// Basic transformation value of the shape.
 		/// </summary>
-		vec3 position, scale, rotation;
+		vec3 position, rotation;
+		/// <summary>
+		/// 2D scale value of the shape.
+		/// </summary>
+		vec2 scale;
 	};
 
 	/// <summary>
@@ -106,17 +110,17 @@ public:
 	/// <param name="x">Value to scale on the X axis.</param>
 	/// <param name="y">Value to scale on the Y axis.</param>
 	/// <param name="z">Value to scale on the Z axis.</param>
-	inline void scale(float x, float y, float z) { properties.scale += vec3(x, y, z); }
+	inline void scale(float x, float y) { properties.scale += vec2(x, y); }
 	/// <summary>
 	/// Scales the shape by a given amount.
 	/// </summary>
 	/// <param name="vect">Value to scale by on the 3 axes stored as a glm::vec3.</param>
-	inline void scale(vec3 vect) { properties.scale += vect; }
+	inline void scale(vec2 vect) { properties.scale += vect; }
 	/// <summary>
 	/// Scales the shape by a given amount.
 	/// </summary>
 	/// <param name="val">Value to scale on all axes.</param>
-	inline void scale(float val) { properties.scale += vec3(val); }
+	inline void scale(float val) { properties.scale += vec2(val); }
 #pragma endregion
 };
 

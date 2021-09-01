@@ -21,7 +21,7 @@ void defshape::apply_transformations() {
 	if (properties.rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.x), vec3(1, 0, 0));
 
 	// Add the active scale to the stored transformations variable
-	applied_transformation = glm::scale(applied_transformation, properties.scale);
+	applied_transformation = glm::scale(applied_transformation, vec3(properties.scale, 0.0f));
 
 	// Apply these changes to the renderer by setting its model matrix and then updating it
 	renderer_handle->model_matrix = applied_transformation;

@@ -1,6 +1,6 @@
 #include "p2d_rectangle.h"
 
-void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, vec2 scale, string texture_path, vec3 blend_colour, float blend_opacity) {
+void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_path, vec3 position, vec2 scale, vec3 rotation, vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is rectangle, or 1.
 	primitive_type = 1;
 
@@ -17,15 +17,16 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, vec3 position, 
 	// These positions are in order: bottom_left, bottom_right, top_right, top_left.
 	// It also stores the texture coordinates in the same order.
 	float vbo_data[] = {
-		// Position coordinates							// Texture coordinates
-		-(scale.x / 2), -(scale.y / 2), 0,		0.0f, 0.0f,
-		 scale.x / 2,   -(scale.y / 2), 0,		1.0f, 0.0f,
-		 scale.x / 2,     scale.y / 2,  0,		1.0f, 1.0f,
-		-(scale.x) / 2,   scale.y / 2,  0,		0.0f, 1.0f
+		// Position coordinates		// Texture coordinates
+		-1, -1, 0,					0.0f, 0.0f,
+		 1, -1, 0,					1.0f, 0.0f,
+		 1,  1, 0,					1.0f, 1.0f,
+		-1,  1, 0,					0.0f, 1.0f
 	};
-
-	// Set the position to the given value
+	// Set the properties to the given values
 	properties.position = position;
+	properties.scale = scale;
+	properties.rotation = rotation;
 
 	// Initialize the VAO
 	vao.initialize();
