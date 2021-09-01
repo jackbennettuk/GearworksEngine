@@ -236,7 +236,6 @@
     <ClInclude Include="source\lib\rendering\texture\r_texture.h" />
     <ClInclude Include="source\lib\rendering\window\r_window.h" />
     <ClInclude Include="source\lib\userdef\engine\u_engine.h" />
-    <ClInclude Include="source\lib\userdef\gwehaviour\u_gwehaviour.h" />
     <ClInclude Include="source\lib\utility\inl_ut_utility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -247,11 +246,10 @@
     <ClCompile Include="source\lib\rendering\shader\imp_r_shader.cpp" />
     <ClCompile Include="source\lib\rendering\texture\imp_r_texture.cpp" />
     <ClCompile Include="source\lib\rendering\window\imp_r_window.cpp" />
-    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp" />
     <ClCompile Include="source\lib\input\imp_i_input.cpp" />
     <ClCompile Include="source\lib\rendering\renderer\imp_r_renderer.cpp" />
     <ClCompile Include="source\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp" />
-    <ClCompile Include="source\lib\userdef\gwehaviour\imp_u_gwehaviour.cpp" />
+    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\dependencies\opengl\glm\gtc\bitfield.inl" />

@@ -111,6 +111,10 @@ Currently, there has not been any experimental versions.
 ### 2021/08/31 - version `dev-v3.2.0.1`:
 - \[+] Some minor changes to the file structure
 - \[+] Added some aliases for frequently-used functions, e.g. `glm::vec3` -> simply `vec3`
+### 2021/08/31 - version `dev-v3.2.1`:
+- \[++] Converted most code to work in 3D space
+- \[+] Added some "camera" rotation to the demo project using WASD for testing
+- \[!] Fixed 3D rotation around the center of objects
 </details>
 
 ---

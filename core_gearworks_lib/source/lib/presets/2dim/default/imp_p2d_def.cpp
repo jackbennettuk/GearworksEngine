@@ -16,9 +16,9 @@ void defshape::apply_transformations() {
 	applied_transformation = glm::translate(applied_transformation, properties.position);
 
 	// Add the active rotation to the stored transformations variable, with the given axes being affected
-	if (properties.rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.x), vec3(1, 0, 0));
-	if (properties.rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.y), vec3(0, 1, 0));
 	if (properties.rotation.z != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.z), vec3(0, 0, 1));
+	if (properties.rotation.y != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.y), vec3(0, 1, 0));
+	if (properties.rotation.x != 0) applied_transformation = glm::rotate(applied_transformation, -glm::radians(properties.rotation.x), vec3(1, 0, 0));
 
 	// Add the active scale to the stored transformations variable
 	applied_transformation = glm::scale(applied_transformation, properties.scale);

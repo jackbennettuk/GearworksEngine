@@ -110,15 +110,6 @@ namespace gearworks {
 	/// Note the 'renderer_handle' variable can be used to reference the renderer that this engine object is associated with.
 	/// </summary>
 	class engine;
-
-	// ---------------
-	// Behaviour class
-	// ---------------
-
-	/// <summary>
-	/// Behaviour class that includes all necessary non-static members. Be sure to inherit from it in your files whenever needed.
-	/// </summary>
-	class gwehaviour;
 }
 
 // ------------------------------------------------------------------------
@@ -153,7 +144,6 @@ namespace gearworks {
 // User-defined classes
 #ifndef GW_NOINCLUDE_NONSTATIC_DEFS
 #include "../source/lib/userdef/engine/u_engine.h"
-#include "../source/lib/userdef/gwehaviour/u_gwehaviour.h"
 #endif // Userdef files
 
 #endif // Header guard

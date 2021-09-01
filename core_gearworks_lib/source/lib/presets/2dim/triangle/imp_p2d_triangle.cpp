@@ -1,6 +1,6 @@
 #include "p2d_triangle.h"
 
-void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3], string texture_path, vec3 blend_colour, float blend_opacity) {
+void gearworks::triangle::create(gearworks::renderer *renderer, vec3 vertices[3], string texture_path, vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is triangle, or 0.
 	primitive_type = 0;
 
@@ -17,10 +17,10 @@ void gearworks::triangle::create(gearworks::renderer *renderer, vec2 vertices[3]
 	// These positions are in order: bottom_left, top, bottom_right
 	// It also stores the texture coordinates in the same order.
 	float vbo_data[] = {
-		// Position coordinates						// Texture coordinates
-		vertices[0].x, vertices[0].y, 0.0f,			0.0f, 0.0f,
-		vertices[1].x, vertices[1].y, 0.0f,			0.5f, 1.0f,
-		vertices[2].x, vertices[2].y, 0.0f,			1.0f, 0.0f
+		// Position coordinates							// Texture coordinates
+		vertices[0].x, vertices[0].y, vertices[0].z,	0.0f, 0.0f,
+		vertices[1].x, vertices[1].y, vertices[1].z,	0.5f, 1.0f,
+		vertices[2].x, vertices[2].y, vertices[2].z,	1.0f, 0.0f
 	};
 
 	// Initialize the VAO

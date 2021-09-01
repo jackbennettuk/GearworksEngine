@@ -46,10 +46,4 @@ if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {\
 	std::cout << "OK!\n";\
 }
 
-/// <summary>
-/// Prints to the debug console window with a 2-space indent.
-/// </summary>
-#define printgw(x)\
-std::cout << "  " << x;
-
 #endif // Header guard

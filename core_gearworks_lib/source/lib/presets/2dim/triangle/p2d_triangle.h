@@ -18,7 +18,7 @@ public:
 	/// <param name="vertices">The starting vertex coordinates to use.</param>
 	/// <param name="texture_path">The texture to use for the rectangle.</param>
 	/// <param name="blend_colour">The colour to render the rectangle. Default is white.</param>
-	void create(gearworks::renderer *renderer, vec2 vertices[3], string texture_path, vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
+	void create(gearworks::renderer *renderer, vec3 vertices[3], string texture_path, vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
 };
 
 #endif // header guard

@@ -189,9 +189,6 @@
     <ClInclude Include="source\lib\userdef\engine\u_engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\lib\userdef\gwehaviour\u_gwehaviour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\lib\input\i_input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -224,9 +221,6 @@
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -242,13 +236,13 @@
     <ClCompile Include="source\lib\rendering\window\imp_r_window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\lib\userdef\gwehaviour\imp_u_gwehaviour.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\lib\presets\2dim\default\imp_p2d_def.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\lib\presets\2dim\triangle\imp_p2d_triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
