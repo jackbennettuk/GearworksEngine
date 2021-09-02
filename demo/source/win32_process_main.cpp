@@ -16,9 +16,9 @@ void gearworks::engine::update() {
 
 	cube.rotate(2, 2, 0);
 
-	if (input->get_key(GLFW_KEY_W)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians(-2.0f), vec3(1, 0, 0)); }
+	if (input->get_key(GLFW_KEY_W)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians( 2.0f), vec3(1, 0, 0)); }
 	if (input->get_key(GLFW_KEY_A)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians( 2.0f), vec3(0, 1, 0)); }
-	if (input->get_key(GLFW_KEY_S)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians( 2.0f), vec3(1, 0, 0)); }
+	if (input->get_key(GLFW_KEY_S)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians(-2.0f), vec3(1, 0, 0)); }
 	if (input->get_key(GLFW_KEY_D)) { renderer->view_matrix = glm::rotate(renderer->view_matrix, glm::radians(-2.0f), vec3(0, 1, 0)); }
 }
 void gearworks::engine::render() {

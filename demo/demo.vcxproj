@@ -176,7 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core_gearworks_lib\core_gearworks_lib.vcxproj">
-      <Project>{d9c1bdb1-98c1-4d98-8fc4-5b23ac413de5}</Project>
+      <Project>{2f713d8f-601b-4f88-a1f4-4a5eeb531fc5}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
