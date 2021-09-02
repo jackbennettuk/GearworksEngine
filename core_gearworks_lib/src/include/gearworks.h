@@ -34,8 +34,8 @@
 // Include macro and alias/type-definitions
 // ----------------------------------------
 
-#include "../source/lib/prepro.h"
-#include "../source/lib/alias.h"
+#include "../lib/prepro.h"
+#include "../lib/alias.h"
 
 // ----------------------------------------------------------------------
 // Declare the main classes of the gearworks namespace for the first time
@@ -127,33 +127,33 @@ namespace gearworks {
 
 // Utility
 #ifndef GW_NOINCLUDE_UTILITY_DEFS
-#include "../source/lib/utility/inl_ut_utility.h"
+#include "../lib/utility/inl_ut_utility.h"
 #endif // Utility files 
 
 // Rendering
 #ifndef GW_NOINCLUDE_RENDER_DEFS
-#include "../source/lib/rendering/shader/r_shader.h"
-#include "../source/lib/rendering/bufferobjs/r_bufferobjs.h"
-#include "../source/lib/rendering/texture/r_texture.h"
-#include "../source/lib/rendering/window/r_window.h"
-#include "../source/lib/rendering/renderer/r_renderer.h"
+#include "../lib/rendering/shader/r_shader.h"
+#include "../lib/rendering/bufferobjs/r_bufferobjs.h"
+#include "../lib/rendering/texture/r_texture.h"
+#include "../lib/rendering/window/r_window.h"
+#include "../lib/rendering/renderer/r_renderer.h"
 #endif // Rendering files
 
 // Input
 #ifndef GW_NOINCLUDE_INPUT_DEFS
-#include "../source/lib/input/i_input.h"
+#include "../lib/input/i_input.h"
 #endif // Input files
 
 // Presets
 #ifndef GW_NOINCLUDE_PRESET_DEFS
-#include "../source/lib/presets/3dim/cuboid/p3d_cuboid.h"
-#include "../source/lib/presets/2dim/rectangle/p2d_rectangle.h"
-#include "../source/lib/presets/2dim/triangle/p2d_triangle.h"
+#include "../lib/presets/3dim/cuboid/p3d_cuboid.h"
+#include "../lib/presets/2dim/rectangle/p2d_rectangle.h"
+#include "../lib/presets/2dim/triangle/p2d_triangle.h"
 #endif // Preset shape files
 
 // User-defined classes
 #ifndef GW_NOINCLUDE_NONSTATIC_DEFS
-#include "../source/lib/userdef/engine/u_engine.h"
+#include "../lib/engine/engine/u_engine.h"
 #endif // Userdef files
 
 #endif // Header guard

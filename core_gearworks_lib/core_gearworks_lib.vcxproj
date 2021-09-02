@@ -101,7 +101,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,7 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,7 +158,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)bin\dependencies\;$(ProjectDir)src\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -220,40 +220,40 @@
     <ClInclude Include="bin\dependencies\opengl\glm\vec4.hpp" />
     <ClInclude Include="bin\dependencies\opengl\glm\vector_relational.hpp" />
     <ClInclude Include="bin\dependencies\stb\stb_image.h" />
-    <ClInclude Include="include\gearworks.h" />
-    <ClInclude Include="source\lib\alias.h" />
-    <ClInclude Include="source\lib\input\i_input.h" />
-    <ClInclude Include="source\lib\prepro.h" />
-    <ClInclude Include="source\lib\presets\2dim\.default\p2d_def.h" />
-    <ClInclude Include="source\lib\presets\2dim\triangle\p2d_triangle.h" />
-    <ClInclude Include="source\lib\presets\2dim\rectangle\p2d_rectangle.h" />
-    <ClInclude Include="source\lib\presets\3dim\.default\p3d_def.h" />
-    <ClInclude Include="source\lib\presets\3dim\cuboid\p3d_cuboid.h" />
-    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_ibo.h" />
-    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vao.h" />
-    <ClInclude Include="source\lib\rendering\bufferobjs\r_bufferobjs.h" />
-    <ClInclude Include="source\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vbo.h" />
-    <ClInclude Include="source\lib\rendering\renderer\r_renderer.h" />
-    <ClInclude Include="source\lib\rendering\shader\r_shader.h" />
-    <ClInclude Include="source\lib\rendering\texture\r_texture.h" />
-    <ClInclude Include="source\lib\rendering\window\r_window.h" />
-    <ClInclude Include="source\lib\userdef\engine\u_engine.h" />
-    <ClInclude Include="source\lib\utility\inl_ut_utility.h" />
+    <ClInclude Include="src\include\gearworks.h" />
+    <ClInclude Include="src\lib\alias.h" />
+    <ClInclude Include="src\lib\input\i_input.h" />
+    <ClInclude Include="src\lib\prepro.h" />
+    <ClInclude Include="src\lib\presets\2dim\.default\p2d_def.h" />
+    <ClInclude Include="src\lib\presets\2dim\triangle\p2d_triangle.h" />
+    <ClInclude Include="src\lib\presets\2dim\rectangle\p2d_rectangle.h" />
+    <ClInclude Include="src\lib\presets\3dim\.default\p3d_def.h" />
+    <ClInclude Include="src\lib\presets\3dim\cuboid\p3d_cuboid.h" />
+    <ClInclude Include="src\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_ibo.h" />
+    <ClInclude Include="src\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vao.h" />
+    <ClInclude Include="src\lib\rendering\bufferobjs\r_bufferobjs.h" />
+    <ClInclude Include="src\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vbo.h" />
+    <ClInclude Include="src\lib\rendering\renderer\r_renderer.h" />
+    <ClInclude Include="src\lib\rendering\shader\r_shader.h" />
+    <ClInclude Include="src\lib\rendering\texture\r_texture.h" />
+    <ClInclude Include="src\lib\rendering\window\r_window.h" />
+    <ClInclude Include="src\lib\engine\engine\u_engine.h" />
+    <ClInclude Include="src\lib\utility\inl_ut_utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c" />
     <ClCompile Include="bin\dependencies\stb\stb_image.c" />
-    <ClCompile Include="source\lib\presets\2dim\.default\imp_p2d_def.cpp" />
-    <ClCompile Include="source\lib\presets\2dim\triangle\imp_p2d_triangle.cpp" />
-    <ClCompile Include="source\lib\presets\3dim\.default\imp_p3d_def.cpp" />
-    <ClCompile Include="source\lib\presets\3dim\cuboid\imp_p3d_cuboid.cpp" />
-    <ClCompile Include="source\lib\rendering\shader\imp_r_shader.cpp" />
-    <ClCompile Include="source\lib\rendering\texture\imp_r_texture.cpp" />
-    <ClCompile Include="source\lib\rendering\window\imp_r_window.cpp" />
-    <ClCompile Include="source\lib\input\imp_i_input.cpp" />
-    <ClCompile Include="source\lib\rendering\renderer\imp_r_renderer.cpp" />
-    <ClCompile Include="source\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp" />
-    <ClCompile Include="source\lib\userdef\engine\imp_u_engine.cpp" />
+    <ClCompile Include="src\lib\presets\2dim\.default\imp_p2d_def.cpp" />
+    <ClCompile Include="src\lib\presets\2dim\triangle\imp_p2d_triangle.cpp" />
+    <ClCompile Include="src\lib\presets\3dim\.default\imp_p3d_def.cpp" />
+    <ClCompile Include="src\lib\presets\3dim\cuboid\imp_p3d_cuboid.cpp" />
+    <ClCompile Include="src\lib\rendering\shader\imp_r_shader.cpp" />
+    <ClCompile Include="src\lib\rendering\texture\imp_r_texture.cpp" />
+    <ClCompile Include="src\lib\rendering\window\imp_r_window.cpp" />
+    <ClCompile Include="src\lib\input\imp_i_input.cpp" />
+    <ClCompile Include="src\lib\rendering\renderer\imp_r_renderer.cpp" />
+    <ClCompile Include="src\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp" />
+    <ClCompile Include="src\lib\engine\engine\imp_u_engine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\dependencies\opengl\glm\gtc\bitfield.inl" />
