@@ -43,10 +43,10 @@ int main() {
     game.initialize();
 
     // Update your game (This function runs every frame until the window is closed)
-    baseobj.update();
+    game.update();
 
     // Terminate your game's process when the window is closed
-    baseobj.destroy();
+    game.destroy();
 
     // End the application successfully
     return 0;
@@ -70,7 +70,7 @@ void gearworks::engine::update() {
 
 void gearworks::engine::render() {
     // Clears the screen to a bright red colour
-    gearworks::clear_screen(glm::vec3(0.97f, 0.11f, 0.11f));
+    gearworks::clear_screen(gearworks::col_brightred);
 
     // Put any of your rendering code here
 }
