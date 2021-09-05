@@ -17,11 +17,11 @@ I'm currently still in school so I don't have too much time for it. I try to kee
 I have tried integrating CMake for a better project setup, but have gone back to simple Visual Studio solution files and builds, just because it's easier and I'd rather spend more time coding the actual program. I'm also very lazy.
 
 ## Changelog
-You can read the changelog in the file `CHANGELOG.md`, linked [here](CHANGELOG.md).
+The Gearworks Engine changelog has been moved to its own file. You can read it in the [`CHANGELOG.md`](CHANGELOG.md) file.
 
 ## Getting Started
 
-<h4 align=center>:warning: This guide is out of date - it will soon be updated! :warning:</h4>
+:heavy_check_mark: *This guide was last updated as of version `dev-v3.4.0` and is verified to still be working.*
 
 ### `Main function`
 In the file that contains your `main()` function, put the following code in. This is all you need in most cases in this file, even in larger projects.
@@ -32,20 +32,20 @@ In the file that contains your `main()` function, put the following code in. Thi
 
 // The main function
 int main() {
-    // Base gearworks behaviour object that handles all the behind-the-scenes logic
-    gearworks::gwehaviour baseobj;
+    // This object is the main game process.
+    gearworks::engine game;
+    
+    // Set the game's initial shaders
+    game.vertex_shader_path = "resources/shaders/vert.glsl";
+    game.fragment_shader_path = "resources/shaders/frag.glsl";
 
-    // Set the base object's initial shaders
-    baseobj.vertex_shader_path = "resources/shaders/vert.glsl";
-    baseobj.fragment_shader_path = "resources/shaders/frag.glsl";
+    // Initialize your game
+    game.initialize();
 
-    // Initialize the base object
-    baseobj.initialize();
-
-    // Update the base object (This function runs every frame until the window is closed)
+    // Update your game (This function runs every frame until the window is closed)
     baseobj.update();
 
-    // Destroy the base object when the window is closed
+    // Terminate your game's process when the window is closed
     baseobj.destroy();
 
     // End the application successfully
@@ -53,8 +53,8 @@ int main() {
 }
 ```
 
-### `Engine implementation file`
-In another file (or the main file), you can implement the library's `engine` class to put your own logic. Keep in mind that, even in a blank project, you need to implement these functions. If you don't have any logic in them, leave them blank but keep the function definition there.
+### `Engine implementation`
+In another file (or the main file), you can implement the library's `engine` class for your own game logic. Keep in mind that, even in a blank project, you need to implement these functions. If you don't have any logic in them, leave them blank but keep the function definition there.
 
 ```C++
 // Include the gearworks file here
