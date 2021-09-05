@@ -1,6 +1,6 @@
 #include "p2d_triangle.h"
 
-void gearworks::triangle::create(gearworks::renderer *renderer, unsigned int type, string texture_path, vec3 position, vec3 scale, vec3 rotation, vec3 vertices[3], vec3 blend_colour, float blend_opacity) {
+void gearworks::triangle::create(gearworks::renderer *renderer, unsigned int type, string texture_path, bool linear_tex, vec3 position, vec3 scale, vec3 rotation, vec3 vertices[3], vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is triangle, or 0.
 	primitive_type = 0;
 
@@ -92,9 +92,9 @@ void gearworks::triangle::create(gearworks::renderer *renderer, unsigned int typ
 
 	// Create and initially bind the texture
 	if (texture_path != "") {
-		texture_object->load(texture_path);
+		texture_object->load(texture_path, linear_tex);
 	} else {
-		texture_object->load("../GWSDK/default/sprite/default_image_pixel_0.png");
+		texture_object->load("../GWSDK/default/sprite/default_image_pixel_0.png", linear_tex);
 	}
 	texture_object->bind();
 }

@@ -7,10 +7,9 @@ gearworks::texture_2d::texture_2d()
 	  bits_per_pixel(NULL)
 {}
 
-void gearworks::texture_2d::load(string _path) {
+void gearworks::texture_2d::load(string _path, bool linear) {
 	// Update the local path variable.
 	path = _path;
-
 	bool error_found = false;
 
 	// Flips the texture vertically
@@ -34,9 +33,10 @@ void gearworks::texture_2d::load(string _path) {
 	GL_CALL(glBindTexture(GL_TEXTURE_2D, renderer_id));
 
 	// This parameter defines how the texture will be scaled down
-	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, (linear ? GL_LINEAR : GL_NEAREST)));
 	// This parameter defines how the texture will be scaled up
-	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, (linear ? GL_LINEAR : GL_NEAREST)));
+
 	// Thess parameter defines how the texture will be wrapped
 	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));
 	GL_CALL(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));

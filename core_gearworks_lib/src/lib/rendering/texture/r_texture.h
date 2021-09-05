@@ -21,7 +21,7 @@ public:
 	/// Load a given image into the texture.
 	/// </summary>
 	/// <param name="_path">The path of the texture as a string.</param>
-	void load(string _path);
+	void load(string _path, bool linear = true);
 
 	/// <summary>
 	/// Binds the texture at a (optional) given slot.

@@ -4,14 +4,14 @@ gearworks::rectangle rect;
 gearworks::cuboid cube;
 
 void gearworks::engine::initialize() {
-	rect.create(renderer, "resources/textures/crate.png", vec3(50, 0, 30), vec3(20), vec3(0), gearworks::col_orange);
-	cube.create(renderer, "resources/textures/crate.png", vec3(0, 0, 30), vec3(20), vec3(45, 45, 0), gearworks::col_brightblue);
+	rect.create(renderer, "../GWSDK/default/sprite/default_image_tile.png", true, vec3(50, 0, 30), vec3(20), vec3(0));
+	cube.create(renderer, "../GWSDK/default/sprite/default_image_tile.png", true, vec3(0, 0, 30), vec3(20), vec3(45, 45, 0));
 }
 void gearworks::engine::update() {
 	rect.properties.rotation.z += 2;
 	cube.rotate(1, 2, 0);
 	
-	if (input->get_key_down(GLFW_KEY_SPACE)) {
+	if (input->get_key_down(GLFW_KEY_ESCAPE)) {
 		if (glfwGetInputMode(renderer->get_currentwindowinstance()->get_glfwinstance(), GLFW_CURSOR) == GLFW_CURSOR_NORMAL) {
 			glfwSetInputMode(renderer->get_currentwindowinstance()->get_glfwinstance(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		} else if (glfwGetInputMode(renderer->get_currentwindowinstance()->get_glfwinstance(), GLFW_CURSOR) == GLFW_CURSOR_DISABLED) {
@@ -20,6 +20,8 @@ void gearworks::engine::update() {
 	}
 
 	// First-person movement
+	if (input->get_key(GLFW_KEY_SPACE))	camera->properties.position += vec3(0, 1, 0);
+	if (input->get_key(GLFW_KEY_LEFT_SHIFT))	camera->properties.position -= vec3(0, 1, 0);
 	if (input->get_key(GLFW_KEY_W))	camera->properties.position -= camera->properties.forward;
 	if (input->get_key(GLFW_KEY_S))	camera->properties.position -= camera->properties.back;
 	if (input->get_key(GLFW_KEY_A))	camera->properties.position += camera->properties.left;

@@ -17,12 +17,13 @@ public:
 	/// </summary>
 	/// <param name="renderer">The renderer that the rectangle will be 'bound' to.</param>
 	/// <param name="texture_path">The texture to use for the rectangle.</param>
+	/// <param name="linear_tex">The scaling algorithm to use for the texture. True for linear, false for nearest-neighbour.</param>
 	/// <param name="position">The starting position coordinate of the rectangle primitive, with 0 as its center.</param>
 	/// <param name="scale">The scale values of the rectangle primitive.</param>
 	/// <param name="rotation">The starting rotation of the rectangle.</param>
 	/// <param name="blend_colour">The colour to render the rectangle. Default is white.</param>
 	/// <param name="blend_opacity">The opacity of the shape.</param>
-	void create(gearworks::renderer *renderer, string texture_path, vec3 position = vec3(0), vec3 scale = vec3(1), vec3 rotation = vec3(0), vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
+	void create(gearworks::renderer *renderer, string texture_path, bool linear_tex, vec3 position = vec3(0), vec3 scale = vec3(1), vec3 rotation = vec3(0), vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
 };
 
 #endif // header guard
