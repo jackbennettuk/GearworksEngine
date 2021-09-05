@@ -20,6 +20,11 @@ public:
 	mat4 project_matrix, view_matrix, model_matrix;
 
 	/// <summary>
+	/// Field of view.
+	/// </summary>
+	float fov;
+
+	/// <summary>
 	/// Constructor for the GW renderer.
 	/// </summary>
 	renderer();

@@ -22,7 +22,7 @@ public:
 	/// <param name="rotation">The starting rotation of the rectangle.</param>
 	/// <param name="blend_colour">The colour to render the rectangle. Default is white.</param>
 	/// <param name="blend_opacity">The opacity of the shape.</param>
-	void create(gearworks::renderer *renderer, string texture_path, vec3 position = vec3(0), vec2 scale = vec2(1), vec3 rotation = vec3(0), vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
+	void create(gearworks::renderer *renderer, string texture_path, vec3 position = vec3(0), vec3 scale = vec3(1), vec3 rotation = vec3(0), vec3 blend_colour = vec3(255, 255, 255), float blend_opacity = 255);
 };
 
 #endif // header guard

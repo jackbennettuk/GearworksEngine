@@ -33,6 +33,10 @@ public:
 	/// The main input manager used for the program.
 	/// </summary>
 	gearworks::input_manager *input = nullptr;
+	/// <summary>
+	/// The first, default camera.
+	/// </summary>
+	gearworks::elem_camera *camera = nullptr;
 
 	/// <summary>
 	/// Path to the vertex shader to use in the program.

@@ -22,7 +22,7 @@ void gearworks::window::create_window(string title, int width, int height) {
 	// Create the window
 	std::cout << "  Creating window... ";
 	glfw_handle = glfwCreateWindow(window_width, window_height, window_title.c_str(), NULL, NULL);
-
+	
 	// Assert the now-created window
 	if (!glfw_handle) {
 		std::cout << "Error creating the window: the member \"glfw_handle\" does not exist!\n";

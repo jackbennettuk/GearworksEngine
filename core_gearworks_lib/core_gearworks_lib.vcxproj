@@ -222,13 +222,15 @@
     <ClInclude Include="bin\dependencies\stb\stb_image.h" />
     <ClInclude Include="src\include\gearworks.h" />
     <ClInclude Include="src\lib\alias.h" />
+    <ClInclude Include="src\lib\engine\elems\camera\e_camera.h" />
+    <ClInclude Include="src\lib\engine\elems\.default\e_default.h" />
+    <ClInclude Include="src\lib\engine\elems\geometry\2dim\.default\p2d_def.h" />
+    <ClInclude Include="src\lib\engine\elems\geometry\2dim\rectangle\p2d_rectangle.h" />
+    <ClInclude Include="src\lib\engine\elems\geometry\2dim\triangle\p2d_triangle.h" />
+    <ClInclude Include="src\lib\engine\elems\geometry\3dim\.default\p3d_def.h" />
+    <ClInclude Include="src\lib\engine\elems\geometry\3dim\cuboid\p3d_cuboid.h" />
     <ClInclude Include="src\lib\input\i_input.h" />
     <ClInclude Include="src\lib\prepro.h" />
-    <ClInclude Include="src\lib\presets\2dim\.default\p2d_def.h" />
-    <ClInclude Include="src\lib\presets\2dim\triangle\p2d_triangle.h" />
-    <ClInclude Include="src\lib\presets\2dim\rectangle\p2d_rectangle.h" />
-    <ClInclude Include="src\lib\presets\3dim\.default\p3d_def.h" />
-    <ClInclude Include="src\lib\presets\3dim\cuboid\p3d_cuboid.h" />
     <ClInclude Include="src\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_ibo.h" />
     <ClInclude Include="src\lib\rendering\bufferobjs\indiv\inl_r_bufferobjs_vao.h" />
     <ClInclude Include="src\lib\rendering\bufferobjs\r_bufferobjs.h" />
@@ -243,16 +245,18 @@
   <ItemGroup>
     <ClCompile Include="bin\dependencies\opengl\Glad\glad.c" />
     <ClCompile Include="bin\dependencies\stb\stb_image.c" />
-    <ClCompile Include="src\lib\presets\2dim\.default\imp_p2d_def.cpp" />
-    <ClCompile Include="src\lib\presets\2dim\triangle\imp_p2d_triangle.cpp" />
-    <ClCompile Include="src\lib\presets\3dim\.default\imp_p3d_def.cpp" />
-    <ClCompile Include="src\lib\presets\3dim\cuboid\imp_p3d_cuboid.cpp" />
+    <ClCompile Include="src\lib\engine\elems\camera\imp_e_camera.cpp" />
+    <ClCompile Include="src\lib\engine\elems\.default\imp_e_default.cpp" />
+    <ClCompile Include="src\lib\engine\elems\geometry\2dim\.default\imp_p2d_def.cpp" />
+    <ClCompile Include="src\lib\engine\elems\geometry\2dim\rectangle\imp_p2d_rectangle.cpp" />
+    <ClCompile Include="src\lib\engine\elems\geometry\2dim\triangle\imp_p2d_triangle.cpp" />
+    <ClCompile Include="src\lib\engine\elems\geometry\3dim\.default\imp_p3d_def.cpp" />
+    <ClCompile Include="src\lib\engine\elems\geometry\3dim\cuboid\imp_p3d_cuboid.cpp" />
     <ClCompile Include="src\lib\rendering\shader\imp_r_shader.cpp" />
     <ClCompile Include="src\lib\rendering\texture\imp_r_texture.cpp" />
     <ClCompile Include="src\lib\rendering\window\imp_r_window.cpp" />
     <ClCompile Include="src\lib\input\imp_i_input.cpp" />
     <ClCompile Include="src\lib\rendering\renderer\imp_r_renderer.cpp" />
-    <ClCompile Include="src\lib\presets\2dim\rectangle\imp_p2d_rectangle.cpp" />
     <ClCompile Include="src\lib\engine\engine\imp_u_engine.cpp" />
   </ItemGroup>
   <ItemGroup>

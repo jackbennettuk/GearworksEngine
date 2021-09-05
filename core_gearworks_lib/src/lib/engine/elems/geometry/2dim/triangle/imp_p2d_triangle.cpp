@@ -1,7 +1,6 @@
 #include "p2d_triangle.h"
 
-void gearworks::triangle::create
-(gearworks::renderer *renderer, unsigned int type, string texture_path, vec3 position, vec2 scale, vec3 rotation, vec3 vertices[3], vec3 blend_colour, float blend_opacity) {
+void gearworks::triangle::create(gearworks::renderer *renderer, unsigned int type, string texture_path, vec3 position, vec3 scale, vec3 rotation, vec3 vertices[3], vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is triangle, or 0.
 	primitive_type = 0;
 
@@ -23,9 +22,9 @@ void gearworks::triangle::create
 		case GEAR_EQUILATERAL_TRI:
 			vbo_data = new float[] {
 				// Position coordinates			// Texture coordinates
-				-1, -1, 0,						0.0f, 0.0f,
-				 0,  1, 0,						0.5f, 1.0f,
-				 1, -1, 0,						1.0f, 0.0f
+				-0.5f, -0.5f, 0.0f,						0.0f, 0.0f,
+				 0.0f,  0.5f, 0.0f,						0.5f, 1.0f,
+				 0.5f, -0.5f, 0.0f,						1.0f, 0.0f
 			};
 
 			if (vertices != nullptr)
@@ -44,18 +43,18 @@ void gearworks::triangle::create
 				// Actually, draw the triangle, just with no size at all.
 				vbo_data = new float[] {
 					// Position coordinates		// Texture coordinates
-					0, 0, 0,					0.0f, 0.0f,
-					0, 0, 0,					0.0f, 0.0f,
-					0, 0, 0,					0.0f, 0.0f,
+					0.0f, 0.0f, 0.0f,			0.0f, 0.0f,
+					0.0f, 0.0f, 0.0f,			0.0f, 0.0f,
+					0.0f, 0.0f, 0.0f,			0.0f, 0.0f,
 				};
 			}
 			break;
 		case GEAR_RIGHTANGLE_TRI:
 			vbo_data = new float[] {
 				// Position coordinates			// Texture coordinates
-				-1, -1, 0,						0.0f, 0.0f,
-				 1,  1, 0,						1.0f, 1.0f,
-				 1, -1, 0,						1.0f, 0.0f
+				-0.5f, -0.5f, 0.0f,				0.0f, 0.0f,
+				 0.5f,  0.5f, 0.0f,				1.0f, 1.0f,
+				 0.5f, -0.5f, 0.0f,				1.0f, 0.0f
 			};
 
 			if (vertices != nullptr)
@@ -66,9 +65,9 @@ void gearworks::triangle::create
 			// Actually, draw the triangle, just with no size at all.
 			vbo_data = new float[] {
 				// Position coordinates			// Texture coordinates
-				0, 0, 0,						0.0f, 0.0f,
-				0, 0, 0,						0.0f, 0.0f,
-				0, 0, 0,						0.0f, 0.0f,
+				0.0f, 0.0f, 0.0f,				0.0f, 0.0f,
+				0.0f, 0.0f, 0.0f,				0.0f, 0.0f,
+				0.0f, 0.0f, 0.0f,				0.0f, 0.0f,
 			};
 			break;
 	}
@@ -92,6 +91,10 @@ void gearworks::triangle::create
 	vao.add_vb_attrib(vbo, 1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
 
 	// Create and initially bind the texture
-	texture_object->load(texture_path);
+	if (texture_path != "") {
+		texture_object->load(texture_path);
+	} else {
+		texture_object->load("../GWSDK/default/sprite/default_image_pixel_0.png");
+	}
 	texture_object->bind();
 }

@@ -5,12 +5,14 @@ gearworks::engine::engine()
 gearworks::engine::~engine() {
 	DELETE_HALLOC(renderer);
 	DELETE_HALLOC(input);
+	DELETE_HALLOC(camera);
 }
 
 void gearworks::engine::behaviour_initialize() {
 	// Heap-allocate non-static objects
 	renderer = new gearworks::renderer();
 	input = new gearworks::input_manager();
+	camera = new gearworks::elem_camera();
 
 	// Get Windows Console instance
 	HANDLE win_console_instance = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -44,6 +46,8 @@ void gearworks::engine::behaviour_initialize() {
 	renderer->initialize_shaders(vertex_shader_path, fragment_shader_path);
 	// Update the renderer for the first time (basically initializing it)
 	renderer->update_renderer();
+	// Update the camera for first time
+	camera->update_camera(renderer);
 
 	// Initialize game
 	std::cout << "\nGame initialization:\n";
@@ -66,6 +70,8 @@ void gearworks::engine::behaviour_update() {
 		update();
 		// Update the renderer
 		renderer->update_renderer();
+		// Update the camera
+		camera->update_camera(renderer);
 
 		// Update the input manager
 		input->update();

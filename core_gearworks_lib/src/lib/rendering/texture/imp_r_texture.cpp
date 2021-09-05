@@ -11,6 +11,8 @@ void gearworks::texture_2d::load(string _path) {
 	// Update the local path variable.
 	path = _path;
 
+	bool error_found = false;
+
 	// Flips the texture vertically
 	// This is because the way OpenGL expects textures is vertically opposite the way Gearworks expects them
 	stbi_set_flip_vertically_on_load(1);
@@ -22,7 +24,9 @@ void gearworks::texture_2d::load(string _path) {
 
 	// Check if there was an error when loading the texture
 	if (stbi_failure_reason()) {
-		std::cout << "  stb_image error: " << stbi_failure_reason() << "\n";
+		std::cout << "  Error when loading image from path [" << path << "]: " << stbi_failure_reason() << "\n";
+
+		error_found = true;
 	}
 
 	// Generates and binds the texture buffer
@@ -49,6 +53,14 @@ void gearworks::texture_2d::load(string _path) {
 	// Free the image from the localBuffer variable
 	if (local_buffer) {
 		stbi_image_free(local_buffer);
+	}
+
+	if (path != "../GWSDK/default/sprite/default_image_ngivenerr_0.png" && error_found == false) {
+		if (path.find("../GWSDK/") != std::string::npos) {
+			std::cout << "  Image successfully loaded from Gearworks SDK\n";
+		} else {
+			std::cout << "  Image successfully loaded from path [" << path << "]\n";
+		}
 	}
 }
 

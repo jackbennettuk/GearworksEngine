@@ -127,7 +127,14 @@ Currently, there has not been any experimental versions.
 - \[+] Added position, rotation, and scale parameters to shapes to further simplify using them
 - \[+] Added some "camera" rotation to the demo project using WASD for testing
 - \[!] Fixed 3D rotation around the center of objects
-  
+### 2021/09/05 - version `dev-3.4.0`:
+- \[++] Added a camera class and its transformations
+- \[++] Created the Gearworks SDK to include any default resources
+- \[+] Added a FPS style camera script to .demo:
+- \[+] Added the `input_manager::center_cursor` function
+- \[+] Clamped rotation values to 360 and -360
+- \[!] Fixed a heap corruption exception that originally occurred due to reasons related to camera rotation
+
 </details>
 
 ---

@@ -14,36 +14,36 @@ void gearworks::cuboid::create(gearworks::renderer *renderer, string texture_pat
 
 	// The data to be set for the vbo.
 	float vbo_data[] = {
-		// Front			Tex-coord
-		-1, -1, -1,			0.0f, 0.0f,
-		 1, -1, -1,			1.0f, 0.0f,
-		 1,  1, -1,			1.0f, 1.0f,
-		-1,  1, -1,			0.0f, 1.0f,
-		// Back				Tex-coord
-		-1, -1,  1,			0.0f, 0.0f,
-		 1, -1,  1,			1.0f, 0.0f,
-		 1,  1,  1,			1.0f, 1.0f,
-		-1,  1,  1,			0.0f, 1.0f,
-		// Left				Tex-coord
-		-1,  1, -1,			0.0f, 0.0f,
-		-1, -1, -1,			1.0f, 0.0f,
-		-1, -1,  1,			1.0f, 1.0f,
-		-1,  1,  1,			0.0f, 1.0f,
-		// Right			Tex-coord
-		 1, -1, -1,			0.0f, 0.0f,
-		 1,  1, -1,			1.0f, 0.0f,
-		 1,  1,  1,			1.0f, 1.0f,
-		 1, -1,  1,			0.0f, 1.0f,
-		// Bottom			Tex-coord
-		-1, -1, -1,			0.0f, 0.0f,
-		 1, -1, -1,			1.0f, 0.0f,
-		 1, -1,  1,			1.0f, 1.0f,
-		-1, -1,  1,			0.0f, 1.0f,
-		// Top	 			Tex-coord
-		 1,  1, -1,			0.0f, 0.0f,
-		-1,  1, -1,			1.0f, 0.0f,
-		-1,  1,  1,			1.0f, 1.0f,
-		 1,  1,  1,			0.0f, 1.0f
+		// Front					Tex-coord
+		-0.5f, -0.5f, -0.5f,		0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f,		1.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,		1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f,		0.0f, 1.0f,
+		// Back						Tex-coord
+		-0.5f, -0.5f,  0.5f,		0.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,		1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,		1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,		0.0f, 1.0f,
+		// Left						Tex-coord
+		-0.5f,  0.5f, -0.5f,		0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,		1.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f,		1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,		0.0f, 1.0f,
+		// Right					Tex-coord
+		 0.5f, -0.5f, -0.5f,		0.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f,		1.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f,		1.0f, 1.0f,
+		 0.5f, -0.5f,  0.5f,		0.0f, 1.0f,
+		// Bottom					Tex-coord
+		-0.5f, -0.5f, -0.5f,		0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f,		1.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f,		1.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,		0.0f, 1.0f,
+		// Top	 					Tex-coord
+		 0.5f,  0.5f, -0.5f,		0.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f,		1.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,		1.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,		0.0f, 1.0f
 	};
 	// Set the properties to the given values
 	properties.position = position;
@@ -65,7 +65,11 @@ void gearworks::cuboid::create(gearworks::renderer *renderer, string texture_pat
 	vao.add_vb_attrib(vbo, 1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
 
 	// Create and initially bind the texture
-	texture_object->load(texture_path);
+	if (texture_path != "") {
+		texture_object->load(texture_path);
+	} else {
+		texture_object->load("../GWSDK/default/sprite/default_image_pixel_0.png");
+	}
 	texture_object->bind();
 }
 

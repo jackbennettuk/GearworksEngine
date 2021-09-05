@@ -1,7 +1,7 @@
 #include "i_input.h"
 
 gearworks::input_manager::input_manager()
-	: window_ptr(nullptr), cursor_x_pos(0), cursor_y_pos(0) 
+	: window_ptr(nullptr), old_cursor_pos(vec2(0)), cursor_pos(vec2(0)), cursor_offset(vec2(0))
 {}
 
 void gearworks::input_manager::initialize(gearworks::window *window) {
@@ -23,7 +23,11 @@ void gearworks::input_manager::update() {
 	}
 
 	// Update cursor position variables
-	glfwGetCursorPos(window_ptr->get_glfwinstance(), &cursor_x_pos, &cursor_y_pos);
+	old_cursor_pos = cursor_pos;
+	glfwGetCursorPos(window_ptr->get_glfwinstance(), &cursor_pos.x, &cursor_pos.y);
+
+	// Update cursor position offset
+	cursor_offset = cursor_pos - old_cursor_pos;
 }
 
 bool gearworks::input_manager::get_key_down(int key) {
@@ -66,4 +70,13 @@ bool gearworks::input_manager::get_key_release(int key) {
 
 	// If not, return false
 	return false;
+}
+
+void gearworks::input_manager::center_cursor() {
+	// Find center of window and set the cursor's position to that
+	cursor_pos.x = round(window_ptr->get_winwidth() / 2);
+	cursor_pos.y = round(window_ptr->get_winheight() / 2);
+
+	// Then update the actual position of the cursor
+	glfwSetCursorPos(window_ptr->get_glfwinstance(), cursor_pos.x, cursor_pos.y);
 }

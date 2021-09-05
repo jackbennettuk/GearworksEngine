@@ -119,6 +119,15 @@ namespace gearworks {
 	/// Note the 'renderer_handle' variable can be used to reference the renderer that this engine object is associated with.
 	/// </summary>
 	class engine;
+
+	// -----
+	// Elems
+	// -----
+	
+	/// <summary>
+	/// A camera elem. It is necessary for any Gearworks project and one is created by default when you start developing a new game.
+	/// </summary>
+	class elem_camera;
 }
 
 // ------------------------------------------------------------------------
@@ -144,16 +153,17 @@ namespace gearworks {
 #include "../lib/input/i_input.h"
 #endif // Input files
 
-// Presets
-#ifndef GW_NOINCLUDE_PRESET_DEFS
-#include "../lib/presets/3dim/cuboid/p3d_cuboid.h"
-#include "../lib/presets/2dim/rectangle/p2d_rectangle.h"
-#include "../lib/presets/2dim/triangle/p2d_triangle.h"
+// Engine class
+#ifndef GW_NOINCLUDE_ENGINE_DEF
+#include "../lib/engine/engine/u_engine.h"
 #endif // Preset shape files
 
-// User-defined classes
-#ifndef GW_NOINCLUDE_NONSTATIC_DEFS
-#include "../lib/engine/engine/u_engine.h"
+// Elem classes
+#ifndef GW_NOINCLUDE_ELEM_DEFS
+#include "../lib/engine/elems/geometry/3dim/cuboid/p3d_cuboid.h"
+#include "../lib/engine/elems/geometry/2dim/rectangle/p2d_rectangle.h"
+#include "../lib/engine/elems/geometry/2dim/triangle/p2d_triangle.h"
+#include "../lib/engine/elems/camera/e_camera.h"
 #endif // Userdef files
 
 #endif // Header guard

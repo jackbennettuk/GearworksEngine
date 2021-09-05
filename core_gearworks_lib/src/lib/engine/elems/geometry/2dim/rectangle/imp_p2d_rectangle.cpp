@@ -1,6 +1,6 @@
 #include "p2d_rectangle.h"
 
-void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_path, vec3 position, vec2 scale, vec3 rotation, vec3 blend_colour, float blend_opacity) {
+void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_path, vec3 position, vec3 scale, vec3 rotation, vec3 blend_colour, float blend_opacity) {
 	// Specify that the type of primitive here is rectangle, or 1.
 	primitive_type = 1;
 
@@ -15,10 +15,10 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_
 	// This float array is the data to be set for the vbo (the vertices before transformations)
 	float vbo_data[] = {
 		// Position coordinates		// Texture coordinates
-		-1, -1, 0,					0.0f, 0.0f,
-		 1, -1, 0,					1.0f, 0.0f,
-		 1,  1, 0,					1.0f, 1.0f,
-		-1,  1, 0,					0.0f, 1.0f
+		-0.5f, -0.5f, 0.0f,			0.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f,			1.0f, 0.0f,
+		 0.5f,  0.5f, 0.0f,			1.0f, 1.0f,
+		-0.5f,  0.5f, 0.0f,			0.0f, 1.0f
 	};
 	// Set the properties to the given values
 	properties.position = position;
@@ -40,7 +40,11 @@ void gearworks::rectangle::create(gearworks::renderer *renderer, string texture_
 	vao.add_vb_attrib(vbo, 1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
 
 	// Create and initially bind the texture
-	texture_object->load(texture_path);
+	if (texture_path != "") {
+		texture_object->load(texture_path);
+	} else {
+		texture_object->load("../GWSDK/default/sprite/default_image_pixel_0.png");
+	}
 	texture_object->bind();
 }
 

@@ -12,13 +12,17 @@ private:
 	std::list<int> kb_current_pressed_keys, kb_previous_pressed_keys;						// Lists of current and previous pressed keys
 
 	// --- CURSOR MEMBER(S) ---
-	double cursor_x_pos, cursor_y_pos;														// X and Y positions of the cursor
+	glm::vec<2, double> cursor_pos;
+	glm::vec<2, double> old_cursor_pos;
+	vec2 cursor_offset;
 public:
 	// Getters and/or setters
-	/// <returns>the x position of the cursor.</returns>
-	inline double get_cursorxpos() { return cursor_x_pos; }
-	/// <returns>the y position of the cursor.</returns>
-	inline double get_cursorypos() { return cursor_y_pos; }
+	/// <returns>the position of the cursor.</returns>
+	inline vec2 get_cursorpos() { return cursor_pos; }
+	/// <returns>the position of the cursor in the previous frame.</returns>
+	inline vec2 get_oldcursorpos() { return old_cursor_pos; }
+	/// <returns>the difference between the current cursor position and the cursor position of the last frame.</returns>
+	inline vec2 get_cursoroffset() { return cursor_offset; }
 
 	/// <summary>
 	/// Constructor for an input manager. To create an object of this class, use the initialize() function.</par>
@@ -33,6 +37,10 @@ public:
 	/// Updates the input manager object.
 	/// </summary>
 	void update();
+
+	// ------------------
+	// Keyboard functions
+	// ------------------
 
 	/// <summary>
 	/// Returns true on the frame that a key is pressed down.
@@ -54,6 +62,15 @@ public:
 	/// <param name="key">The key code of the key to check. It is recommended you use GLFW codes, such as "GLFW_KEY_ENTER" or others.</param>
 	/// <param name="key">A project-specific enum for Keys may be created in the future.</param>
 	bool get_key_release(int key);
+
+	// ----------------
+	// Cursor functions
+	// ----------------
+
+	/// <summary>
+	/// Moves the cursor to the center of the window.
+	/// </summary>
+	void center_cursor();
 };
 
 #endif // header guard
