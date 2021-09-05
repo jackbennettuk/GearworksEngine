@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -281,6 +281,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="bin\dependencies\opengl\GLFW3\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\process\icon.ico" />
+    <Image Include="resources\process\icon.png" />
+    <Image Include="resources\process\icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

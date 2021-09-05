@@ -33,6 +33,12 @@ void gearworks::engine::behaviour_initialize() {
 
 	// Create the window
 	renderer->create_window("Gearworks Engine - development version");
+	
+	// Set window icon via GLFW
+	GLFWimage window_icon[1];
+	window_icon[0].pixels = stbi_load("../GWSDK/process/icon.png", &window_icon[0].width, &window_icon[0].height, 0, 4);
+	glfwSetWindowIcon(renderer->get_currentwindowinstance()->get_glfwinstance(), 1, window_icon);
+	stbi_image_free(window_icon[0].pixels);
 
 	// Load Glad
 	GW_INIT_GLAD();

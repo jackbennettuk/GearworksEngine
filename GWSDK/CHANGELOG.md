@@ -7,3 +7,4 @@ This file details the history of the Gearworks SDK, referred to as the GWSDK.
      - [`default_image_ngivenerr_0`](default/sprite/default_image_ngivenerr_0.png) (currently unused)
      - [`default_image_pixel_0`](default/sprite/default_image_pixel_0.png) (used as a solid colour)
      - [`default_image_tile`](default/sprite/default_image_tile.png) (texture used for testing)
+     - Image used for the window process icon (in `process` folder)

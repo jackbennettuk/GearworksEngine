@@ -31,10 +31,6 @@ namespace gearworks {
 			/// </summary>
 			vec3 local_forward_direction;
 			/// <summary>
-			/// The right direction in local camera space. This is used by Gearworks for its first-person camera system.
-			/// </summary>
-			vec3 local_right_direction;
-			/// <summary>
 			/// The up direction in local camera space. This is used by Gearworks for its first-person camera system.
 			/// </summary>
 			vec3 local_up_direction;

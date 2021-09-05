@@ -329,4 +329,15 @@
   <ItemGroup>
     <Library Include="bin\dependencies\opengl\GLFW3\glfw3.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\process\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\process\icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resources\process\icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

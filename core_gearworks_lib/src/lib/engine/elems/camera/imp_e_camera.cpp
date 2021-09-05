@@ -1,11 +1,10 @@
 #include "e_camera.h"
 
 gearworks::elem_camera::cam_properties_struct::cam_properties_struct() :
-	position(vec3(0, 0, 3)),
+	position(vec3(0, 0, -100)),
 	yaw(-90.0f), pitch(0.0f), roll(0.0f),
 	target_position(vec3(0)),
-	local_forward_direction(vec3(0)),
-	local_right_direction(vec3(0)),
+	local_forward_direction(vec3(0, 0, -1)),
 	local_up_direction(vec3(0, 1, 0)),
 	forward(vec3(0, 0, 0)),
 	back(vec3(0, 0, 0)),
